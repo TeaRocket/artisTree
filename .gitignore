@@ -1,0 +1,32 @@
+# Dependency directory
+artistree/node_modules
+
+# Debug log from npm
+artistree/npm-debug.log
+
+# Environment Variables should NEVER be published
+artistree/.env
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+artistree/node_modules
+artistree/.pnp
+artistree/.pnp.js
+
+# testing
+artistree/coverage
+
+# production
+artistree/build
+
+# misc
+artistree/.DS_Store
+artistree/.env.local
+artistree/.env.development.local
+artistree/.env.test.local
+artistree/.env.production.local
+
+artistree/npm-debug.log*
+artistree/yarn-debug.log*
+artistree/yarn-error.log*
