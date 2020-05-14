@@ -95,7 +95,7 @@ export default class Signup extends Component {
               id='role'
             />
           {this.state.message && (
-            <Alert variant='danger'>{this.state.message}</Alert>
+            <div variant='danger'>{this.state.message}</div>
           )}
           <input type='submit' value="Signup"/>
           </form>
@@ -103,5 +103,3 @@ export default class Signup extends Component {
     );
   }
 }
-
-export default Signup;
