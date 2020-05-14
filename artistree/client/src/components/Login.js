@@ -56,7 +56,7 @@ export default class Login extends Component {
             {this.state.message && (
             <div variant='danger'>{this.state.message}</div>
           )}
-          <input type='submit' value="Login"/>
+          <input type='submit' value=""/>
           </form>
       </div>
     )
