@@ -16,7 +16,6 @@ router.post("/signup", (req, res) => {
     return res.status(400).json({ message: "Your username cannot be empty" });
   }
 
-  //todo: not sure if the code after || works
   User.findOne({ $or: [{ email }, { username }] })
     .then((found) => {
       if (found) {
