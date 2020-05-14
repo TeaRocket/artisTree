@@ -17,12 +17,17 @@ router.post("/signup", (req, res) => {
   }
 
   //todo: not sure if the code after || works
-  User.findOne({ username: username })
+  User.findOne({ $or: [{ email }, { username }] })
     .then((found) => {
       if (found) {
-        return res
-          .status(400)
-          .json({ message: "This seems to be already taken" });
+        if (found.email === email)
+          return res
+            .status(400)
+            .json({ email: "This seems to be already taken" });
+        else
+          return res
+            .status(400)
+            .json({ username: "This seems to be already taken" });
       }
 
       const salt = bcrypt.genSaltSync();
