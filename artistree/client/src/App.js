@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Redirect } from 'react-router-dom';
+import Signup from './components/Signup';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+  state = {
+    user: this.props.user
+  }
+
+  setUser = user => {
+    this.setState({
+      user: user
+    })
+  }
+
+  render(){
+    return (
+      <div className="App">
+      <Route
+      exact path='/signup'
+      render={props => <Signup setUser={this.setUser} {...props} />}
+      />
     </div>
-  );
+    );
+  }
 }
+
 
 export default App;
