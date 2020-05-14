@@ -6,7 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 
-axios.get('api/auth/loggedin')
+axios.get('/auth/loggedin')
 .then(response => {
   const user = response.data;
   ReactDOM.render(
