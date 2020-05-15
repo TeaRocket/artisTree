@@ -7,7 +7,8 @@ export default class Profile extends Component {
     username: null,
     location: null,
     role: null,
-    artworks: []
+    artworks: [], 
+    error: false
   };
 
   
@@ -75,34 +76,35 @@ export default class Profile extends Component {
   }
 
  
-  toggleEditForm = () => {
-    this.setState({
-      editForm: !this.state.editForm
-    });
-  }
+  // toggleEditForm = () => {
+  //   this.setState({
+  //     editForm: !this.state.editForm
+  //   });
+  // }
   
 
   componentDidMount = () => {
     this.getData();
   }
   
-  componentDidUpdate = () => {
-    this.getData();
-  }
+ // componentDidUpdate = () => {
+ //   this.getData();
+ // }
 
   render() {
-    if (this.state.error) return <div>{this.state.error}</div>
-    if (!this.state.username) return (<></>)
-    let allowedToEdit = false;
-    const user = this.props.user;
-    const owner = this.state.profile.owner;
-    //toggle edit picture if owner of profile
-    if (user && user._id === owner) allowedToEdit = true;
+    
+     // console.log("hello")
+     if (this.state.error) return <div>{this.state.error.toString()}</div>
+     if (!this.state.username) return (<></>)
+    // let allowedToEdit = false;
+    // const user = this.props.user;
+    // const owner = this.state.profile.owner;
+    // //toggle edit picture if owner of profile
+    // if (user && user._id === owner) allowedToEdit = true;
     return (
       <div>
        <h1>{this.state.username}</h1>
-       <img src={this.state.imageUrl} alt="img"/>
-       <button onClick={this.toggleEditForm}>Edit Picture</button>
+       {/* <button onClick={this.toggleEditForm}>Edit Picture</button> */}
        <p>{this.state.location}</p>
       </div>
     )

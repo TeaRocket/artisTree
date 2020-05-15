@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { signup } from '../services/auth';
+import { UserContext } from "../contexts/UserContext";
 
 export default class Signup extends Component {
   state = {
@@ -11,6 +12,8 @@ export default class Signup extends Component {
     role: '',
     message: ''
   };
+  static contextType = UserContext;
+
   handleChange = event => {
     const {name, value} = event.target;
 
@@ -36,7 +39,8 @@ export default class Signup extends Component {
           role: ''
         });
       } else {
-        this.props.setUser(data);
+        const { setUser } = this.context;
+        setUser(data);
         this.props.history.push('/login');
       }
     });

@@ -4,9 +4,11 @@ const signup = (username, password, email, birthDate, location, role) => {
   return axios
   .post('auth/signup', {username, password, email, birthDate, location, role})
   .then(response => {
+    console.log("response", response)
     return response.data;
   })
   .catch(error => {
+    console.log("error", error)
     return error.response.data;
   });
 }
