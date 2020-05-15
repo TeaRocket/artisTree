@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Artwork = require("../models/Artwork");
+
 
 router.get('/:id', (req, res) => {
   // check if req.params.id is valid, if not respond with a 4xx status code

@@ -13,20 +13,17 @@ class App extends React.Component {
   static contextType = UserContext;
 
   componentDidMount() {
-    // axios
-    //   .get("/auth/loggedin")
-    //   .then((response) => {
-    //     console.log("PROBLEM HERE?")
-    //     const { setUser } = this.context;
-    //     setUser(response.data);
-    //     console.log("updated user", response);
-    //   })
-    //   .catch((err) => console.log(err));
+    axios
+      .get("/auth/loggedin")
+      .then((response) => {
+        const { setUser } = this.context;
+        setUser(response.data);
+
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
-    console.log("PROBLEM HERE INSIDE RENDER?")
-    console.log(this.context);
     return (
       <div className="App">
         <Route exact path="/signup" component={Signup} />
