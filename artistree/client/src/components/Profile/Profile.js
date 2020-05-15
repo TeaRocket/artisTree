@@ -10,14 +10,7 @@ export default class Profile extends Component {
     artworks: []
   };
 
-  componentDidMount = () => {
-    this.getData();
-  }
   
-  componentDidUpdate = () => {
-    this.getData();
-  }
-
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -25,11 +18,12 @@ export default class Profile extends Component {
     });
 
   }
-//change pfp
+
+    //change pfp
   handleFileChange(event) {
     const uploadData = new FormData();
     uploadData.append('imageUrl', event.target.files[0])
-    uploadData.append('username', response.data.username)
+    uploadData.append('username', this.state.username)
     console.log(uploadData)
     //need to change this route?
     axios.post("http://localhost:5000/auth/upload", uploadData)
@@ -37,11 +31,32 @@ export default class Profile extends Component {
     .catch(error => console.log(error))
   }
   
+
+    handleSubmit = event => {
+      event.preventDefault();
+      const id = this.props.match.params.id;
+      axios.put(`/profile/${id}`, {
+        imageUrl: this.state.imageUrl,
+        username: this.state.username,
+        location: this.state.location,
+      })
+        .then(response => {
+          this.setState({
+            imageUrl: response.data.imageUrl,
+            username: response.data.username,
+            location: response.data.location,
+            editForm: false
+          })
+        }).catch(err => {
+          console.log(err);
+        })
+    }
+
   getData = () => {
     const id = this.props.match.params.id;
     console.log(id);
     axios
-    .get(`/profile/${id}`)
+    .get(`/profile/`)
     .then(response => {
       console.log(response);
       this.setState({
@@ -53,7 +68,7 @@ export default class Profile extends Component {
         })
     })
     .catch(error => {
-      if (err.response.status === 404) {
+      if (error.response.status === 404) {
         this.setState({ error: 'Not found' })
       }  
     })
@@ -66,6 +81,15 @@ export default class Profile extends Component {
     });
   }
   
+
+  componentDidMount = () => {
+    this.getData();
+  }
+  
+  componentDidUpdate = () => {
+    this.getData();
+  }
+
   render() {
     if (this.state.error) return <div>{this.state.error}</div>
     if (!this.state.username) return (<></>)
