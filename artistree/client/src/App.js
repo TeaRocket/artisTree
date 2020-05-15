@@ -3,10 +3,12 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "./contexts/UserContext";
 import Signup from "./components/Signup";
+import { UserContext } from "./contexts/UserContext";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage/HomePage";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Logout from "./components/Logout/Logout";
+import Profile from "./components/Profile/Profile";
 
 class App extends React.Component {
   static contextType = UserContext;
@@ -29,6 +31,7 @@ class App extends React.Component {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/results" component={SearchResults} />
         <Route exact path="/logout" component={Logout} />
+        <Route exact path="/user/:id" component={Profile} />
       </div>
     );
   }
