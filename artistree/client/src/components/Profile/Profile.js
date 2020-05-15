@@ -25,8 +25,8 @@ export default class Profile extends Component {
     uploadData.append('imageUrl', event.target.files[0])
     uploadData.append('username', this.state.username)
     console.log(uploadData)
-    //need to change this route?
-    axios.post("http://localhost:5000/auth/upload", uploadData)
+    
+    axios.post("/auth/upload", uploadData)
     .then(response => this.setState({ imageUrl: response.data.secure_url}))
     .catch(error => console.log(error))
   }
@@ -56,7 +56,7 @@ export default class Profile extends Component {
     const id = this.props.match.params.id;
     console.log(id);
     axios
-    .get(`/profile/`)
+    .get(`/user/${id}`)
     .then(response => {
       console.log(response);
       this.setState({
