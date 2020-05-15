@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import Signup from "./components/Signup";
