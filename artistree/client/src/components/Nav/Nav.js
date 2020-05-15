@@ -22,7 +22,10 @@ export default class Nav extends Component {
         <div id="nav-inner-r">
           <Link to="/">Home</Link>
           {user ? (
-            <Link to="/profile">Profile</Link>
+            <>
+              <Link to="/profile">Profile</Link>
+              <Link to="/logout">Logout</Link>
+            </>
           ) : (
             <>
               <Link to="/login">Login</Link>
