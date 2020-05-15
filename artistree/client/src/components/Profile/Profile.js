@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class Profile extends Component {
@@ -7,11 +7,11 @@ export default class Profile extends Component {
     username: null,
     location: null,
     role: null,
-    artworks: [], 
+    artworks: [],
     error: false
   };
 
-  
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -20,92 +20,89 @@ export default class Profile extends Component {
 
   }
 
-    //change pfp
+  //change pfp
   handleFileChange(event) {
     const uploadData = new FormData();
     uploadData.append('imageUrl', event.target.files[0])
     uploadData.append('username', this.state.username)
-    console.log(uploadData)
-    
-    axios.post("/auth/upload", uploadData)
-    .then(response => this.setState({ imageUrl: response.data.secure_url}))
-    .catch(error => console.log(error))
-  }
-  
 
-    handleSubmit = event => {
-      event.preventDefault();
-      const id = this.props.match.params.id;
-      axios.put(`/profile/${id}`, {
-        imageUrl: this.state.imageUrl,
-        username: this.state.username,
-        location: this.state.location,
-      })
-        .then(response => {
-          this.setState({
-            imageUrl: response.data.imageUrl,
-            username: response.data.username,
-            location: response.data.location,
-            editForm: false
-          })
-        }).catch(err => {
-          console.log(err);
+    axios.post("/auth/upload", uploadData)
+      .then(response => this.setState({ imageUrl: response.data.secure_url }))
+      .catch(error => console.log(error))
+  }
+
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const id = this.props.match.params.id;
+    axios.put(`/profile/${id}`, {
+      imageUrl: this.state.imageUrl,
+      username: this.state.username,
+      location: this.state.location,
+    })
+      .then(response => {
+        this.setState({
+          imageUrl: response.data.imageUrl,
+          username: response.data.username,
+          location: response.data.location,
+          editForm: false
         })
-    }
+      }).catch(err => {
+        console.log(err);
+      })
+  }
 
   getData = () => {
     const id = this.props.match.params.id;
-    console.log(id);
     axios
-    .get(`/user/${id}`)
-    .then(response => {
-      console.log(response);
-      this.setState({
-        imageUrl: response.data.imageUrl,
-        username: response.data.username,
-        location: response.data.location,
-        role: response.data.role,
-        artworks: response.data.artworks,
+      .get(`/user/${id}`)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          imageUrl: response.data.imageUrl,
+          username: response.data.username,
+          location: response.data.location,
+          role: response.data.role,
+          artworks: response.data.artworks,
         })
-    })
-    .catch(error => {
-      if (error.response.status === 404) {
-        this.setState({ error: 'Not found' })
-      }  
-    })
+      })
+      .catch(error => {
+        if (error.response.status === 404) {
+          this.setState({ error: 'Not found' })
+        }
+      })
   }
 
- 
+
   // toggleEditForm = () => {
   //   this.setState({
   //     editForm: !this.state.editForm
   //   });
   // }
-  
+
 
   componentDidMount = () => {
     this.getData();
   }
-  
- // componentDidUpdate = () => {
- //   this.getData();
- // }
+
+  // componentDidUpdate = () => {
+  //   this.getData();
+  // }
 
   render() {
-    
-     // console.log("hello")
-     if (this.state.error) return <div>{this.state.error.toString()}</div>
-     if (!this.state.username) return (<></>)
-    // let allowedToEdit = false;
-    // const user = this.props.user;
-    // const owner = this.state.profile.owner;
-    // //toggle edit picture if owner of profile
-    // if (user && user._id === owner) allowedToEdit = true;
+    console.log("hello")
+    if (this.state.error) return <div>{this.state.error.toString()}</div>
+    if (!this.state.username) return (<></>)
+    let allowedToEdit = false;
+    const user = this.props.user;
+    //const owner = this.state.profile.owner;
+    //toggle edit picture if owner of profile
+    //if (user && user._id === owner) allowedToEdit = true;
     return (
       <div>
-       <h1>{this.state.username}</h1>
-       {/* <button onClick={this.toggleEditForm}>Edit Picture</button> */}
-       <p>{this.state.location}</p>
+        <h1>Hi</h1>
+        <button onClick={this.toggleEditForm}>Edit Picture</button>
+        <p>{this.state.location}</p>
       </div>
     )
   }
