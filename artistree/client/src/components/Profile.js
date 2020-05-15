@@ -31,7 +31,7 @@ export default class Profile extends Component {
     uploadData.append('imageUrl', event.target.files[0])
     uploadData.append('username', response.data.username)
     console.log(uploadData)
-    //need to change this route
+    //need to change this route?
     axios.post("http://localhost:5000/auth/upload", uploadData)
     .then(response => this.setState({ imageUrl: response.data.secure_url}))
     .catch(error => console.log(error))
@@ -59,6 +59,7 @@ export default class Profile extends Component {
     })
   }
 
+ 
   toggleEditForm = () => {
     this.setState({
       editForm: !this.state.editForm
@@ -71,6 +72,7 @@ export default class Profile extends Component {
     let allowedToEdit = false;
     const user = this.props.user;
     const owner = this.state.profile.owner;
+    //toggle edit picture if owner of profile
     if (user && user._id === owner) allowedToEdit = true;
     return (
       <div>
