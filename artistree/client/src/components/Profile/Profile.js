@@ -74,20 +74,16 @@ export default class Profile extends Component {
   }
 
 
-  // toggleEditForm = () => {
-  //   this.setState({
-  //     editForm: !this.state.editForm
-  //   });
-  // }
+  toggleEditForm = () => {
+    this.setState({
+      editForm: !this.state.editForm
+    });
+  }
 
 
   componentDidMount = () => {
     this.getData();
   }
-
-  // componentDidUpdate = () => {
-  //   this.getData();
-  // }
 
   render() {
     console.log("hello")
@@ -100,9 +96,16 @@ export default class Profile extends Component {
     //if (user && user._id === owner) allowedToEdit = true;
     return (
       <div>
-        <h1>Hi</h1>
+        <h1>{this.state.username}'s Profile</h1>
+        <div>
+              <img style={{height:'400px'}}
+                src={this.state.imageUrl}
+                alt={this.state.username}
+              />
+            </div>
         <button onClick={this.toggleEditForm}>Edit Picture</button>
         <p>{this.state.location}</p>
+        <p>{this.state.role}</p>
       </div>
     )
   }
