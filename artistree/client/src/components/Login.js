@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { login } from "../services/auth";
 import Nav from "./Nav/Nav";
+import { UserContext } from "../contexts/UserContext";
 
 export default class Login extends Component {
   state = {
@@ -8,6 +9,7 @@ export default class Login extends Component {
     password: "",
     message: "",
   };
+  static contextType = UserContext;
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,7 +29,8 @@ export default class Login extends Component {
           password: "",
         });
       } else {
-        this.props.setUser(data);
+        const { setUser } = this.context;
+        setUser(data);
         this.props.history.push("/");
       }
     });
