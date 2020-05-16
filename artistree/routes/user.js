@@ -21,17 +21,21 @@ router.get('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-
-    User.findByIdAndDelete(req.params.id)
-        .then(user => {
-            // Deletes all the documents in the Artwork collection where the value for the `_id` field is present in the `user.artworks` array
-            Artwork.deleteMany({ _id: { $in: user.artworks } }).then(() => {
-                res.status(200).json({ message: 'ok' });
+    console.log(req.user)
+    if (req.user._id === req.params.id) {
+        User.findByIdAndDelete(req.params.id)
+            .then(user => {
+                // Deletes all the documents in the Artwork collection where the value for the `_id` field is present in the `user.artworks` array
+                Artwork.deleteMany({ _id: { $in: user.artworks } }).then(() => {
+                    res.status(200).json({ message: 'ok' });
+                });
+            })
+            .catch(err => {
+                res.json(err);
             });
-        })
-        .catch(err => {
-            res.json(err);
-        });
+    } else {
+        res.status(401).json({ message: 'unauthorised' })
+    }
 });
 
 
