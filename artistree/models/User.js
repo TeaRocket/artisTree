@@ -29,6 +29,21 @@ const userSchema = new Schema(
       enum: ["Artist", "Client"],
       required: true,
     },
+    category: {
+      type: String,
+      enum: [
+        "Visual Artist",
+        "Musician/Band",
+        "Tattoo Artist",
+        "Designer",
+        "Sound Designer",
+        "Photographer",
+        "Makeup Artist",
+        "Dancer",
+        "Other",
+      ],
+    },
+    subcategory: String,
     //todo add the dates where avaialble
     artworks: [
       {
