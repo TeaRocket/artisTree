@@ -4,7 +4,8 @@ const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
   User.find().then((data) => {
-    res.status(200).json(data);
+    const artists = data.filter((user) => user.role === "Artist");
+    res.status(200).json(artists);
   });
 });
 
