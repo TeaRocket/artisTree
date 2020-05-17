@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import UserContext from "../../contexts/UserContext";
+import React from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import Nav from "../Nav/Nav";
 import axios from "axios";
