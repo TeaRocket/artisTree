@@ -22,7 +22,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.context);
     return (
       <div className="App">
         <Route exact path="/signup" component={Signup} />
