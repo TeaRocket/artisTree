@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "./contexts/UserContext";
 import Signup from "./components/Signup";
-import { UserContext } from "./contexts/UserContext";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage/HomePage";
 import SearchResults from "./components/SearchResults/SearchResults";
