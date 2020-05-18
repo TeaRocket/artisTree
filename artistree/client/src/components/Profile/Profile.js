@@ -19,6 +19,7 @@ export default class Profile extends Component {
     role: null,
     artworks: [],
     error: false,
+    uploadOn: false,
   };
 
   handleChange = (event) => {
@@ -32,11 +33,13 @@ export default class Profile extends Component {
   handleFileChange(event) {
     const uploadData = new FormData();
     uploadData.append("imageUrl", event.target.files[0]);
-    uploadData.append("username", this.state.username);
-
+    this.setState({ uploadOn: true });
+    //uploadData.append('username', this.state.username)
     axios
-      .post("/auth/upload", uploadData)
-      .then((response) => this.setState({ imageUrl: response.data.secure_url }))
+      .post("/upload", uploadData)
+      .then((response) =>
+        this.setState({ imageUrl: response.data.secure_url, uploadOn: false })
+      )
       .catch((error) => console.log(error));
   }
 
@@ -105,13 +108,6 @@ export default class Profile extends Component {
       <div>
         <h1>{this.state.username}'s Profile</h1>
         <div>
-          <button onClick={this.toggleEditForm}>Edit Picture</button>
-          <p>{this.state.location}</p>
-          <p>{this.state.role}</p>
-          <Availabilities />
-          <DateAdder />
-        </div>
-        <div>
           <img
             style={{ height: "400px" }}
             src={this.state.imageUrl}
@@ -133,6 +129,8 @@ export default class Profile extends Component {
             <button onClick={this.toggleEditForm}>Add Artwork</button>
           </Link>
         </div>
+        <Availabilities />
+        <DateAdder />
       </div>
     );
   }
