@@ -1,0 +1,11 @@
+.searchForm {
+  display: flex;
+  justify-content: center;
+  padding-top: 3em;
+  flex-wrap: wrap;
+}
+
+.searchForm button {
+  margin-left: 2em;
+  align-self: center;
+}
