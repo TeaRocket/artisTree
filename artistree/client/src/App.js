@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage/HomePage";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Logout from "./components/Logout/Logout";
 import Profile from "./components/Profile/Profile";
+import Logout from "./components/Logout/Logout";
 
 class App extends React.Component {
   static contextType = UserContext;
@@ -29,8 +30,13 @@ class App extends React.Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/results" component={SearchResults} />
+<<<<<<< HEAD
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/user/:id" component={Profile} />
+=======
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/logout" component={Logout} />
+>>>>>>> cal pow
       </div>
     );
   }
