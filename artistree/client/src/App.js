@@ -18,9 +18,8 @@ class App extends React.Component {
       .then((response) => {
         const { setUser } = this.context;
         setUser(response.data);
-
       })
-      .catch((err) => console.log(err));
+      .catch((err) => null);
   }
 
   render() {
