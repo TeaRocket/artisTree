@@ -33,14 +33,19 @@ export default class Profile extends Component {
   handleFileChange(event) {
     const uploadData = new FormData();
     uploadData.append("imageUrl", event.target.files[0]);
-    this.setState({ uploadOn: true });
+    this.setState({ uploadOn: true }, () => {
+      axios
+        .post("/upload", uploadData)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({
+            imageUrl: response.data.secure_url,
+            uploadOn: false,
+          });
+        })
+        .catch((error) => console.log(error));
+    });
     //uploadData.append('username', this.state.username)
-    axios
-      .post("/upload", uploadData)
-      .then((response) =>
-        this.setState({ imageUrl: response.data.secure_url, uploadOn: false })
-      )
-      .catch((error) => console.log(error));
   }
 
   handleSubmit = (event) => {
@@ -113,15 +118,14 @@ export default class Profile extends Component {
             src={this.state.imageUrl}
             alt={this.state.username}
           />
-          <form>
-            <input
-              type="file"
-              name="photo"
-              onChange={(e) => this.handleFileChange(e)}
-            />
-            <input type="submit" value="Upload Photo" />
-          </form>
+          <div>
+            <form>
+              <input type="file" onChange={(e) => this.handleFileChange(e)} />
+            </form>
+          </div>
         </div>
+        <p>{this.state.location}</p>
+        <p>{this.state.role}</p>
         <div>
           <p>{this.state.getData}</p>
           <p>{this.state.artworks}</p>
