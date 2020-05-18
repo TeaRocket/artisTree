@@ -11,7 +11,8 @@ export default class Profile extends Component {
     location: null,
     role: null,
     artworks: [],
-    error: false
+    error: false,
+    uploadOn: false
   };
 
 
@@ -27,32 +28,13 @@ export default class Profile extends Component {
   handleFileChange(event) {
     const uploadData = new FormData();
     uploadData.append('imageUrl', event.target.files[0])
-    uploadData.append('username', this.state.username)
-    axios.post("/auth/upload", uploadData)
-      .then(response => this.setState({ imageUrl: response.data.secure_url }))
+    this.setState({ uploadOn: true });
+    //uploadData.append('username', this.state.username)
+    axios.post("/upload", uploadData)
+      .then(response => this.setState({ imageUrl: response.data.secure_url, uploadOn: false }))
       .catch(error => console.log(error))
   }
 
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const id = this.props.match.params.id;
-    axios.put(`/profile/${id}`, {
-      imageUrl: this.state.imageUrl,
-      username: this.state.username,
-      location: this.state.location,
-    })
-      .then(response => {
-        this.setState({
-          imageUrl: response.data.imageUrl,
-          username: response.data.username,
-          location: response.data.location,
-          editForm: false
-        })
-      }).catch(err => {
-        console.log(err);
-      })
-  }
 
   getData = () => {
     const id = this.props.match.params.id;
@@ -104,10 +86,15 @@ export default class Profile extends Component {
                 src={this.state.imageUrl}
                 alt={this.state.username}
               />
-              <form>
-              <input type="file" name="photo" onChange={(e) => this.handleFileChange(e)} />
-              <input type="submit" value="Upload Photo" />
-              </form>
+              <div>
+            <h2>New Image</h2>
+            <form>
+                <input 
+                    type="file" 
+                    onChange={(e) => this.handleFileChange(e)} /> 
+                
+            </form>
+          </div>
                 
             </div>
         <p>{this.state.location}</p>

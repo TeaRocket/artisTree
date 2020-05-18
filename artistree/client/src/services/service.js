@@ -7,14 +7,14 @@ const handleUpload = (theFile) => {
     .catch(err => err.response.data);
 }
 
-const saveNewArtwork = (newArtwork) => {
-  // console.log('new artwork is: ', newArtwork)
-  return axios.post('/artworks/create', newArtwork)
+const saveNewImg = (newImg) => {
+  // console.log('new img is: ', newImg)
+  return axios.post('/user/:id', newImg)
     .then(response => response.data)
     .catch(err => err.response.data);
 } 
 
 export {
   handleUpload,
-  saveNewArtwork
+  saveNewImg
 }
