@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Nav from "../Nav/Nav";
+import DateAdder from "../DateAdder/DateAdder";
+import { UserContext } from "../../contexts/UserContext";
 
 export default class Profile extends Component {
+  static contextType = UserContext;
+
   state = {
     imageUrl: null,
     username: null,
@@ -84,11 +89,10 @@ export default class Profile extends Component {
   };
 
   render() {
-    console.log("hello");
     if (this.state.error) return <div>{this.state.error.toString()}</div>;
     if (!this.state.username) return <></>;
-    let allowedToEdit = false;
-    const user = this.props.user;
+    // let allowedToEdit = false;
+    // const user = this.props.user;
     //const owner = this.state.profile.owner;
     //toggle edit picture if owner of profile
     //if (user && user._id === owner) allowedToEdit = true;

@@ -27,7 +27,6 @@ const userSchema = new Schema(
     },
     location: {
       type: String,
-      required: true,
     },
     role: {
       type: String,
@@ -50,6 +49,7 @@ const userSchema = new Schema(
     },
     subcategory: String,
     //todo add the dates where avaialble
+    availability: [{ startDate: Date, endDate: Date }],
     artworks: [
       {
         type: Schema.Types.ObjectId,

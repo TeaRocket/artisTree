@@ -3,10 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const Artwork = require("../models/Artwork");
 
-<<<<<<< HEAD
-
-=======
->>>>>>> cal pow
 router.get("/:id", (req, res) => {
   // check if req.params.id is valid, if not respond with a 4xx status code
   User.findById(req.params.id)

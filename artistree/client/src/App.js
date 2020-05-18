@@ -30,13 +30,8 @@ class App extends React.Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/results" component={SearchResults} />
-<<<<<<< HEAD
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/user/:id" component={Profile} />
-=======
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/logout" component={Logout} />
->>>>>>> cal pow
       </div>
     );
   }
