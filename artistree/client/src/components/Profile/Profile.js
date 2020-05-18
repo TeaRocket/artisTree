@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class Profile extends Component {
   state = {
@@ -8,55 +8,55 @@ export default class Profile extends Component {
     location: null,
     role: null,
     artworks: [],
-    error: false
+    error: false,
   };
 
-
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
-
-  }
+  };
 
   //change pfp
   handleFileChange(event) {
     const uploadData = new FormData();
-    uploadData.append('imageUrl', event.target.files[0])
-    uploadData.append('username', this.state.username)
+    uploadData.append("imageUrl", event.target.files[0]);
+    uploadData.append("username", this.state.username);
 
-    axios.post("/auth/upload", uploadData)
-      .then(response => this.setState({ imageUrl: response.data.secure_url }))
-      .catch(error => console.log(error))
+    axios
+      .post("/auth/upload", uploadData)
+      .then((response) => this.setState({ imageUrl: response.data.secure_url }))
+      .catch((error) => console.log(error));
   }
 
-
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const id = this.props.match.params.id;
-    axios.put(`/profile/${id}`, {
-      imageUrl: this.state.imageUrl,
-      username: this.state.username,
-      location: this.state.location,
-    })
-      .then(response => {
+    axios
+      .put(`/profile/${id}`, {
+        imageUrl: this.state.imageUrl,
+        username: this.state.username,
+        location: this.state.location,
+      })
+      .then((response) => {
         this.setState({
           imageUrl: response.data.imageUrl,
           username: response.data.username,
           location: response.data.location,
-          editForm: false
-        })
-      }).catch(err => {
-        console.log(err);
+          editForm: false,
+        });
       })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   getData = () => {
     const id = this.props.match.params.id;
     axios
       .get(`/user/${id}`)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.setState({
           imageUrl: response.data.imageUrl,
@@ -64,31 +64,29 @@ export default class Profile extends Component {
           location: response.data.location,
           role: response.data.role,
           artworks: response.data.artworks,
-        })
+        });
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 404) {
-          this.setState({ error: 'Not found' })
+          this.setState({ error: "Not found" });
         }
-      })
-  }
-
+      });
+  };
 
   toggleEditForm = () => {
     this.setState({
-      editForm: !this.state.editForm
+      editForm: !this.state.editForm,
     });
-  }
-
+  };
 
   componentDidMount = () => {
     this.getData();
-  }
+  };
 
   render() {
-    console.log("hello")
-    if (this.state.error) return <div>{this.state.error.toString()}</div>
-    if (!this.state.username) return (<></>)
+    console.log("hello");
+    if (this.state.error) return <div>{this.state.error.toString()}</div>;
+    if (!this.state.username) return <></>;
     let allowedToEdit = false;
     const user = this.props.user;
     //const owner = this.state.profile.owner;
@@ -98,16 +96,16 @@ export default class Profile extends Component {
       <div>
         <h1>{this.state.username}'s Profile</h1>
         <div>
-              <img style={{height:'400px'}}
-                src={this.state.imageUrl}
-                alt={this.state.username}
-              />
-            </div>
+          <img
+            style={{ height: "400px" }}
+            src={this.state.imageUrl}
+            alt={this.state.username}
+          />
+        </div>
         <button onClick={this.toggleEditForm}>Edit Picture</button>
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
       </div>
-    )
+    );
   }
 }
-
