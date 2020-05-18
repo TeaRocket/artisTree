@@ -5,6 +5,10 @@ import DateAdder from "../DateAdder/DateAdder";
 import { UserContext } from "../../contexts/UserContext";
 import Availabilities from "../Availabilities/Availabilities";
 
+import AddArtwork from "../AddArtwork";
+import ArtworkList from "../ArtworkList";
+import { Link } from "react-router-dom";
+
 export default class Profile extends Component {
   static contextType = UserContext;
 
@@ -101,17 +105,34 @@ export default class Profile extends Component {
       <div>
         <h1>{this.state.username}'s Profile</h1>
         <div>
+          <button onClick={this.toggleEditForm}>Edit Picture</button>
+          <p>{this.state.location}</p>
+          <p>{this.state.role}</p>
+          <Availabilities />
+          <DateAdder />
+        </div>
+        <div>
           <img
             style={{ height: "400px" }}
             src={this.state.imageUrl}
             alt={this.state.username}
           />
+          <form>
+            <input
+              type="file"
+              name="photo"
+              onChange={(e) => this.handleFileChange(e)}
+            />
+            <input type="submit" value="Upload Photo" />
+          </form>
         </div>
-        <button onClick={this.toggleEditForm}>Edit Picture</button>
-        <p>{this.state.location}</p>
-        <p>{this.state.role}</p>
-        <Availabilities />
-        <DateAdder />
+        <div>
+          <p>{this.state.getData}</p>
+          <p>{this.state.artworks}</p>
+          <Link to={AddArtwork}>
+            <button onClick={this.toggleEditForm}>Add Artwork</button>
+          </Link>
+        </div>
       </div>
     );
   }

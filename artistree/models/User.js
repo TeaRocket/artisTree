@@ -47,6 +47,10 @@ const userSchema = new Schema(
         "Other",
       ],
     },
+    imageUrl: {
+      type: String,
+      default: "https://res.cloudinary.com/artistree/image/upload/v1589809297/artistree/pngkey.com-avatar-png-1150152_xzp6py.png",
+    },
     subcategory: String,
     availability: [{ startDate: Date, endDate: Date }],
     artworks: [
