@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage/HomePage";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Logout from "./components/Logout/Logout";
+import Profile from "./components/Profile/Profile";
 
 class App extends React.Component {
   static contextType = UserContext;
@@ -17,6 +18,7 @@ class App extends React.Component {
       .then((response) => {
         const { setUser } = this.context;
         setUser(response.data);
+
       })
       .catch((err) => console.log(err));
   }
@@ -29,6 +31,7 @@ class App extends React.Component {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/results" component={SearchResults} />
         <Route exact path="/logout" component={Logout} />
+        <Route exact path="/user/:id" component={Profile} />
       </div>
     );
   }
