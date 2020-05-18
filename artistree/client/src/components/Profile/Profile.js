@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AddArtwork from '../AddArtwork';
+import ArtworkList from '../ArtworkList';
+import { Link } from "react-router-dom";
 
 export default class Profile extends Component {
   state = {
@@ -25,7 +28,6 @@ export default class Profile extends Component {
     const uploadData = new FormData();
     uploadData.append('imageUrl', event.target.files[0])
     uploadData.append('username', this.state.username)
-
     axios.post("/auth/upload", uploadData)
       .then(response => this.setState({ imageUrl: response.data.secure_url }))
       .catch(error => console.log(error))
@@ -102,10 +104,21 @@ export default class Profile extends Component {
                 src={this.state.imageUrl}
                 alt={this.state.username}
               />
+              <form>
+              <input type="file" name="photo" onChange={(e) => this.handleFileChange(e)} />
+              <input type="submit" value="Upload Photo" />
+              </form>
+                
             </div>
-        <button onClick={this.toggleEditForm}>Edit Picture</button>
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
+        <div>
+        <p>{this.state.getData}</p>
+        <p>{this.state.artworks}</p>
+            <Link to={AddArtwork}>
+            <button onClick={this.toggleEditForm}>Add Artwork</button>
+            </Link>
+        </div>
       </div>
     )
   }

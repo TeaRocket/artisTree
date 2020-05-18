@@ -11,7 +11,10 @@ const artworkSchema = new Schema({
   images: [
     {
       //add default for later if we have cloudinary
-      imageUrl: String,
+      imageUrl: { 
+        type: String, 
+        required: true 
+      },
     },
   ],
 });

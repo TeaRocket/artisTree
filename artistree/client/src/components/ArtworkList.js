@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Artwork = props => {
+const ArtworkList = props => {
   return (
     <div>
       {props.artworks.length > 0 && <h2>Artworks:</h2>}

@@ -80,5 +80,6 @@ app.use("/auth", auth);
 app.use("/results", results);
 app.use("/user", user);
 app.use("/artwork", artwork);
+app.use('/', require('./routes/upload'));
 
 module.exports = app;
