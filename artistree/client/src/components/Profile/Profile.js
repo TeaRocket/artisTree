@@ -18,6 +18,7 @@ export default class Profile extends Component {
     location: null,
     role: null,
     artworks: [],
+    images: [],
     error: false,
     uploadOn: false,
   };
@@ -35,7 +36,7 @@ export default class Profile extends Component {
     uploadData.append("imageUrl", event.target.files[0]);
     this.setState({ uploadOn: true }, () => {
       axios
-        .post("/upload", uploadData)
+        .post("/upload/single", uploadData)
         .then((response) => {
           console.log(response.data);
           this.setState({
@@ -69,6 +70,21 @@ export default class Profile extends Component {
         console.log(err);
       });
   };
+  uploadMultiple(event) {
+    event.preventDefault();
+    const uploadData = new FormData();
+    //uploadData.append('')
+    uploadData.append("myFiles", event.target.files);
+    this.setState({ uploadOn: true }, () => {
+      axios
+        .post("/upload/multiple", uploadData)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ images: response.data.images, uploadOn: false });
+        })
+        .catch((error) => console.log(error));
+    });
+  }
 
   getData = () => {
     const id = this.props.match.params.id;
@@ -129,9 +145,18 @@ export default class Profile extends Component {
         <div>
           <p>{this.state.getData}</p>
           <p>{this.state.artworks}</p>
-          <Link to={AddArtwork}>
+          {/* <Link to={AddArtwork}>
             <button onClick={this.toggleEditForm}>Add Artwork</button>
-          </Link>
+            </Link> */}
+          <form
+            action="/upload/uploadmultiple"
+            onSubmit={this.uploadMultiple}
+            enctype="multipart/form-data"
+            method="POST"
+          >
+            Select images: <input type="file" name="myFiles" multiple />
+            <input type="submit" value="Upload your files" />
+          </form>
         </div>
         <Availabilities />
         <DateAdder />

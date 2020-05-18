@@ -18,4 +18,4 @@ const Artwork = props => {
   );
 };
 
-export default ArtworkList;
+export default Artwork;

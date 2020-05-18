@@ -82,6 +82,6 @@ app.use("/results", results);
 app.use("/user", user);
 app.use("/artwork", artwork);
 app.use("/messages", messages);
-app.use("/", require("./routes/upload"));
+app.use("/upload", require("./routes/upload"));
 
 module.exports = app;
