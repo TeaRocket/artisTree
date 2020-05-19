@@ -49,45 +49,37 @@ router.put("/:id/profile", (req, res) => {
     });
 });
 router.put("/:id/account", (req, res) => {
-  if (req.user._id === req.params.id) {
-    const { password, email, birthDate } = req.body;
-    User.findByIdAndUpdate(
-      req.params.id,
-      {
-        password,
-        email,
-        birthDate,
-      },
-      // { new: true } ensures that we are getting the updated document in the .then callback
-      { new: true }
-    )
-      .then((user) => {
-        res.status(200).json(user);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
-  } else {
-    res.status(401).json({ message: "unauthorised" });
-  }
+  const { password, email, birthDate } = req.body;
+  User.findByIdAndUpdate(
+    req.params.id,
+    {
+      password,
+      email,
+      birthDate,
+    },
+    // { new: true } ensures that we are getting the updated document in the .then callback
+    { new: true }
+  )
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 router.delete("/:id", (req, res) => {
   console.log(req.user);
-  if (req.user._id === req.params.id) {
-    User.findByIdAndDelete(req.params.id)
-      .then((user) => {
-        // Deletes all the documents in the Artwork collection where the value for the `_id` field is present in the `user.artworks` array
-        Artwork.deleteMany({ _id: { $in: user.artworks } }).then(() => {
-          res.status(200).json({ message: "ok" });
-        });
-      })
-      .catch((err) => {
-        res.json(err);
+  User.findByIdAndDelete(req.params.id)
+    .then((user) => {
+      // Deletes all the documents in the Artwork collection where the value for the `_id` field is present in the `user.artworks` array
+      Artwork.deleteMany({ _id: { $in: user.artworks } }).then(() => {
+        res.status(200).json({ message: "ok" });
       });
-  } else {
-    res.status(401).json({ message: "unauthorised" });
-  }
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 module.exports = router;

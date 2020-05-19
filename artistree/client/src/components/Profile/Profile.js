@@ -91,12 +91,25 @@ export default class Profile extends Component {
   };
 
   //upload artwork
-  uploadMultiple(event) {
+  uploadMultiple = (event) => {
     event.preventDefault();
     const uploadData = new FormData();
     //uploadData.append('')
-    uploadData.append("images", event.target.files);
+    console.log(event.target.files);
+    const files = event.target.files;
+    // Object.keys(files).forEach((key) => {
+    //   uploadData.append(key, files[key]);
+    // });
+    for (let i = 0; i < files.length; i++) {
+      uploadData.append("multipleFiles", files[i]);
+    }
+
+    for (var pair of uploadData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    console.log(this);
     this.setState({ uploadOn: true }, () => {
+      console.log(uploadData);
       axios
         .post("/upload/multiple", uploadData)
         .then((response) => {
@@ -105,7 +118,7 @@ export default class Profile extends Component {
         })
         .catch((error) => console.log(error));
     });
-  }
+  };
 
   getData = () => {
     const id = this.props.match.params.id;
@@ -147,14 +160,15 @@ export default class Profile extends Component {
   };
 
   render() {
-    // console.log("hello");
     if (this.state.error) return <div>{this.state.error.toString()}</div>;
     if (!this.state.username) return <></>;
     let allowedToEdit = false;
-    const user = this.props.user;
+    const { user } = this.context;
     //const owner = this.state.artworks.owner;
     //toggle edit picture if owner of profile
     //if (user && user._id === owner) allowedToEdit = true;
+    //YYYEEEEAAAAH
+    //wooooo
     return (
       <div>
         <h1>{this.state.displayName}</h1>
@@ -165,9 +179,11 @@ export default class Profile extends Component {
             alt={this.state.displayName}
           />
           <div>
-            <button type="button" onClick={this.toggleEditForm}>
-              Edit Picture
-            </button>
+            {user._id === this.props.match.params.id && (
+              <button type="button" onClick={this.toggleEditForm}>
+                Edit Picture
+              </button>
+            )}
             {this.state.editPicture && (
               <form>
                 <input type="file" onChange={(e) => this.handleFileChange(e)} />
@@ -248,6 +264,16 @@ export default class Profile extends Component {
             Add Artwork
           </button>
           {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
+          <form>
+            Select images:{" "}
+            <input
+              type="file"
+              name="multipleFiles"
+              multiple
+              onChange={this.uploadMultiple}
+            />
+            <input type="submit" value="Upload your files" />
+          </form>
         </div>
         <Availabilities />
         <DateAdder />
