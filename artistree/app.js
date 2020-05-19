@@ -74,11 +74,13 @@ const auth = require("./routes/auth");
 const results = require("./routes/results");
 const user = require("./routes/user");
 const artwork = require("./routes/artwork");
+const messages = require("./routes/messages");
 
 app.use("/", index);
 app.use("/auth", auth);
 app.use("/results", results);
 app.use("/user", user);
 app.use("/artwork", artwork);
+app.use("/messages", messages);
 
 module.exports = app;
