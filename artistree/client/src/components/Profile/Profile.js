@@ -17,7 +17,7 @@ export default class Profile extends Component {
     username: null,
     location: null,
     role: null,
-    artworks: [],
+    artworks: [{}],
     images: [],
     error: false,
     uploadOn: false,
@@ -143,11 +143,6 @@ export default class Profile extends Component {
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
         <div>
-          <p>{this.state.getData}</p>
-          <p>{this.state.artworks}</p>
-          {/* <Link to={AddArtwork}>
-            <button onClick={this.toggleEditForm}>Add Artwork</button>
-            </Link> */}
           <form
             action="/upload/uploadmultiple"
             onSubmit={this.uploadMultiple}
