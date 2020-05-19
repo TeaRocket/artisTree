@@ -9,7 +9,9 @@ import SearchResults from "./components/SearchResults/SearchResults";
 import Logout from "./components/Logout/Logout";
 import Profile from "./components/Profile/Profile";
 import MessagesPage from "./components/MessagesPage/MessagesPage";
-import AddArtwork from "./components/AddArtwork";
+import AddArtwork from "./components/AddArtwork/AddArtwork";
+import ArtworkDetails from "./components/ArtworkDetails/ArtworkDetails";
+import ArtworkList from "./components/ArtworkList/ArtworkList";
 
 class App extends React.Component {
   static contextType = UserContext;
@@ -36,6 +38,8 @@ class App extends React.Component {
         <Route exact path="/messages/:id" component={MessagesPage} />
         <Route exact path="/messages" component={MessagesPage} />
         <Route exact path="/user/:id/artwork" component={AddArtwork} />
+        <Route exact path="/user/:id/artwork" component={ArtworkList} />
+        <Route exact path="/user/:id/artwork/:id" component={ArtworkDetails} />
       </div>
     );
   }
