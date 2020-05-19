@@ -12,7 +12,6 @@ export default function SearchResults() {
   });
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
-
   useEffect(() => {
     const categoriesPromise = axios.get("/categories");
     const locationPromise = axios.get("/locations");
@@ -25,7 +24,6 @@ export default function SearchResults() {
       }
     );
   }, []);
-
   const handleFormChange = useCallback(
     (event) => {
       setFormValues({
@@ -96,7 +94,6 @@ export default function SearchResults() {
           })}
         </ul>
       </section>
-
       {/* <main>
         <ul>
           {artists.map((artist) => {
