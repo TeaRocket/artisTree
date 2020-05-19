@@ -52,7 +52,6 @@ export default function MessagesChat(props) {
           id="Message"
         />
         <button type="submit">Send</button>
-        <button onClick={showMessages}>Show messages</button>{" "}
       </form>
     </div>
   );
