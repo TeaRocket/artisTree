@@ -3,7 +3,12 @@ const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
   {
+    imageUrl: {
+      type: String,
+      default: "https://res.cloudinary.com/artistree/image/upload/v1589809297/artistree/pngkey.com-avatar-png-1150152_xzp6py.png"
+    },
     displayName: String,
+    bio: String,
     username: {
       type: String,
       required: true,
