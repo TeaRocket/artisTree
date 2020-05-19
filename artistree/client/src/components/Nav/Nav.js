@@ -26,7 +26,7 @@ export default function Nav() {
         <Link to="/">Home</Link>
         {user ? (
           <>
-            <Link to="/profile">Profile</Link>
+            <Link to={`/user/${user._id}`}>Profile</Link>
             <Link to="/logout">Logout</Link>
           </>
         ) : (

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { signup } from "../services/auth";
-import Nav from "./Nav/Nav";
-import { UserContext } from "../contexts/UserContext";
+import { signup } from "../../services/auth";
+import Nav from "../Nav/Nav";
+import { UserContext } from "../../contexts/UserContext";
 const queryString = require("query-string");
 
 export default class Signup extends Component {
