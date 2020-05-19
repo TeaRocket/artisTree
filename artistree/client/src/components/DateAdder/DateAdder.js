@@ -26,8 +26,8 @@ export default class DateAdder extends Component {
       availability: [
         ...this.context.user.availability,
         {
-          startDate: this.state.startDate._d,
-          endDate: this.state.endDate._d,
+          startDate: this.state.startDate,
+          endDate: this.state.endDate,
         },
       ],
     });
