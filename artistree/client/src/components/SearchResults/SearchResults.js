@@ -64,7 +64,9 @@ export default function SearchResults() {
       const rangeEndDateMatch =
         rangeEndDate && rangeEndDate.isBetween(startDate, endDate);
       const rangeMatch =
+        startDate &&
         startDate.isBetween(rangeStartDate, rangeEndDate) &&
+        endDate &&
         endDate.isBetween(rangeStartDate, rangeEndDate);
       return rangeStartDateMatch || rangeEndDateMatch || rangeMatch;
     });

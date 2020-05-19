@@ -20,28 +20,31 @@ router.get("/:id", (req, res) => {
 });
 
 router.put("/:id/profile", (req, res) => {
-  if (req.user._id === req.params.id) {
-    const { displayName, location, category, subcategory } = req.body;
-    User.findByIdAndUpdate(
-      req.params.id,
-      {
-        displayName,
-        location,
-        category,
-        subcategory,
-      },
-      // { new: true } ensures that we are getting the updated document in the .then callback
-      { new: true }
-    )
-      .then((user) => {
-        res.status(200).json(user);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
-  } else {
-    res.status(401).json({ message: "unauthorised" });
-  }
+  const {
+    displayName,
+    location,
+    category,
+    subcategory,
+    availability,
+  } = req.body;
+  User.findByIdAndUpdate(
+    req.params.id,
+    {
+      displayName,
+      location,
+      category,
+      subcategory,
+      availability,
+    },
+    // { new: true } ensures that we are getting the updated document in the .then callback
+    { new: true }
+  )
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 router.put("/:id/account", (req, res) => {
   if (req.user._id === req.params.id) {

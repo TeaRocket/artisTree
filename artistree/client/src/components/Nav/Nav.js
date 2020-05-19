@@ -11,8 +11,6 @@ export default function Nav() {
   const onSignupPage = pathname === "/signup" && search !== "?artist=true";
   const onArtistSignupPage = search === "?artist=true";
   //const onArtistSignup = pathname === "/signup";
-  // todo logout breaks sometime here
-  const profile = "user/" + user._id;
   return (
     <div id="Nav">
       <div id="nav-inner-l">
@@ -28,7 +26,7 @@ export default function Nav() {
         <Link to="/">Home</Link>
         {user ? (
           <>
-            <Link to={profile}>Profile</Link>
+            <Link to={`/user/${user._id}`}>Profile</Link>
             <Link to="/logout">Logout</Link>
           </>
         ) : (

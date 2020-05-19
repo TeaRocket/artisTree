@@ -2,13 +2,12 @@ import React from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "./contexts/UserContext";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
+import Signup from "./components/Signup/Signup";
+import Login from "./components/Login/Login";
 import HomePage from "./components/HomePage/HomePage";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Logout from "./components/Logout/Logout";
 import Profile from "./components/Profile/Profile";
-import Logout from "./components/Logout/Logout";
 
 class App extends React.Component {
   static contextType = UserContext;
