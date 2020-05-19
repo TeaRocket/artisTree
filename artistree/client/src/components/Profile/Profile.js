@@ -74,7 +74,7 @@ export default class Profile extends Component {
     event.preventDefault();
     const uploadData = new FormData();
     //uploadData.append('')
-    uploadData.append("myFiles", event.target.files);
+    uploadData.append("images", event.target.files);
     this.setState({ uploadOn: true }, () => {
       axios
         .post("/upload/multiple", uploadData)
@@ -154,7 +154,7 @@ export default class Profile extends Component {
             enctype="multipart/form-data"
             method="POST"
           >
-            Select images: <input type="file" name="myFiles" multiple />
+            Select images: <input type="file" name="images" multiple />
             <input type="submit" value="Upload your files" />
           </form>
         </div>

@@ -25,7 +25,7 @@ router.post('/single', uploader.single("imageUrl"), (req, res, next) => {
     
 })
 
-router.post('/multiple', uploader.array('myFiles', 12), (req, res, next) => {
+router.post('/multiple', uploader.array('images', 12), (req, res, next) => {
   const files = req.files
   if (!files) {
     const error = new Error('Please choose files')
