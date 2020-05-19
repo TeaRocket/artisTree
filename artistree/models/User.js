@@ -48,7 +48,6 @@ const userSchema = new Schema(
       ],
     },
     subcategory: String,
-    //todo add the dates where avaialble
     availability: [{ startDate: Date, endDate: Date }],
     artworks: [
       {

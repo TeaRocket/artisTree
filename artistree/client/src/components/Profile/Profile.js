@@ -3,6 +3,7 @@ import axios from "axios";
 import Nav from "../Nav/Nav";
 import DateAdder from "../DateAdder/DateAdder";
 import { UserContext } from "../../contexts/UserContext";
+import Availabilities from "../Availabilities/Availabilities";
 
 export default class Profile extends Component {
   static contextType = UserContext;
@@ -62,7 +63,7 @@ export default class Profile extends Component {
     axios
       .get(`/user/${id}`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           imageUrl: response.data.imageUrl,
           username: response.data.username,
@@ -109,6 +110,8 @@ export default class Profile extends Component {
         <button onClick={this.toggleEditForm}>Edit Picture</button>
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
+        <Availabilities />
+        <DateAdder />
       </div>
     );
   }

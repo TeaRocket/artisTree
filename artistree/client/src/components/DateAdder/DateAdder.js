@@ -3,19 +3,15 @@ import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 import { UserContext } from "../../contexts/UserContext";
-import axios from "axios";
 
 export default class DateAdder extends Component {
   static contextType = UserContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visibility: false,
-      startDate: null,
-      endDate: null,
-    };
-  }
+  state = {
+    visibility: false,
+    startDate: null,
+    endDate: null,
+  };
 
   toggleVisibility = () => {
     this.setState({
@@ -25,10 +21,7 @@ export default class DateAdder extends Component {
   };
 
   makeCalEntry = () => {
-    // update user in context with spreading out the old stuff
-    console.log(this.state.startDate._d, this.state.endDate._d);
-
-    this.context.setUser({
+    this.context.updateUser({
       ...this.context.user,
       availability: [
         ...this.context.user.availability,
@@ -38,38 +31,10 @@ export default class DateAdder extends Component {
         },
       ],
     });
-
-    const {
-      displayName,
-      location,
-      category,
-      subcategory,
-      bio,
-      availability,
-    } = this.context.user;
-
-    // console.log(availability);
-
-    // put axios to backend to bring db to current level
-    axios
-      .put(this.context.user._id + "/profile", {
-        displayName,
-        location,
-        category,
-        subcategory,
-        bio,
-        availability,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-
     this.setState({ ...this.state, startDate: null, endDate: null });
   };
 
   render() {
-    // console.log({ ...this.context.user });
     if (this.state.visibility) {
       return (
         <div>
@@ -86,9 +51,12 @@ export default class DateAdder extends Component {
           />
           <br />
           <button
-            onClick={
-              this.state.startDate && this.state.endDate && this.makeCalEntry
-            }
+            onClick={() => {
+              if (this.state.startDate && this.state.endDate) {
+                return this.makeCalEntry();
+              }
+              console.log("no can do, sir");
+            }}
           >
             Submit
           </button>

@@ -20,7 +20,7 @@ class App extends React.Component {
         const { setUser } = this.context;
         setUser(response.data);
       })
-      .catch((err) => null);
+      .catch((err) => console.log(err));
   }
 
   render() {
