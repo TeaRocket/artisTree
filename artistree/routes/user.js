@@ -26,6 +26,7 @@ router.put("/:id/profile", (req, res) => {
     category,
     subcategory,
     availability,
+    bio,
   } = req.body;
   User.findByIdAndUpdate(
     req.params.id,
@@ -35,6 +36,7 @@ router.put("/:id/profile", (req, res) => {
       category,
       subcategory,
       availability,
+      bio,
     },
     // { new: true } ensures that we are getting the updated document in the .then callback
     { new: true }
