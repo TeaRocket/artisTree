@@ -20,6 +20,8 @@ export default class Profile extends Component {
     artworks: [],
     images: [],
     error: false,
+    addArtworkForm: false,
+    editPicture: false,
     uploadOn: false,
   };
 
@@ -109,7 +111,13 @@ export default class Profile extends Component {
 
   toggleEditForm = () => {
     this.setState({
-      editForm: !this.state.editForm,
+      editPicture: !this.state.editPicture,
+    });
+  };
+
+  toggleArtwork = () => {
+    this.setState({
+      addArtworkForm: !this.state.addArtworkForm,
     });
   };
 
@@ -135,9 +143,14 @@ export default class Profile extends Component {
             alt={this.state.username}
           />
           <div>
-            <form>
-              <input type="file" onChange={(e) => this.handleFileChange(e)} />
-            </form>
+            <button type="button" onClick={this.toggleEditForm}>
+              Edit Picture
+            </button>
+            {this.state.editPicture && (
+              <form>
+                <input type="file" onChange={(e) => this.handleFileChange(e)} />
+              </form>
+            )}
           </div>
         </div>
         <p>{this.state.location}</p>
@@ -152,6 +165,20 @@ export default class Profile extends Component {
             Select images: <input type="file" name="images" multiple />
             <input type="submit" value="Upload your files" />
           </form>
+          <p>{this.state.getData}</p>
+          <p>{this.state.artworks}</p>
+          <ArtworkList artworks={this.state.artworks} />
+          <button type="button" onClick={this.toggleArtwork}>
+            Add Artwork
+          </button>
+          {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
+          {/* <Link to={AddArtwork}>
+            <button onClick={this.toggleEditForm}>Add Artwork</button>
+            </Link> */}
+          {/* <form action="/upload/uploadmultiple" onSubmit={this.uploadMultiple} enctype="multipart/form-data" method="POST">
+  Select images: <input type="file" name="images" multiple />
+  <input type="submit" value="Upload your files"/>
+</form> */}
         </div>
         <Availabilities />
         <DateAdder />
