@@ -69,7 +69,6 @@ router.put("/:id/account", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  console.log(req.user);
   User.findByIdAndDelete(req.params.id)
     .then((user) => {
       // Deletes all the documents in the Artwork collection where the value for the `_id` field is present in the `user.artworks` array
