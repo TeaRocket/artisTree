@@ -73,7 +73,7 @@ export default class Profile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     // const uploadData = new FormData();
-    const { user } = this.context;
+    const { user, availability } = this.context;
     const { displayName, bio, location, category, subcategory } = this.state;
     axios
       .put(`/user/${user._id}/profile`, {
@@ -82,6 +82,7 @@ export default class Profile extends Component {
         location,
         category,
         subcategory,
+        availability,
       })
       .then((result) => {
         console.log(result);
@@ -145,8 +146,10 @@ export default class Profile extends Component {
               src={this.state.imageUrl}
               alt={this.state.displayName}
             />
-            {!allowedToEdit && (
+            {!allowedToEdit ? (
               <Link to={`/messages/${profileId}`}>Send a message</Link>
+            ) : (
+              <Link to={`/messages`}>My messages</Link>
             )}
             <div>
               {allowedToEdit && (

@@ -46,21 +46,17 @@ router.put("/:id", (req, res) => {
 
   Artwork.findById(id)
     .then((artwork) => {
-      if (req.user._id === artwork.owner) {
-        Artwork.findByIdAndUpdate(
-          id,
-          { title, description, images },
-          { new: true }
-        )
-          .then((artwork) => {
-            res.json(artwork);
-          })
-          .catch((err) => {
-            res.json(err);
-          });
-      } else {
-        res.status(401).json({ message: "unauthorised" });
-      }
+      Artwork.findByIdAndUpdate(
+        id,
+        { title, description, images },
+        { new: true }
+      )
+        .then((artwork) => {
+          res.json(artwork);
+        })
+        .catch((err) => {
+          res.json(err);
+        });
     })
     .catch((err) => {
       res.json(err);
@@ -72,17 +68,13 @@ router.delete("/:id", (req, res, next) => {
 
   Artwork.findById(id)
     .then((artwork) => {
-      if (req.user._id === artwork.owner) {
-        Artwork.findByIdAndDelete(id).then((artwork) => {
-          User.findByIdAndUpdate(artwork.owner, {
-            $pull: { artworks: id },
-          }).then(() => {
-            res.json({ message: "ok" });
-          });
+      Artwork.findByIdAndDelete(id).then((artwork) => {
+        User.findByIdAndUpdate(artwork.owner, {
+          $pull: { artworks: id },
+        }).then(() => {
+          res.json({ message: "ok" });
         });
-      } else {
-        res.status(401).json({ message: "unauthorised" });
-      }
+      });
     })
     .catch((err) => {
       res.json(err);
