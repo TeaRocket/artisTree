@@ -94,7 +94,7 @@ export default class Signup extends Component {
                 <input
                   type="text"
                   name="username"
-                  placeholder="UserName"
+                  placeholder="Username"
                   value={this.state.username}
                   onChange={this.handleChange}
                   //id="username"
@@ -136,6 +136,7 @@ export default class Signup extends Component {
                 />
                 {this.isArtist() && (
                   <>
+                    <br></br>
                     <input
                       type="text"
                       name="location"

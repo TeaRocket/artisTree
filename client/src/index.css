@@ -198,7 +198,7 @@ form {
   margin: 10% auto;
   -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
   box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-  padding: 1%;
+  padding: 2%;
   background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
 }
 
@@ -211,12 +211,12 @@ form .con {
   justify-content: space-around;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: 10% auto;
+  margin: 3% auto;
 }
 
 /* the header form form */
 header {
-  margin: 2% auto 10% auto;
+  margin: 2% auto 7% auto;
   text-align: center;
 }
 
@@ -231,6 +231,16 @@ header h2 {
 header p {
   letter-spacing: 0.05em;
   color: #3e403f;
+}
+
+.field-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .input-item {
@@ -288,7 +298,7 @@ button {
   text-align: center;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  margin: 3% auto;
+  margin: 2% auto;
   letter-spacing: 0.05em;
 }
 
