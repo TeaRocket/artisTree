@@ -8,14 +8,7 @@ const artworkSchema = new Schema({
     required: true,
   },
   description: String,
-  images: [
-    {
-      imageUrl: { 
-        type: String, 
-        required: true 
-      },
-    },
-  ],
+  images: [String],
 });
 
 const Artwork = model("Artwork", artworkSchema);

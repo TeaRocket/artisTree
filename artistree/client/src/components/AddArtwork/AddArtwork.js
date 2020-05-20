@@ -32,7 +32,6 @@ export default class AddArtwork extends Component {
           headers: { crossdomain: true, "Content-Type": "undefined" },
         })
         .then((response) => {
-          console.log(response.data);
           const imgUrls = response.data.data.map((image) => image.url);
           this.setState({ images: imgUrls, uploadOn: false });
         })
@@ -44,7 +43,7 @@ export default class AddArtwork extends Component {
     event.preventDefault();
 
     axios
-      .post("/artworks", {
+      .post("/artwork", {
         title: this.state.title,
         description: this.state.description,
         images: this.state.images,
@@ -64,7 +63,6 @@ export default class AddArtwork extends Component {
   };
 
   render() {
-    console.log(this.state.images);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

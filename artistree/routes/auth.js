@@ -6,7 +6,6 @@ const passport = require("passport");
 
 router.post("/signup", (req, res) => {
   const { username, password, email, location, birthDate, role } = req.body;
-  console.log(req.body);
   if (!password || password.length < 8) {
     return res
       .status(400)
@@ -40,7 +39,6 @@ router.post("/signup", (req, res) => {
         birthDate,
         role,
       }).then((dbUser) => {
-        console.log(dbUser);
         req.login(dbUser, (err) => {
           if (err) {
             return res

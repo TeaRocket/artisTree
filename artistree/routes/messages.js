@@ -5,8 +5,6 @@ const Message = require("../models/Message");
 
 router.post("/:id", (req, res) => {
   const { message } = req.body;
-  //res.status(200).json({ message: "ok" });
-  //console.log(req.user, req.params.id, req.body);
   return Message.create({
     from: req.user._id,
     to: req.params.id,

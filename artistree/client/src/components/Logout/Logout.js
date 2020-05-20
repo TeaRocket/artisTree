@@ -7,7 +7,6 @@ export default function Logout(props) {
 
   useEffect(() => {
     axios.delete("/auth/logout").then((response) => {
-      console.log("logged out", response);
       setUser(null);
       props.history.push("/");
     });

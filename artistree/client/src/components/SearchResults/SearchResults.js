@@ -44,8 +44,6 @@ export default function SearchResults() {
     [formValues, setFormValues]
   );
   const filteredArtists = artists.filter((artist) => {
-    //moment(artist.).isBetween(stardDate, endDate)
-
     const artistString = `${artist.displayName}_${artist.subcategory}`.toLowerCase();
     const searchMatch = artistString.includes(
       formValues.search.toLowerCase().trim()
@@ -124,10 +122,6 @@ export default function SearchResults() {
             endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
             onDatesChange={({ startDate, endDate }) => {
               setDates({ startDate: startDate, endDate: endDate });
-              // return endDate
-              //   ? (dates = { startDate: startDate._d, endDate: endDate._d })
-              //   : {};
-              // console.log(startDate._d, endDate._d);
             }} // PropTypes.func.isRequired,
             focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={(focusedInput) => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
@@ -139,22 +133,6 @@ export default function SearchResults() {
           })}
         </ul>
       </section>
-      {/* <main>
-        <ul>
-          {artists.map((artist) => {
-            return (
-              <li key={artist._id}>
-                <Link to={`/profile/${artist._id}`}>
-                  <img src={beer.image_url} alt="" height="100" />
-                  <p>{artist.username}</p>
-                  <p>{beer.tagline}</p>
-              <p>{beer.contributed_by}</p>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </main> */}
     </>
   );
 }

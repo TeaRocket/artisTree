@@ -95,7 +95,6 @@ export default class Profile extends Component {
     axios
       .get(`/user/${id}`)
       .then((response) => {
-        // console.log(response);
         this.setState({
           imageUrl: response.data.imageUrl,
           username: response.data.username,

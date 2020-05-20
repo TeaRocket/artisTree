@@ -9,7 +9,6 @@ const cloudinary = require("../configs/cloudinaryMultiple");
 const fs = require("fs");
 
 router.post("/single", uploader.single("imageUrl"), (req, res, next) => {
-  console.log("file is: ", req.file);
   const userId = req.user._id;
 
   if (!req.file) {
@@ -17,7 +16,6 @@ router.post("/single", uploader.single("imageUrl"), (req, res, next) => {
     return;
   }
   User.updateOne({ _id: userId }, { imageUrl: req.file.url }).then((result) => {
-    console.log(result);
     res.json({ secure_url: req.file.secure_url });
   });
 
@@ -26,7 +24,6 @@ router.post("/single", uploader.single("imageUrl"), (req, res, next) => {
 });
 
 router.post("/multiple", upload.array("files", 12), async (req, res) => {
-  // console.log(req.files);
   const uploader = async (path) => await cloudinary.uploads(path, "Images");
   if (req.method === "POST") {
     const urls = [];
@@ -50,7 +47,6 @@ router.post("/multiple", upload.array("files", 12), async (req, res) => {
 
 router.post("/multiple/old", uploader.array("images", 12), (req, res, next) => {
   const files = req.files;
-  console.log(files);
   if (!files) {
     const error = new Error("Please choose files");
     error.httpStatusCode = 400;
