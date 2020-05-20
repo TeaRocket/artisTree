@@ -7,8 +7,6 @@ export default class Availabilities extends Component {
 
   render() {
     const { availability } = this.context.user;
-    // console.log(availability.map((a) => moment(a)));
-    console.log(this.context);
     const availabilities = availability
       ? availability.map((av) => {
           return (

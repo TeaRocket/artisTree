@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MessagesListItem from "./MessagesListItem";
 

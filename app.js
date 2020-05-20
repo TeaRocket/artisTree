@@ -65,8 +65,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
 //changed for deploy
-app.use(express.static(path.join(__dirname, "client/build")));
-//app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
@@ -87,10 +87,10 @@ app.use("/artwork", artwork);
 app.use("/messages", messages);
 app.use("/upload", require("./routes/upload"));
 
-//added for deploy
-app.use((req, res) => {
-  // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/client/build/index.html");
-});
+// //added for deploy
+// app.use((req, res) => {
+//   // If no routes match, send them the React HTML.
+//   res.sendFile(__dirname + "/client/build/index.html");
+// });
 
 module.exports = app;

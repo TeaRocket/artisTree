@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Nav from "../Nav/Nav";

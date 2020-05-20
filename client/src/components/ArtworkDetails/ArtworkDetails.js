@@ -3,8 +3,11 @@ import EditArtwork from "../EditArtwork/EditArtwork";
 import AddArtwork from "../AddArtwork/AddArtwork";
 import ArtworkList from "../ArtworkList/ArtworkList";
 import axios from "axios";
+import { UserContext } from "../../contexts/UserContext";
 
 export default class ArtworkDetails extends Component {
+  static contextType = UserContext;
+
   state = {
     artwork: null,
     title: "",
@@ -27,7 +30,7 @@ export default class ArtworkDetails extends Component {
     event.preventDefault();
     const id = this.props.match.params.id;
     axios
-      .put(`/artworks/${id}`, {
+      .put(`/artwork/${id}`, {
         title: this.state.title,
         description: this.state.description,
         images: this.state.images,
@@ -54,6 +57,7 @@ export default class ArtworkDetails extends Component {
           artwork: response.data,
           title: response.data.title,
           description: response.data.description,
+          images: response.data.images,
         });
       })
       .catch((err) => {
@@ -65,10 +69,12 @@ export default class ArtworkDetails extends Component {
 
   deleteArtwork = () => {
     const id = this.props.match.params.id;
+    const { user } = this.context;
+
     axios
-      .delete(`/artworks/${id}`)
+      .delete(`/artwork/${id}`)
       .then(() => {
-        this.props.history.push("/artworks");
+        this.props.history.push(`/user/${user._id}`);
       })
       .catch((err) => {
         console.log(err);
@@ -103,6 +109,7 @@ export default class ArtworkDetails extends Component {
     return (
       <div>
         <h1>{this.state.artwork.title}</h1>
+        <img src={this.state.images[0]} alt="" />
         <p>{this.state.artwork.description}</p>
         <button onClick={this.deleteArtwork}>Delete this Artwork</button>
         <button onClick={this.toggleEditForm}>Show edit form</button>
