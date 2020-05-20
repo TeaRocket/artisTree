@@ -30,3 +30,5 @@ artistree/.env.production.local
 artistree/npm-debug.log*
 artistree/yarn-debug.log*
 artistree/yarn-error.log*
+
+.env 
