@@ -64,7 +64,13 @@ export default class DateAdder extends Component {
         </div>
       );
     } else {
-      return <button onClick={this.toggleVisibility}>Add Availability</button>;
+      return (
+        <>
+          {this.props.allowedToEdit && (
+            <button onClick={this.toggleVisibility}>Add Availability</button>
+          )}
+        </>
+      );
     }
   }
 }

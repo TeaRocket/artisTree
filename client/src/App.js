@@ -29,10 +29,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Route exact path="/" component={SearchResults} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/results" component={SearchResults} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/user/:id" component={Profile} />
         <Route exact path="/messages/:id" component={MessagesPage} />

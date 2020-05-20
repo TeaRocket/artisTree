@@ -48,7 +48,7 @@ export default class ArtworkDetails extends Component {
   getData = () => {
     const id = this.props.match.params.id;
     axios
-      .get(`/artworks/${id}`)
+      .get(`/artwork/${id}`)
       .then((response) => {
         this.setState({
           artwork: response.data,
@@ -106,7 +106,6 @@ export default class ArtworkDetails extends Component {
         <p>{this.state.artwork.description}</p>
         <button onClick={this.deleteArtwork}>Delete this Artwork</button>
         <button onClick={this.toggleEditForm}>Show edit form</button>
-        <button onClick={this.toggleTaskForm}>Show task form</button>
         {this.state.editForm && (
           <EditArtwork
             {...this.state}
@@ -114,14 +113,6 @@ export default class ArtworkDetails extends Component {
             handleSubmit={this.handleSubmit}
           />
         )}
-        {this.state.taskForm && (
-          <AddArtwork
-            artworkId={this.state.artwork._id}
-            getData={this.getData}
-            hideForm={() => this.setState({ taskForm: false })}
-          />
-        )}
-        <ArtworkList tasks={this.state.artwork.images} />
       </div>
     );
   }

@@ -129,7 +129,14 @@ export default function SearchResults() {
         </form>
         <ul>
           {filteredArtists.map((artist) => {
-            return <li key={artist._id}>{artist.username}</li>;
+            return (
+              <li key={artist._id}>
+                <Link to={`/user/${artist._id}`}>
+                  <img src={artist.imageUrl} alt="" height="100" />
+                  <p>{artist.username}</p>
+                </Link>
+              </li>
+            );
           })}
         </ul>
       </section>
