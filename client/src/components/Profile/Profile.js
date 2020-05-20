@@ -85,7 +85,24 @@ export default class Profile extends Component {
         availability,
       })
       .then((result) => {
+        const {
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+        } = result.data;
         console.log(result);
+        this.setState({
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+          editProfile: false,
+        });
       });
   };
 
@@ -94,12 +111,29 @@ export default class Profile extends Component {
     axios
       .get(`/user/${id}`)
       .then((response) => {
+        const {
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+          imageUrl,
+          username,
+          artworks,
+          role,
+        } = response.data;
         this.setState({
-          imageUrl: response.data.imageUrl,
-          username: response.data.username,
-          location: response.data.location,
-          role: response.data.role,
-          artworks: response.data.artworks,
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+          imageUrl,
+          username,
+          artworks,
+          role,
         });
       })
       .catch((error) => {
@@ -226,6 +260,9 @@ export default class Profile extends Component {
             </form>
           )}
           <p>{this.state.location}</p>
+          <p>{this.state.bio}</p>
+          <p>{this.state.category}</p>
+          <p>{this.state.subcategory}</p>
           <p>{this.state.role}</p>
           <div>
             <ArtworkList artworks={this.state.artworks} profileId={profileId} />

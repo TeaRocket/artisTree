@@ -11,6 +11,16 @@ export default function MessagesListItem({ message }) {
   return (
     <li>
       <Link to={`/messages/${linkId}`}>
+        <img
+          src={
+            message.from.username === user.username
+              ? message.to.imageUrl
+              : message.from.imageUrl
+          }
+          alt="user's picture"
+          height="70"
+          style={{ borderRadius: "50%" }}
+        />
         <p>
           {message.from.username === user.username
             ? message.to.username

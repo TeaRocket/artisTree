@@ -7,7 +7,6 @@ export default function MessagesList() {
 
   useEffect(() => {
     axios.get("/messages").then((result) => {
-      console.log(result.data);
       setMessages(result.data);
     });
   }, [setMessages]);
