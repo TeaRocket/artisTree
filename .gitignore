@@ -31,4 +31,6 @@ artistree/npm-debug.log*
 artistree/yarn-debug.log*
 artistree/yarn-error.log*
 
-.env 
+.env
+node_modules
+client/node_modules
