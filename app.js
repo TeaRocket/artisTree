@@ -66,6 +66,7 @@ app.set("view engine", "hbs");
 
 //changed for deploy
 app.use(express.static(path.join(__dirname, "client/build")));
+//app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local

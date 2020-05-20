@@ -54,20 +54,22 @@ export default function SearchResults() {
       (formValues.category === "Other" && searchMatch);
     const locationMatch =
       formValues.location === artist.location || !formValues.location;
-    const dateMatch = artist.availability.some((range) => {
-      let rangeStartDate = moment(range.startDate);
-      let rangeEndDate = moment(range.endDate);
-      const rangeStartDateMatch =
-        rangeStartDate && rangeStartDate.isBetween(startDate, endDate);
-      const rangeEndDateMatch =
-        rangeEndDate && rangeEndDate.isBetween(startDate, endDate);
-      const rangeMatch =
-        startDate &&
-        startDate.isBetween(rangeStartDate, rangeEndDate) &&
-        endDate &&
-        endDate.isBetween(rangeStartDate, rangeEndDate);
-      return rangeStartDateMatch || rangeEndDateMatch || rangeMatch;
-    });
+    const dateMatch =
+      artist.availability &&
+      artist.availability.some((range) => {
+        let rangeStartDate = moment(range.startDate);
+        let rangeEndDate = moment(range.endDate);
+        const rangeStartDateMatch =
+          rangeStartDate && rangeStartDate.isBetween(startDate, endDate);
+        const rangeEndDateMatch =
+          rangeEndDate && rangeEndDate.isBetween(startDate, endDate);
+        const rangeMatch =
+          startDate &&
+          startDate.isBetween(rangeStartDate, rangeEndDate) &&
+          endDate &&
+          endDate.isBetween(rangeStartDate, rangeEndDate);
+        return rangeStartDateMatch || rangeEndDateMatch || rangeMatch;
+      });
     return categoryMatch && locationMatch && dateMatch;
   });
 
@@ -129,7 +131,14 @@ export default function SearchResults() {
         </form>
         <ul>
           {filteredArtists.map((artist) => {
-            return <li key={artist._id}>{artist.username}</li>;
+            return (
+              <li key={artist._id}>
+                <Link to={`/user/${artist._id}`}>
+                  <img src={artist.imageUrl} alt="" height="100" />
+                  <p>{artist.username}</p>
+                </Link>
+              </li>
+            );
           })}
         </ul>
       </section>

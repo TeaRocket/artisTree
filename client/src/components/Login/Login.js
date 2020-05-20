@@ -29,9 +29,12 @@ export default class Login extends Component {
           password: "",
         });
       } else {
+        const user = data;
         const { setUser } = this.context;
-        setUser(data);
-        this.props.history.push("/");
+        setUser(user);
+        this.props.history.push(
+          user.role === "Artist" ? `/user/${user._id}` : "/"
+        );
       }
     });
   };

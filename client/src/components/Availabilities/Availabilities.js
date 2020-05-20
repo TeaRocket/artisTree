@@ -9,13 +9,15 @@ export default class Availabilities extends Component {
     const { availability } = this.context.user;
     // console.log(availability.map((a) => moment(a)));
     console.log(this.context);
-    const availabilities = availability.map((av) => {
-      return (
-        <li key={av._id}>
-          {av.startDate.split("T")[0]} to {av.endDate.split("T")[0]}
-        </li>
-      );
-    });
+    const availabilities = availability
+      ? availability.map((av) => {
+          return (
+            <li key={av._id}>
+              {av.startDate.split("T")[0]} to {av.endDate.split("T")[0]}
+            </li>
+          );
+        })
+      : null;
 
     return (
       <div>
