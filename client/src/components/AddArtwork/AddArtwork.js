@@ -54,6 +54,7 @@ export default class AddArtwork extends Component {
           description: "",
           images: [],
         });
+        this.props.closeForm();
         // update state in artwork by executing getData()
         this.props.getData();
       })

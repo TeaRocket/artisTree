@@ -4,7 +4,6 @@ import axios from "axios";
 import { UserContext } from "./contexts/UserContext";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-import HomePage from "./components/HomePage/HomePage";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Logout from "./components/Logout/Logout";
 import Profile from "./components/Profile/Profile";
@@ -20,6 +19,7 @@ class App extends React.Component {
     axios
       .get("/auth/loggedin")
       .then((response) => {
+        console.log(response.data);
         const { setUser } = this.context;
         setUser(response.data);
       })

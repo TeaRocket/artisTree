@@ -59,7 +59,6 @@ export default class Profile extends Component {
       axios
         .post("/upload/single", uploadData)
         .then((response) => {
-          console.log(response.data);
           this.setState({
             imageUrl: response.data.secure_url,
             uploadOn: false,
@@ -73,8 +72,10 @@ export default class Profile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     // const uploadData = new FormData();
-    const { user, availability } = this.context;
+    const { user } = this.context;
+    const availability = user.availability;
     const { displayName, bio, location, category, subcategory } = this.state;
+    console.log(availability);
     axios
       .put(`/user/${user._id}/profile`, {
         displayName,
@@ -85,7 +86,23 @@ export default class Profile extends Component {
         availability,
       })
       .then((result) => {
-        console.log(result);
+        const {
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+        } = result.data;
+        this.setState({
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+          editProfile: false,
+        });
       });
   };
 
@@ -94,12 +111,29 @@ export default class Profile extends Component {
     axios
       .get(`/user/${id}`)
       .then((response) => {
+        const {
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+          imageUrl,
+          username,
+          artworks,
+          role,
+        } = response.data;
         this.setState({
-          imageUrl: response.data.imageUrl,
-          username: response.data.username,
-          location: response.data.location,
-          role: response.data.role,
-          artworks: response.data.artworks,
+          displayName,
+          bio,
+          location,
+          category,
+          subcategory,
+          availability,
+          imageUrl,
+          username,
+          artworks,
+          role,
         });
       })
       .catch((error) => {
@@ -225,19 +259,36 @@ export default class Profile extends Component {
               <button type="submit">Update Profile</button>
             </form>
           )}
+
           <p>{this.state.location}</p>
-          <p>{this.state.role}</p>
+          <p>{this.state.bio}</p>
+          <p>{this.state.category}</p>
+          <p>{this.state.subcategory}</p>
+
           <div>
             <ArtworkList artworks={this.state.artworks} profileId={profileId} />
-            {allowedToEdit && (
-              <button type="button" onClick={this.toggleArtwork}>
-                Add Artwork
-              </button>
+            {allowedToEdit && user.role === "Artist" && (
+              <>
+                <button type="button" onClick={this.toggleArtwork}>
+                  Add Artwork
+                </button>
+              </>
             )}
-            {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
+            {this.state.addArtworkForm && (
+              <AddArtwork
+                getData={this.getData}
+                closeForm={() => {
+                  this.setState({ addArtworkForm: false });
+                }}
+              />
+            )}
           </div>
-          <Availabilities allowedToEdit={allowedToEdit} />
-          <DateAdder allowedToEdit={allowedToEdit} />
+          {user.role === "Artist" && (
+            <>
+              <Availabilities allowedToEdit={allowedToEdit} />
+              <DateAdder allowedToEdit={allowedToEdit} />
+            </>
+          )}
         </div>
       </>
     );

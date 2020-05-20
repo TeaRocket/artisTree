@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";

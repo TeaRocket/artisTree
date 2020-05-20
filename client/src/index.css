@@ -51,6 +51,13 @@
       align-self: center;
 }
 
+.message-profile-pic {
+  background-size: cover;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
 :root {
   font-family: Helvetica, Arial, sans-serif;
 }

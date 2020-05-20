@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { signup } from "../../services/auth";
 import Nav from "../Nav/Nav";
 import { UserContext } from "../../contexts/UserContext";
+import axios from "axios";
 const queryString = require("query-string");
 
 export default class Signup extends Component {
@@ -12,8 +13,18 @@ export default class Signup extends Component {
     birthDate: "",
     location: "",
     message: "",
+    categories: [],
+    category: "",
   };
   static contextType = UserContext;
+
+  componentDidMount = () => {
+    axios.get("/categories").then((categories) => {
+      this.setState({
+        categories: categories.data,
+      });
+    });
+  };
 
   isArtist = () => {
     const parsed = queryString.parse(this.props.location.search);
@@ -22,7 +33,6 @@ export default class Signup extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value,
     });
@@ -31,7 +41,14 @@ export default class Signup extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { username, password, email, birthDate, location } = this.state;
+    const {
+      username,
+      password,
+      email,
+      birthDate,
+      location,
+      category,
+    } = this.state;
 
     signup(
       username,
@@ -39,7 +56,8 @@ export default class Signup extends Component {
       email,
       birthDate,
       location,
-      this.isArtist() ? "Artist" : "Client"
+      this.isArtist() ? "Artist" : "Client",
+      category
     ).then((data) => {
       if (data.message) {
         this.setState({
@@ -76,7 +94,7 @@ export default class Signup extends Component {
           />
           <label>Password: </label>
           <input
-            type="text"
+            type="password"
             name="password"
             value={this.state.password}
             onChange={this.handleChange}
@@ -108,6 +126,19 @@ export default class Signup extends Component {
                 onChange={this.handleChange}
                 id="location"
               />
+              <label>Type of artist: </label>
+              <select
+                name="category"
+                id="category"
+                value={this.state.category}
+                onChange={this.handleChange}
+              >
+                {this.state.categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </>
           )}
 
