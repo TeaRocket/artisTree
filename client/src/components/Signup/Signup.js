@@ -83,7 +83,7 @@ export default class Signup extends Component {
       <div>
         <Nav />
         <div class="form-popup" id="myForm">
-          <form onSubmit={this.handleSubmit}>
+          <form class="form-signup" onSubmit={this.handleSubmit}>
             <div class="con">
               <header class="head-form">
                 <h2>Signup</h2>
@@ -91,10 +91,11 @@ export default class Signup extends Component {
               </header>
               <br></br>
               <div class="field-set">
+                <label>Username: </label>
                 <input
                   type="text"
                   name="username"
-                  placeholder="Username"
+                  placeholder="picasso"
                   value={this.state.username}
                   onChange={this.handleChange}
                   //id="username"
@@ -102,10 +103,11 @@ export default class Signup extends Component {
                   class="form-input"
                 />
                 <br></br>
+                <label>Password: </label>
                 <input
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                   // id="password"
@@ -113,10 +115,11 @@ export default class Signup extends Component {
                   class="form-input"
                 />
                 <br></br>
+                <label>Email: </label>
                 <input
                   type="text"
                   name="email"
-                  placeholder="Email"
+                  placeholder="picasso@mail.com"
                   value={this.state.email}
                   onChange={this.handleChange}
                   // id="email"
@@ -124,10 +127,10 @@ export default class Signup extends Component {
                   class="form-input"
                 />
                 <br></br>
+                <label>Birthday: </label>
                 <input
                   type="date"
                   name="birthDate"
-                  placeholder="Birthdate"
                   value={this.state.birthDate}
                   onChange={this.handleChange}
                   // id="birthDate"
@@ -137,22 +140,25 @@ export default class Signup extends Component {
                 {this.isArtist() && (
                   <>
                     <br></br>
+                    <label>Location: </label>
                     <input
                       type="text"
                       name="location"
-                      placeholder="Location"
+                      placeholder="City"
                       value={this.state.location}
                       onChange={this.handleChange}
                       // id="location"
                       id="txt-input"
                       class="form-input"
                     />
+                    <br></br>
                     <label>Type of artist: </label>
                     <select
                       name="category"
                       id="category"
                       value={this.state.category}
                       onChange={this.handleChange}
+                      class="form-input"
                     >
                       {this.state.categories.map((category) => (
                         <option key={category} value={category}>
