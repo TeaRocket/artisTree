@@ -259,6 +259,7 @@ export default class Profile extends Component {
               <button type="submit">Update Profile</button>
             </form>
           )}
+
           <p>{this.state.location}</p>
           <p>{this.state.bio}</p>
           <p>{this.state.category}</p>
