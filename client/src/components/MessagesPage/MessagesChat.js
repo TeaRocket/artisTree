@@ -12,9 +12,11 @@ export default function MessagesChat(props) {
   };
 
   const showMessages = () => {
-    axios.get(`/messages/${props.id}`).then((result) => {
-      setMessages(result.data);
-    });
+    if (props.id) {
+      axios.get(`/messages/${props.id}`).then((result) => {
+        setMessages(result.data);
+      });
+    }
   };
   useEffect(() => {
     showMessages();

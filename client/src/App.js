@@ -34,11 +34,15 @@ class App extends React.Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/user/:id" component={Profile} />
-        <Route exact path="/messages/:id" component={MessagesPage} />
         <Route exact path="/messages" component={MessagesPage} />
+        <Route exact path="/messages/:id" component={MessagesPage} />
         <Route exact path="/user/:id/artwork" component={AddArtwork} />
         <Route exact path="/user/:id/artwork" component={ArtworkList} />
-        <Route exact path="/user/:id/artwork/:id" component={ArtworkDetails} />
+        <Route
+          exact
+          path="/user/:id/artwork/:artworkId"
+          component={ArtworkDetails}
+        />
       </div>
     );
   }

@@ -20,7 +20,6 @@ export default class ArtworkDetails extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value,
     });
@@ -28,7 +27,7 @@ export default class ArtworkDetails extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.artworkId;
     axios
       .put(`/artwork/${id}`, {
         title: this.state.title,
@@ -49,7 +48,7 @@ export default class ArtworkDetails extends Component {
   };
 
   getData = () => {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.artworkId;
     axios
       .get(`/artwork/${id}`)
       .then((response) => {
@@ -68,7 +67,7 @@ export default class ArtworkDetails extends Component {
   };
 
   deleteArtwork = () => {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.artworkId;
     const { user } = this.context;
 
     axios
@@ -100,19 +99,20 @@ export default class ArtworkDetails extends Component {
   render() {
     if (this.state.error) return <div>{this.state.error}</div>;
     if (!this.state.artwork) return <></>;
-
-    let allowedToDelete = false;
-    const user = this.props.user;
-    const owner = this.state.artwork.owner;
-    if (user && user._id === owner) allowedToDelete = true;
+    const id = this.props.match.params.id;
+    const { user } = this.context;
 
     return (
       <div>
         <h1>{this.state.artwork.title}</h1>
         <img src={this.state.images[0]} alt="" />
         <p>{this.state.artwork.description}</p>
-        <button onClick={this.deleteArtwork}>Delete this Artwork</button>
-        <button onClick={this.toggleEditForm}>Show edit form</button>
+        {user._id === id && (
+          <>
+            <button onClick={this.deleteArtwork}>Delete this Artwork</button>
+            <button onClick={this.toggleEditForm}>Show edit form</button>
+          </>
+        )}
         {this.state.editForm && (
           <EditArtwork
             {...this.state}

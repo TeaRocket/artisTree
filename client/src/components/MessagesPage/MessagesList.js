@@ -6,6 +6,7 @@ export default function MessagesList() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    console.log("wft");
     axios.get("/messages").then((result) => {
       setMessages(result.data);
     });
