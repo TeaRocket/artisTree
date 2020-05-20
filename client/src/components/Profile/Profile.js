@@ -267,15 +267,21 @@ export default class Profile extends Component {
           <p>{this.state.role}</p>
           <div>
             <ArtworkList artworks={this.state.artworks} profileId={profileId} />
-            {allowedToEdit && (
-              <button type="button" onClick={this.toggleArtwork}>
-                Add Artwork
-              </button>
+            {allowedToEdit && user.role === "Artist" && (
+              <>
+                <button type="button" onClick={this.toggleArtwork}>
+                  Add Artwork
+                </button>
+              </>
             )}
             {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
           </div>
-          <Availabilities allowedToEdit={allowedToEdit} />
-          <DateAdder allowedToEdit={allowedToEdit} />
+          {user.role === "Artist" && (
+            <>
+              <Availabilities allowedToEdit={allowedToEdit} />
+              <DateAdder allowedToEdit={allowedToEdit} />
+            </>
+          )}
         </div>
       </>
     );
