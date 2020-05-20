@@ -9,7 +9,6 @@ const cloudinary = require("../configs/cloudinaryMultiple");
 const fs = require("fs");
 
 router.post("/single", uploader.single("imageUrl"), (req, res, next) => {
-  console.log("file is: ", req.file);
   const userId = req.user._id;
 
   if (!req.file) {
@@ -17,15 +16,14 @@ router.post("/single", uploader.single("imageUrl"), (req, res, next) => {
     return;
   }
   User.updateOne({ _id: userId }, { imageUrl: req.file.url }).then((result) => {
-    console.log(result);
     res.json({ secure_url: req.file.secure_url });
   });
 
   // get secure_url from the file object and save it in the
   // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
 });
-router.post("/multiple", upload.array("multipleFiles"), async (req, res) => {
-  console.log(req.files);
+
+router.post("/multiple", upload.array("files", 12), async (req, res) => {
   const uploader = async (path) => await cloudinary.uploads(path, "Images");
   if (req.method === "POST") {
     const urls = [];
@@ -36,7 +34,6 @@ router.post("/multiple", upload.array("multipleFiles"), async (req, res) => {
       urls.push(newPath);
       fs.unlinkSync(path);
     }
-    console.log(urls);
     res.status(200).json({
       message: "images uploaded successfully",
       data: urls,
@@ -50,7 +47,6 @@ router.post("/multiple", upload.array("multipleFiles"), async (req, res) => {
 
 router.post("/multiple/old", uploader.array("images", 12), (req, res, next) => {
   const files = req.files;
-  console.log(files);
   if (!files) {
     const error = new Error("Please choose files");
     error.httpStatusCode = 400;

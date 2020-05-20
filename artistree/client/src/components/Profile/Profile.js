@@ -90,42 +90,11 @@ export default class Profile extends Component {
       });
   };
 
-  //upload artwork
-  uploadMultiple = (event) => {
-    event.preventDefault();
-    const uploadData = new FormData();
-    //uploadData.append('')
-    console.log(event.target.files);
-    const files = event.target.files;
-    // Object.keys(files).forEach((key) => {
-    //   uploadData.append(key, files[key]);
-    // });
-    for (let i = 0; i < files.length; i++) {
-      uploadData.append("multipleFiles", files[i]);
-    }
-
-    for (var pair of uploadData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-    console.log(this);
-    this.setState({ uploadOn: true }, () => {
-      console.log(uploadData);
-      axios
-        .post("/upload/multiple", uploadData)
-        .then((response) => {
-          console.log(response.data);
-          this.setState({ images: response.data.images, uploadOn: false });
-        })
-        .catch((error) => console.log(error));
-    });
-  };
-
   getData = () => {
     const id = this.props.match.params.id;
     axios
       .get(`/user/${id}`)
       .then((response) => {
-        // console.log(response);
         this.setState({
           imageUrl: response.data.imageUrl,
           username: response.data.username,
@@ -162,13 +131,10 @@ export default class Profile extends Component {
   render() {
     if (this.state.error) return <div>{this.state.error.toString()}</div>;
     if (!this.state.username) return <></>;
-    let allowedToEdit = false;
     const { user } = this.context;
-    //const owner = this.state.artworks.owner;
-    //toggle edit picture if owner of profile
-    //if (user && user._id === owner) allowedToEdit = true;
-    //YYYEEEEAAAAH
-    //wooooo
+    const profileId = this.props.match.params.id;
+    const allowedToEdit = user._id === profileId;
+
     return (
       <div>
         <h1>{this.state.displayName}</h1>
@@ -178,8 +144,11 @@ export default class Profile extends Component {
             src={this.state.imageUrl}
             alt={this.state.displayName}
           />
+          {!allowedToEdit && (
+            <Link to={`/messages/${profileId}`}>Send a message</Link>
+          )}
           <div>
-            {user._id === this.props.match.params.id && (
+            {allowedToEdit && (
               <button type="button" onClick={this.toggleEditForm}>
                 Edit Picture
               </button>
@@ -191,19 +160,13 @@ export default class Profile extends Component {
             )}
           </div>
         </div>
-        <form
-          action="/upload/uploadmultiple"
-          onSubmit={this.uploadMultiple}
-          enctype="multipart/form-data"
-          method="POST"
-        >
-          Select images: <input type="file" name="images" multiple />
-          <input type="submit" value="Upload your files" />
-        </form>
+
         <p>{this.state.getData}</p>
-        <button type="button" onClick={this.toggleProfileEdit}>
-          Edit Profile
-        </button>
+        {allowedToEdit && (
+          <button type="button" onClick={this.toggleProfileEdit}>
+            Edit Profile
+          </button>
+        )}
         {this.state.editProfile && (
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="displayName">Display Name</label>
@@ -258,25 +221,16 @@ export default class Profile extends Component {
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
         <div>
-          <p>{this.state.artworks}</p>
           <ArtworkList artworks={this.state.artworks} />
-          <button type="button" onClick={this.toggleArtwork}>
-            Add Artwork
-          </button>
+          {allowedToEdit && (
+            <button type="button" onClick={this.toggleArtwork}>
+              Add Artwork
+            </button>
+          )}
           {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
-          <form>
-            Select images:{" "}
-            <input
-              type="file"
-              name="multipleFiles"
-              multiple
-              onChange={this.uploadMultiple}
-            />
-            <input type="submit" value="Upload your files" />
-          </form>
         </div>
-        <Availabilities />
-        <DateAdder />
+        <Availabilities allowedToEdit={allowedToEdit} />
+        <DateAdder allowedToEdit={allowedToEdit} />
       </div>
     );
   }

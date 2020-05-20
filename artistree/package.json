@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=artistree:* nodemon ./bin/www",
+    "dev": "DEBUG=artistree:* nodemon --inspect ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {

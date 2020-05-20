@@ -1,97 +1,99 @@
-import React, { Component } from 'react'
-import EditArtwork from '../EditArtwork/EditArtwork';
-import AddArtwork from '../AddArtwork/AddArtwork';
-import ArtworkList from '../ArtworkList/ArtworkList';
-import axios from 'axios';
+import React, { Component } from "react";
+import EditArtwork from "../EditArtwork/EditArtwork";
+import AddArtwork from "../AddArtwork/AddArtwork";
+import ArtworkList from "../ArtworkList/ArtworkList";
+import axios from "axios";
 
 export default class ArtworkDetails extends Component {
-
   state = {
     artwork: null,
-    title: '',
-    description: '',
-    images:[],
+    title: "",
+    description: "",
+    images: [],
     editForm: false,
     taskForm: false,
-    error: null
-  }
+    error: null,
+  };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
 
     this.setState({
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const id = this.props.match.params.id;
-    axios.put(`/artworks/${id}`, {
-      title: this.state.title,
-      description: this.state.description,
-      images: this.state.images,
-    })
-      .then(response => {
+    axios
+      .put(`/artworks/${id}`, {
+        title: this.state.title,
+        description: this.state.description,
+        images: this.state.images,
+      })
+      .then((response) => {
         this.setState({
           artwork: response.data,
           title: response.data.title,
           description: response.data.description,
-          editForm: false
-        })
-      }).catch(err => {
-        console.log(err);
+          editForm: false,
+        });
       })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   getData = () => {
     const id = this.props.match.params.id;
-    console.log(id);
-    axios.get(`/artworks/${id}`)
-      .then(response => {
+    axios
+      .get(`/artworks/${id}`)
+      .then((response) => {
         this.setState({
           artwork: response.data,
           title: response.data.title,
-          description: response.data.description
+          description: response.data.description,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response.status === 404) {
-          this.setState({ error: 'Not found' })
+          this.setState({ error: "Not found" });
         }
-      })
-  }
+      });
+  };
 
   deleteArtwork = () => {
     const id = this.props.match.params.id;
-    axios.delete(`/artworks/${id}`)
+    axios
+      .delete(`/artworks/${id}`)
       .then(() => {
-        this.props.history.push('/artworks');
-      }).catch(err => {
-        console.log(err);
+        this.props.history.push("/artworks");
       })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   toggleEditForm = () => {
     this.setState({
-      editForm: !this.state.editForm
+      editForm: !this.state.editForm,
     });
-  }
+  };
 
   toggleTaskForm = () => {
     this.setState({
-      taskForm: !this.state.taskForm
+      taskForm: !this.state.taskForm,
     });
-  }
+  };
 
   componentDidMount = () => {
     this.getData();
-  }
+  };
 
   render() {
-    console.log(this.state.taskForm);
-    if (this.state.error) return <div>{this.state.error}</div>
-    if (!this.state.artwork) return (<></>)
+    if (this.state.error) return <div>{this.state.error}</div>;
+    if (!this.state.artwork) return <></>;
 
     let allowedToDelete = false;
     const user = this.props.user;
@@ -102,9 +104,7 @@ export default class ArtworkDetails extends Component {
       <div>
         <h1>{this.state.artwork.title}</h1>
         <p>{this.state.artwork.description}</p>
-        <button  onClick={this.deleteArtwork}>
-          Delete this Artwork
-          </button>
+        <button onClick={this.deleteArtwork}>Delete this Artwork</button>
         <button onClick={this.toggleEditForm}>Show edit form</button>
         <button onClick={this.toggleTaskForm}>Show task form</button>
         {this.state.editForm && (
@@ -123,6 +123,6 @@ export default class ArtworkDetails extends Component {
         )}
         <ArtworkList tasks={this.state.artwork.images} />
       </div>
-    )
+    );
   }
 }
