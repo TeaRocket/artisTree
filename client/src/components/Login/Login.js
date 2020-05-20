@@ -55,7 +55,7 @@ export default class Login extends Component {
           />
           <label>Password: </label>
           <input
-            type="text"
+            type="password"
             name="password"
             value={this.state.password}
             onChange={this.handleChange}
