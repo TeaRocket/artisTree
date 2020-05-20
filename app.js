@@ -15,7 +15,7 @@ const path = require("path");
 const app = express();
 
 mongoose
-  .connect("mongodb://localhost/artistree", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/artistree", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -63,7 +63,9 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "public")));
+
+//changed for deploy
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
@@ -83,5 +85,11 @@ app.use("/user", user);
 app.use("/artwork", artwork);
 app.use("/messages", messages);
 app.use("/upload", require("./routes/upload"));
+
+//added for deploy
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;
