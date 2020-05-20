@@ -51,7 +51,13 @@ export default function Nav() {
                 )}
                 {!onSignupPage && (
                   <Link to="/signup" id="link">
-                    <a>Signup</a>
+                    <a
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                    >
+                      Signup
+                    </a>
                   </Link>
                 )}
               </>
