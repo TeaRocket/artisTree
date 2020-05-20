@@ -219,7 +219,6 @@ export default class Profile extends Component {
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
         <div>
-          <p>{this.state.artworks}</p>
           <ArtworkList artworks={this.state.artworks} />
           <button type="button" onClick={this.toggleArtwork}>
             Add Artwork

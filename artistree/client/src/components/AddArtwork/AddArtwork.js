@@ -66,34 +66,38 @@ export default class AddArtwork extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Title:
-            <input
-              type="text"
-              name="title"
-              value={this.state.title}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
-          <label>
-            Description:
-            <input
-              type="text"
-              name="description"
-              value={this.state.description}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
-          Add Artwork
-          <label>
-            Select images:
-            <input
-              type="file"
-              name="files"
-              multiple
-              onChange={this.uploadMultiple}
-            />
-          </label>
+          <fieldset>
+            <label>
+              Title:
+              <input
+                type="text"
+                name="title"
+                value={this.state.title}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+            <label>
+              Description:
+              <input
+                type="text"
+                name="description"
+                value={this.state.description}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Add Artwork</legend>
+            <label>
+              Select images:
+              <input
+                type="file"
+                name="files"
+                multiple
+                onChange={this.uploadMultiple}
+              />
+            </label>
+          </fieldset>
           {!this.state.uploadOn && <input type="submit" value="Submit" />}
         </form>
       </div>
