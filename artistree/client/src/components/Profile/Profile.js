@@ -90,42 +90,11 @@ export default class Profile extends Component {
       });
   };
 
-  //upload artwork
-  uploadMultiple = (event) => {
-    event.preventDefault();
-    const uploadData = new FormData();
-    //uploadData.append('')
-    console.log(event.target.files);
-    const files = event.target.files;
-    // Object.keys(files).forEach((key) => {
-    //   uploadData.append(key, files[key]);
-    // });
-    for (let i = 0; i < files.length; i++) {
-      uploadData.append("multipleFiles", files[i]);
-    }
-
-    for (var pair of uploadData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-    console.log(this);
-    this.setState({ uploadOn: true }, () => {
-      console.log(uploadData);
-      axios
-        .post("/upload/multiple", uploadData)
-        .then((response) => {
-          console.log(response.data);
-          this.setState({ images: response.data.images, uploadOn: false });
-        })
-        .catch((error) => console.log(error));
-    });
-  };
-
   getData = () => {
     const id = this.props.match.params.id;
     axios
       .get(`/user/${id}`)
       .then((response) => {
-        // console.log(response);
         this.setState({
           imageUrl: response.data.imageUrl,
           username: response.data.username,
@@ -191,15 +160,7 @@ export default class Profile extends Component {
             )}
           </div>
         </div>
-        <form
-          action="/upload/uploadmultiple"
-          onSubmit={this.uploadMultiple}
-          enctype="multipart/form-data"
-          method="POST"
-        >
-          Select images: <input type="file" name="images" multiple />
-          <input type="submit" value="Upload your files" />
-        </form>
+
         <p>{this.state.getData}</p>
         <button type="button" onClick={this.toggleProfileEdit}>
           Edit Profile
@@ -258,22 +219,11 @@ export default class Profile extends Component {
         <p>{this.state.location}</p>
         <p>{this.state.role}</p>
         <div>
-          <p>{this.state.artworks}</p>
           <ArtworkList artworks={this.state.artworks} />
           <button type="button" onClick={this.toggleArtwork}>
             Add Artwork
           </button>
           {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
-          <form>
-            Select images:{" "}
-            <input
-              type="file"
-              name="multipleFiles"
-              multiple
-              onChange={this.uploadMultiple}
-            />
-            <input type="submit" value="Upload your files" />
-          </form>
         </div>
         <Availabilities />
         <DateAdder />
