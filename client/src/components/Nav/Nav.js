@@ -13,31 +13,51 @@ export default function Nav() {
   //const onArtistSignup = pathname === "/signup";
   return (
     <div id="Nav">
-      <div id="nav-inner-l">
-        <Link to="/">
-          <img
-            src={window.location.origin + "/artistree.png"}
-            id="logo"
-            alt="logo"
-          />
-        </Link>
-      </div>
-      <div id="nav-inner-r">
-        <Link to="/">Home</Link>
-        {user ? (
-          <>
-            <Link to={`/user/${user._id}`}>Profile</Link>
-            <Link to="/logout">Logout</Link>
-          </>
-        ) : (
-          <>
-            {!onArtistSignupPage && (
-              <Link to="/signup?artist=true">Create artist profile</Link>
+      <div id="nav-left-container">
+        <div id="nav-inner-l">
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/artistree/image/upload/v1589980960/Images/ARTISTREELOGO_afkwqa.png"
+              id="logo"
+              alt="logo"
+            />
+          </Link>
+        </div>
+        <div id="nav-right-container">
+          <div id="nav-inner-r">
+            <Link to="/" id="link">
+              <a>Home</a>
+            </Link>
+            {user ? (
+              <>
+                <Link to={`/user/${user._id}`} id="link">
+                  <a>Profile</a>
+                </Link>
+                <Link to="/logout" id="link">
+                  <a>Logout</a>
+                </Link>
+              </>
+            ) : (
+              <>
+                {!onArtistSignupPage && (
+                  <Link to="/signup?artist=true" id="link">
+                    <a>Create artist profile</a>
+                  </Link>
+                )}
+                {!onLoginPage && (
+                  <Link to="/login" id="link">
+                    <a>Login</a>
+                  </Link>
+                )}
+                {!onSignupPage && (
+                  <Link to="/signup" id="link">
+                    <a>Signup</a>
+                  </Link>
+                )}
+              </>
             )}
-            {!onLoginPage && <Link to="/login">Login</Link>}
-            {!onSignupPage && <Link to="/signup">Signup</Link>}
-          </>
-        )}
+          </div>
+        </div>
       </div>
     </div>
   );
