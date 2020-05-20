@@ -44,6 +44,7 @@ const userSchema = new Schema(
         "Makeup Artist",
         "Dancer",
         "Other",
+        "",
       ],
     },
     imageUrl: {

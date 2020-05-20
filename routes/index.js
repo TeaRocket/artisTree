@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 
 router.get("/categories", (req, res, next) => {
-  res.json(User.schema.obj.category.enum);
+  res.json(User.schema.obj.category.enum.filter((category) => category));
 });
 
 router.get("/locations", (req, res, next) => {
