@@ -82,7 +82,7 @@ export default class Signup extends Component {
     return (
       <div>
         <Nav />
-        <div>
+        <div class="form-popup" id="myForm">
           <form onSubmit={this.handleSubmit}>
             <div class="con">
               <header class="head-form">
@@ -91,9 +91,6 @@ export default class Signup extends Component {
               </header>
               <br></br>
               <div class="field-set">
-                <span class="input-item">
-                  <i class="fa fa-user-circle"></i>
-                </span>
                 <input
                   type="text"
                   name="username"
@@ -105,17 +102,14 @@ export default class Signup extends Component {
                   class="form-input"
                 />
                 <br></br>
-                <span class="input-item">
-                  <i class="fa fa-key"></i>
-                </span>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleChange}
                   // id="password"
-                  id="pwd"
+                  id="txt-input"
                   class="form-input"
                 />
                 <br></br>
@@ -172,8 +166,12 @@ export default class Signup extends Component {
                   <div variant="danger">{this.state.message}</div>
                 )}
                 <br></br>
-                <button type="submit" value="Signup" class="log-in">
+                <button type="submit" value="Signup" class="signup">
                   Signup
+                </button>
+                <br></br>
+                <button type="submit" class="btn cancel" onclick="closeForm()">
+                  Close
                 </button>
               </div>
             </div>

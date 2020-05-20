@@ -183,22 +183,23 @@
   border-radius: 50%;
 }
 * {
-  padding: 50;
+  padding: 10;
   margin: 50;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, sans-serif;
 }
 
 form {
-  width: 800px;
-  min-height: 500px;
+  width: 550px;
   height: auto;
   border-radius: 5px;
   margin: 10% auto;
   -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
   box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-  padding: 10%;
-  background-image: linear-gradient(-225deg, #f3ffef 50%, #9dd57c 50%);
+  padding: 1%;
+  background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
 }
 
 /* form Container */
@@ -210,7 +211,7 @@ form .con {
   justify-content: space-around;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 10% auto;
 }
 
 /* the header form form */
@@ -219,55 +220,41 @@ header {
   text-align: center;
 }
 
-/* Login title form form */
+/* title form form */
 header h2 {
+  font-family: Montserrat, sans-serif;
   font-size: 250%;
-  font-family: "Playfair Display", serif;
   color: #3e403f;
 }
 
-/*  A welcome message or an explanation of the login form */
+/*  A welcome message or an explanation of the form */
 header p {
   letter-spacing: 0.05em;
+  color: #3e403f;
 }
 
-/* //////////////////////////////////////////// */
-/* //////////////////////////////////////////// */
 .input-item {
-  background: #fff;
   color: #333;
-  padding: 14.5px 0px 15px 9px;
-  border-radius: 5px 0px 0px 5px;
-}
-
-/* Show/hide password Font Icon */
-#eye {
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
   background: #fff;
-  color: #333;
-  margin: 5.9px 0 0 0;
-  margin-left: -20px;
-  padding: 15px 9px 19px 0px;
-  border-radius: 0px 5px 5px 0px;
-  float: right;
-  position: relative;
-  right: 1%;
-  top: -0.2%;
-  z-index: 5;
-  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  border: none;
 }
 
 /* inputs form  */
 input[class="form-input"] {
-  width: 240px;
-  height: 50px;
   margin-top: 2%;
   padding: 15px;
   font-size: 16px;
-  font-family: "Abel", sans-serif;
+  font-family: Montserrat, sans-serif;
   color: #5e6472;
   outline: none;
   border: none;
-  border-radius: 0px 5px 5px 0px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
@@ -289,7 +276,7 @@ input:focus {
 /* buttons  */
 button {
   display: inline-block;
-  color: #252537;
+  color: #233948;
   width: 280px;
   height: 50px;
   padding: 0 20px;
@@ -301,7 +288,7 @@ button {
   text-align: center;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  margin: 7% auto;
+  margin: 3% auto;
   letter-spacing: 0.05em;
 }
 
@@ -310,16 +297,6 @@ button {
   width: 48%;
   display: inline-block;
   margin-left: 2%;
-}
-
-/*       Forgot Password button FAF3DD  */
-.frgt-pass {
-  background: transparent;
-}
-
-/*     Sign Up button  */
-.sign-up {
-  background: #b8f2e6;
 }
 
 /* buttons hover */
