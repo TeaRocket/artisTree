@@ -25,10 +25,8 @@ export default function MessagesChat(props) {
     axios.post(`/messages/${props.id}`, { message }).then((result) => {
       showMessages();
       setMessage("");
-      console.log(message);
     });
   };
-  console.log(props.id);
   return (
     <div>
       {props.id && (

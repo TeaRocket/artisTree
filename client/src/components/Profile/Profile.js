@@ -59,7 +59,6 @@ export default class Profile extends Component {
       axios
         .post("/upload/single", uploadData)
         .then((response) => {
-          console.log(response.data);
           this.setState({
             imageUrl: response.data.secure_url,
             uploadOn: false,
@@ -73,8 +72,10 @@ export default class Profile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     // const uploadData = new FormData();
-    const { user, availability } = this.context;
+    const { user } = this.context;
+    const availability = user.availability;
     const { displayName, bio, location, category, subcategory } = this.state;
+    console.log(availability);
     axios
       .put(`/user/${user._id}/profile`, {
         displayName,
@@ -93,7 +94,6 @@ export default class Profile extends Component {
           subcategory,
           availability,
         } = result.data;
-        console.log(result);
         this.setState({
           displayName,
           bio,
@@ -264,7 +264,7 @@ export default class Profile extends Component {
           <p>{this.state.bio}</p>
           <p>{this.state.category}</p>
           <p>{this.state.subcategory}</p>
-          <p>{this.state.role}</p>
+
           <div>
             <ArtworkList artworks={this.state.artworks} profileId={profileId} />
             {allowedToEdit && user.role === "Artist" && (
@@ -274,7 +274,14 @@ export default class Profile extends Component {
                 </button>
               </>
             )}
-            {this.state.addArtworkForm && <AddArtwork getData={this.getData} />}
+            {this.state.addArtworkForm && (
+              <AddArtwork
+                getData={this.getData}
+                closeForm={() => {
+                  this.setState({ addArtworkForm: false });
+                }}
+              />
+            )}
           </div>
           {user.role === "Artist" && (
             <>

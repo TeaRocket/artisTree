@@ -136,6 +136,8 @@ export default function SearchResults() {
                 <Link to={`/user/${artist._id}`}>
                   <img src={artist.imageUrl} alt="" height="100" />
                   <p>{artist.username}</p>
+                  <p>{artist.category}</p>
+                  <p>{artist.subcategory}</p>
                 </Link>
               </li>
             );
