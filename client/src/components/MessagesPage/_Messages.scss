@@ -1,5 +1,5 @@
 .messages-page {
-  max-height: calc(100vh - 115px);
+  max-height: calc(100vh - 125px);
   position: relative;
   display: grid;
   grid-template-columns: minmax(100px, 1fr) minmax(300px, 3fr);
@@ -12,6 +12,7 @@
     margin-bottom: 0;
     width: 90%;
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
+    margin-top: 105px;
   }
   ul {
     list-style-type: none;
@@ -46,6 +47,7 @@
   p {
     margin-bottom: 0em;
     margin-top: 0.6em;
+
     color: #737488;
     &.name-from {
       color: #3a3b4a;
@@ -55,7 +57,7 @@
 .messages-chat {
   max-height: 100%;
   display: grid;
-  grid-template-rows: 10fr 1fr;
+  grid-template-rows: 6fr 1fr;
   padding: 1em;
   padding-left: 2em;
 
@@ -82,12 +84,56 @@
     justify-content: flex-start;
     p {
       background-color: #d3f0c7;
+      padding: 1em;
+      border-radius: 0.3em;
+      margin-left: 1em;
     }
   }
   &.outgoing {
     p {
       background-color: #9dd57c;
+      padding: 1em;
+      border-radius: 0.3em;
+      margin-right: 1em;
     }
     justify-content: flex-end;
   }
+}
+
+.message-form {
+  width: 100%;
+  margin: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+}
+.message-box-container {
+  position: relative;
+  width: 100%;
+  &:focus-within > .message-label {
+    visibility: hidden;
+  }
+}
+.message-input {
+  padding: 0.9em;
+  height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  /* background-image: url("search.png"); */
+  transition: width 0.4s ease-in-out;
+  border: 1px solid #3a3b4a;
+}
+.message-label {
+  position: absolute;
+  top: 0.9em;
+  left: 0.9em;
+  color: #3a3b4a;
+}
+
+.message-send {
+  width: 70px;
+  border: 1px solid black;
+  margin: 0;
 }

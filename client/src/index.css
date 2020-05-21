@@ -323,7 +323,7 @@ nav #nav-right-container #nav-inner-r #link a::selection {
 }
 
 .messages-page {
-  max-height: calc(100vh - 115px);
+  max-height: calc(100vh - 125px);
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -341,6 +341,7 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   width: 90%;
   -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
           box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+  margin-top: 105px;
 }
 
 .messages-page ul {
@@ -396,8 +397,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   max-height: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 10fr 1fr;
-      grid-template-rows: 10fr 1fr;
+  -ms-grid-rows: 6fr 1fr;
+      grid-template-rows: 6fr 1fr;
   padding: 1em;
   padding-left: 2em;
 }
@@ -435,6 +436,9 @@ nav #nav-right-container #nav-inner-r #link a::selection {
 
 .message.incoming p {
   background-color: #d3f0c7;
+  padding: 1em;
+  border-radius: 0.3em;
+  margin-left: 1em;
 }
 
 .message.outgoing {
@@ -445,6 +449,57 @@ nav #nav-right-container #nav-inner-r #link a::selection {
 
 .message.outgoing p {
   background-color: #9dd57c;
+  padding: 1em;
+  border-radius: 0.3em;
+  margin-right: 1em;
+}
+
+.message-form {
+  width: 100%;
+  margin: 0;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.message-box-container {
+  position: relative;
+  width: 100%;
+}
+
+.message-box-container:focus-within > .message-label {
+  visibility: hidden;
+}
+
+.message-input {
+  padding: 0.9em;
+  height: 50px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  /* background-image: url("search.png"); */
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border: 1px solid #3a3b4a;
+}
+
+.message-label {
+  position: absolute;
+  top: 0.9em;
+  left: 0.9em;
+  color: #3a3b4a;
+}
+
+.message-send {
+  width: 70px;
+  border: 1px solid black;
+  margin: 0;
 }
 
 * {

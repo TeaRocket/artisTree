@@ -39,16 +39,23 @@ export default function MessagesChat(props) {
               return <MessageSingle message={message} user={user} />;
             })}
           </ul>
-          <form onSubmit={sendMessage}>
-            <label htmlFor="Message">Message</label>
-            <textarea
-              value={message}
-              onChange={handleChange}
-              type="text"
-              name="message"
-              id="Message"
-            />
-            <button type="submit">Send</button>
+          <form onSubmit={sendMessage} className="message-form">
+            <div class="message-box-container">
+              <label htmlFor="Message" className="message-label">
+                Message
+              </label>
+              <input
+                className="message-input"
+                value={message}
+                onChange={handleChange}
+                type="text"
+                name="message"
+                id="Message"
+              />
+            </div>
+            <button className="message-send" type="submit">
+              Send
+            </button>
           </form>
         </>
       )}
