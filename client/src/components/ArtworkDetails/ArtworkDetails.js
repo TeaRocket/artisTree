@@ -103,7 +103,7 @@ export default class ArtworkDetails extends Component {
     const { user } = this.context;
 
     return (
-      <div>
+      <main>
         <h1>{this.state.artwork.title}</h1>
         <img src={this.state.images[0]} alt="" />
         <p>{this.state.artwork.description}</p>
@@ -120,7 +120,7 @@ export default class ArtworkDetails extends Component {
             handleSubmit={this.handleSubmit}
           />
         )}
-      </div>
+      </main>
     );
   }
 }

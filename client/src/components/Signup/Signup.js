@@ -80,8 +80,7 @@ export default class Signup extends Component {
     //getting a query from url
 
     return (
-      <div>
-        <Nav />
+      <main>
         <div class="form-popup" id="myForm">
           <form class="form-signup" onSubmit={this.handleSubmit}>
             <div class="con">
@@ -184,7 +183,7 @@ export default class Signup extends Component {
             </div>
           </form>
         </div>
-      </div>
+      </main>
     );
   }
 }

@@ -11,6 +11,7 @@ import MessagesPage from "./components/MessagesPage/MessagesPage";
 import AddArtwork from "./components/AddArtwork/AddArtwork";
 import ArtworkDetails from "./components/ArtworkDetails/ArtworkDetails";
 import ArtworkList from "./components/ArtworkList/ArtworkList";
+import Nav from "./components/Nav/Nav";
 
 class App extends React.Component {
   static contextType = UserContext;
@@ -29,6 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Nav />
         <Route exact path="/" component={SearchResults} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />

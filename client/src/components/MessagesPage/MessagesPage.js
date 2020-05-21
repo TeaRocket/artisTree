@@ -13,12 +13,9 @@ export default function Messages(props) {
     }
   }, [user._id, id]);
   return (
-    <>
-      <Nav />
-      <div>
-        <MessagesList id={id} />
-        <MessagesChat id={id} />
-      </div>
-    </>
+    <main>
+      <MessagesList id={id} />
+      <MessagesChat id={id} />
+    </main>
   );
 }

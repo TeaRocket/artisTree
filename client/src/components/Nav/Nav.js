@@ -12,7 +12,7 @@ export default function Nav() {
   const onArtistSignupPage = search === "?artist=true";
   //const onArtistSignup = pathname === "/signup";
   return (
-    <div id="Nav">
+    <nav>
       <div id="nav-left-container">
         <div id="nav-inner-l">
           <Link to="/">
@@ -65,6 +65,6 @@ export default function Nav() {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
