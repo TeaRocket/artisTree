@@ -13,7 +13,7 @@ export default function Messages(props) {
     }
   }, [user._id, id]);
   return (
-    <main className="messages-page">
+    <main className="messages-page container">
       <MessagesList id={id} />
       <MessagesChat id={id} />
     </main>

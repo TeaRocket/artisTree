@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import axios from "axios";
+import MessageSingle from "./MessageSingle";
 
 export default function MessagesChat(props) {
   const { user } = useContext(UserContext);
@@ -30,24 +31,12 @@ export default function MessagesChat(props) {
     });
   };
   return (
-    <div>
+    <section className="messages-chat">
       {props.id && (
         <>
           <ul>
             {messages.map((message) => {
-              return (
-                <li
-                  className={
-                    message.from.username === user.username
-                      ? "outgoing"
-                      : "incoming"
-                  }
-                >
-                  <p>From: {message.from.username}</p>
-                  <p>To: {message.to.username}</p>
-                  <p>{message.text}</p>
-                </li>
-              );
+              return <MessageSingle message={message} user={user} />;
             })}
           </ul>
           <form onSubmit={sendMessage}>
@@ -63,6 +52,6 @@ export default function MessagesChat(props) {
           </form>
         </>
       )}
-    </div>
+    </section>
   );
 }

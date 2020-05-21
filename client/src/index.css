@@ -1,21 +1,7 @@
 * {
-  padding: 10;
-  margin: 50;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, sans-serif;
-}
-
-form {
-  width: 550px;
-  height: auto;
-  border-radius: 5px;
-  margin: 10% auto;
-  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-  box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-  padding: 2%;
-  background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
 }
 
 /* form Container */
@@ -24,9 +10,9 @@ form .con {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
+      justify-content: space-around;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 3% auto;
 }
 
@@ -55,8 +41,8 @@ header p {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .input-item {
@@ -80,7 +66,7 @@ input[class="form-input"] {
   outline: none;
   border: none;
   -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+          box-sizing: content-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
@@ -92,7 +78,7 @@ input[id="txt-input"] {
 /* focus  */
 input:focus {
   -webkit-transform: translateX(-2px);
-  transform: translateX(-2px);
+          transform: translateX(-2px);
   border-radius: 5px;
 }
 
@@ -128,42 +114,41 @@ button {
 /* buttons hover */
 button:hover {
   -webkit-transform: translatey(3px);
-  transform: translatey(3px);
+          transform: translatey(3px);
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 
 /* buttons hover Animation */
 button:hover {
   -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
-  animation: ani9 0.4s ease-in-out infinite alternate;
+          animation: ani9 0.4s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes ani9 {
   0% {
     -webkit-transform: translateY(3px);
-    transform: translateY(3px);
+            transform: translateY(3px);
   }
   100% {
     -webkit-transform: translateY(5px);
-    transform: translateY(5px);
+            transform: translateY(5px);
   }
 }
 
 @keyframes ani9 {
   0% {
     -webkit-transform: translateY(3px);
-    transform: translateY(3px);
+            transform: translateY(3px);
   }
   100% {
     -webkit-transform: translateY(5px);
-    transform: translateY(5px);
+            transform: translateY(5px);
   }
 }
 
 nav {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
   color: #7f7f7f;
   cursor: auto;
   display: block;
@@ -183,8 +168,7 @@ nav {
 }
 
 nav #nav-left-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
   color: #7f7f7f;
   cursor: auto;
   display: table;
@@ -192,12 +176,11 @@ nav #nav-left-container {
   margin: 0 auto;
   width: 100%;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 nav #nav-left-container #nav-inner-l {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
   color: #7f7f7f;
   cursor: auto;
   -webkit-transition: max-width 0.5s, min-width 0.5s;
@@ -221,8 +204,7 @@ nav #nav-left-container #nav-inner-l img {
 }
 
 nav #nav-right-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
   color: #7f7f7f;
   cursor: auto;
   width: 100%;
@@ -286,14 +268,14 @@ nav #nav-right-container #nav-inner-r #link a:hover {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
-  box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
+          box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
 }
 
 nav #nav-right-container #nav-inner-r #link a:active {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
-  box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
+          box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
 }
 
 nav #nav-right-container #nav-inner-r #link a::-moz-selection {
@@ -313,25 +295,57 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-top: 3em;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .searchForm button {
   margin-left: 2em;
   -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
-  align-self: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .messages-page {
+  max-height: calc(100vh - 115px);
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
+  -ms-grid-rows: calc(100vh - 105px);
+      grid-template-rows: calc(100vh - 105px);
+  overflow: hidden;
+}
+
+.messages-page.container {
+  max-width: 1250px;
+  border-radius: 5px;
+  margin-bottom: 0;
+  width: 90%;
+  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+  padding: 2%;
+}
+
+.messages-list {
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.messages-chat {
+  max-height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 10fr 1fr;
+      grid-template-rows: 10fr 1fr;
+}
+
+.messages-chat ul {
+  overflow-y: scroll;
 }
 
 .message-profile-pic {
@@ -341,21 +355,15 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   border-radius: 50%;
 }
 
-.outgoing {
-  background-color: blue;
-}
-
-.incoming {
-  background-color: red;
+.message-profile-pic.small {
+  height: 50px;
+  width: 50px;
 }
 
 * {
-  padding: 10;
-  margin: 50;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, sans-serif;
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
 }
 
 form {
@@ -364,7 +372,7 @@ form {
   border-radius: 5px;
   margin: 10% auto;
   -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-  box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
   padding: 2%;
   background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
 }
@@ -375,9 +383,9 @@ form .con {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
+      justify-content: space-around;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 3% auto;
 }
 
@@ -406,8 +414,8 @@ header p {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .input-item {
@@ -431,7 +439,7 @@ input[class="form-input"] {
   outline: none;
   border: none;
   -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+          box-sizing: content-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
@@ -443,7 +451,7 @@ input[id="txt-input"] {
 /* focus  */
 input:focus {
   -webkit-transform: translateX(-2px);
-  transform: translateX(-2px);
+          transform: translateX(-2px);
   border-radius: 5px;
 }
 
@@ -479,30 +487,115 @@ button {
 /* buttons hover */
 button:hover {
   -webkit-transform: translatey(3px);
-  transform: translatey(3px);
+          transform: translatey(3px);
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 
 /* buttons hover Animation */
 button:hover {
   -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
-  animation: ani9 0.4s ease-in-out infinite alternate;
+          animation: ani9 0.4s ease-in-out infinite alternate;
 }
 
 @keyframes ani9 {
   0% {
     -webkit-transform: translateY(3px);
-    transform: translateY(3px);
+            transform: translateY(3px);
   }
   100% {
     -webkit-transform: translateY(5px);
-    transform: translateY(5px);
+            transform: translateY(5px);
   }
 }
 
-.button-edit-profile {
-  background-color: blue;
+.page {
+  padding: 10;
+  margin: 50;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+}
+
+.container {
+  max-width: 1250px;
+  border-radius: 5px;
+  margin: 10% auto;
+  margin-top: 105px;
+  width: 90%;
+  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+  padding: 2%;
+}
+
+.profile-banner {
+  background: #eee;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #9dd57c;
+  height: 250px;
+}
+
+header i {
+  position: relative;
+  cursor: pointer;
+  right: -96%;
+  top: 25px;
+  font-size: 18px !important;
+}
+
+@media (max-width: 800px) {
+  header {
+    height: 150px;
+  }
+  header i {
+    right: -90%;
+  }
+}
+
+section {
+  padding: 20px 20px 0px 20px;
+}
+
+.left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  margin-top: -120px;
+  border-radius: 100px;
+  border: 4px solid #fff;
+}
+
+.name {
+  margin-top: 20px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-size: 18pt;
+  color: #777;
+}
+
+.info {
+  margin-top: -5px;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11pt;
+  color: #aaa;
 }
 
 :root {

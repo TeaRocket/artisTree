@@ -1,11 +1,40 @@
 .messages-page {
+  max-height: calc(100vh - 115px);
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  grid-template-rows: calc(100vh - 105px);
+  overflow: hidden;
+  &.container {
+    max-width: 1250px;
+    border-radius: 5px;
+    margin-bottom: 0;
+    width: 90%;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+  }
 }
 
+.messages-list {
+  max-height: 100%;
+  overflow-y: scroll;
+}
+.messages-chat {
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 10fr 1fr;
+  ul {
+    overflow-y: scroll;
+  }
+}
 .message-profile-pic {
   background-size: cover;
   height: 70px;
   width: 70px;
   border-radius: 50%;
+
+  &.small {
+    height: 50px;
+    width: 50px;
+  }
 }
