@@ -101,7 +101,6 @@ export default class ArtworkDetails extends Component {
     if (!this.state.artwork) return <></>;
     const id = this.props.match.params.id;
     const { user } = this.context;
-    console.log(this.state.images);
 
     return (
       <main>

@@ -20,7 +20,7 @@ class App extends React.Component {
     axios
       .get("/auth/loggedin")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         const { setUser } = this.context;
         setUser(response.data);
       })
