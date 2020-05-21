@@ -5,7 +5,7 @@ export default function MessageSingle({ message, user }) {
   const fromYou = message.from.username === user.username;
 
   return (
-    <li className={fromYou ? "outgoing" : "incoming"}>
+    <li className={fromYou ? "message outgoing" : "message incoming"}>
       {!fromYou && (
         <Link to={`/user/${message.from._id}`}>
           <div

@@ -1,7 +1,20 @@
 * {
+  padding: 10;
+  margin: 50;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+}
+
+form {
+  width: 550px;
+  height: auto;
+  border-radius: 5px;
+  margin: 10% auto;
+  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+  padding: 2%;
+  background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
 }
 
 /* form Container */
@@ -314,8 +327,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   position: relative;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 3fr;
-      grid-template-columns: 1fr 3fr;
+  -ms-grid-columns: minmax(100px, 1fr) minmax(300px, 3fr);
+      grid-template-columns: minmax(100px, 1fr) minmax(300px, 3fr);
   -ms-grid-rows: calc(100vh - 105px);
       grid-template-rows: calc(100vh - 105px);
   overflow: hidden;
@@ -326,14 +339,57 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   border-radius: 5px;
   margin-bottom: 0;
   width: 90%;
-  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-  padding: 2%;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+}
+
+.messages-page ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .messages-list {
   max-height: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 1em;
+  margin-right: 0.5em;
+  border-right: 1px solid #9b9caaa9;
+}
+
+.message-preview {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70px auto;
+      grid-template-columns: 70px auto;
+  margin-bottom: 1em;
+  text-decoration: none;
+}
+
+.name-and-message {
+  padding-left: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.name-and-message span {
+  font-size: 85%;
+}
+
+.name-and-message p {
+  margin-bottom: 0em;
+  margin-top: 0.6em;
+  color: #737488;
+}
+
+.name-and-message p.name-from {
+  color: #3a3b4a;
 }
 
 .messages-chat {
@@ -342,6 +398,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   display: grid;
   -ms-grid-rows: 10fr 1fr;
       grid-template-rows: 10fr 1fr;
+  padding: 1em;
+  padding-left: 2em;
 }
 
 .messages-chat ul {
@@ -353,6 +411,9 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   height: 70px;
   width: 70px;
   border-radius: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .message-profile-pic.small {
@@ -360,7 +421,35 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   width: 50px;
 }
 
+.message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.message.incoming {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.message.incoming p {
+  background-color: #d3f0c7;
+}
+
+.message.outgoing {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.message.outgoing p {
+  background-color: #9dd57c;
+}
+
 * {
+  padding: 10;
+  margin: 50;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
@@ -521,7 +610,6 @@ button:hover {
   max-width: 1250px;
   border-radius: 5px;
   margin: 10% auto;
-  margin-top: 105px;
   width: 90%;
   -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
           box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);

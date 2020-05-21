@@ -6,10 +6,10 @@ export default function MessagesListItem({ message }) {
   const { user } = useContext(UserContext);
   const fromYou = message.from.username === user.username;
   const linkId = fromYou ? message.to._id : message.from._id;
-  console.log(message);
+  const shortMessageText = message.text.substring(0, 10) + "...";
   return (
     <li>
-      <Link to={`/messages/${linkId}`}>
+      <Link to={`/messages/${linkId}`} className="message-preview">
         <div
           className="message-profile-pic"
           style={{
@@ -18,9 +18,20 @@ export default function MessagesListItem({ message }) {
             })`,
           }}
         />
-
-        <p>{fromYou ? message.to.username : message.from.username}</p>
-        <p> {fromYou ? `you: ${message.text}` : message.text}</p>
+        <div className="name-and-message">
+          <p className="name-from">
+            {fromYou ? message.to.username : message.from.username}
+          </p>
+          <p>
+            {fromYou ? (
+              <>
+                <span>you:</span> {shortMessageText}
+              </>
+            ) : (
+              shortMessageText
+            )}
+          </p>
+        </div>
       </Link>
     </li>
   );
