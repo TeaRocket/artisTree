@@ -57,15 +57,14 @@ export default class Profile extends Component {
           this.setState({
             imageUrl: response.data.secure_url,
             uploadOn: false,
+            editPicture: false,
           });
         })
         .catch((error) => console.log(error));
     });
-    //uploadData.append('username', this.state.username)
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    // const uploadData = new FormData();
     const { user } = this.context;
     const availability = user.availability;
     const { displayName, bio, location, category, subcategory } = this.state;
@@ -157,122 +156,159 @@ export default class Profile extends Component {
     const { user } = this.context;
     const profileId = this.props.match.params.id;
     const allowedToEdit = user._id === profileId;
+    const isArtist = user.role === "Artist";
+    const profileComplete =
+      this.state.displayName &&
+      this.state.bio &&
+      this.state.location &&
+      this.state.category;
+
     return (
       <>
         <Nav />
-        <div>
-          <h1>{this.state.displayName}</h1>
-          <div>
-            <img
-              style={{ height: "200px" }}
-              src={this.state.imageUrl}
-              alt={this.state.displayName}
-            />
-            {!allowedToEdit ? (
-              <Link to={`/messages/${profileId}`}>Send a message</Link>
-            ) : (
-              <Link to={`/messages`}>My messages</Link>
+        <div class="page">
+          <div class="container">
+            <header class="profile-banner">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </header>
+            <main>
+              <div class="row">
+                <div class="left col-lg-4">
+                  <div class="photo-left">
+                    <img
+                      class="photo"
+                      style={{ height: "200px" }}
+                      src={this.state.imageUrl}
+                      alt={this.state.displayName}
+                    />
+                    {!allowedToEdit ? (
+                      <Link to={`/messages/${profileId}`}>Send a message</Link>
+                    ) : (
+                      <Link to={`/messages`}>My messages</Link>
+                    )}
+                    <div>
+                      {allowedToEdit && (
+                        <button type="button" onClick={this.toggleEditForm}>
+                          Edit Picture
+                        </button>
+                      )}
+                      {this.state.editPicture && (
+                        <form>
+                          <input
+                            type="file"
+                            onChange={(e) => this.handleFileChange(e)}
+                          />
+                        </form>
+                      )}
+                    </div>
+                  </div>
+                  <h4 class="name">{this.state.displayName}</h4>
+                  <p class="info">{this.state.category}</p>
+                  <p class="info">{this.state.subcategory}</p>
+                  <p class="info">{this.state.location}</p>
+                </div>
+              </div>
+            </main>
+
+            <p>{this.state.getData}</p>
+            {allowedToEdit && (
+              <button
+                className={
+                  profileComplete
+                    ? "button-edit-profile"
+                    : "button-complete-profile"
+                }
+                type="button"
+                onClick={this.toggleProfileEdit}
+              >
+                {profileComplete ? "Edit Profile" : "Complete your profile"}
+              </button>
             )}
+            {this.state.editProfile && (
+              <form onSubmit={this.handleSubmit}>
+                <label htmlFor="displayName">Display Name</label>
+                <input
+                  type="text"
+                  name="displayName"
+                  id="displayName"
+                  onChange={this.handleFormChange}
+                  value={this.state.displayName}
+                />
+                <label htmlFor="bio">Bio</label>
+                <textarea
+                  type="text"
+                  name="bio"
+                  id="bio"
+                  value={this.state.bio}
+                  onChange={this.handleFormChange}
+                />
+                <label htmlFor="location">Location</label>
+                <input
+                  onChange={this.handleFormChange}
+                  type="text"
+                  name="location"
+                  id="location"
+                  value={this.state.location}
+                />
+                {isArtist && (
+                  <>
+                    <label htmlFor="category">Artist Type</label>
+                    <select
+                      name="category"
+                      id="category"
+                      value={this.state.category}
+                      onChange={this.handleFormChange}
+                    >
+                      {this.state.categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                    <label htmlFor="subcategory">Subcategory</label>
+                    <input
+                      type="text"
+                      name="subcategory"
+                      id="subcategory"
+                      value={this.state.subcategory}
+                      onChange={this.handleFormChange}
+                    ></input>
+                  </>
+                )}
+                <button type="submit">Update Profile</button>
+              </form>
+            )}
+
+            <p>{this.state.bio}</p>
+
             <div>
-              {allowedToEdit && (
-                <button type="button" onClick={this.toggleEditForm}>
-                  Edit Picture
-                </button>
+              <ArtworkList
+                artworks={this.state.artworks}
+                profileId={profileId}
+              />
+              {allowedToEdit && isArtist && (
+                <>
+                  <button type="button" onClick={this.toggleArtwork}>
+                    Add Artwork
+                  </button>
+                </>
               )}
-              {this.state.editPicture && (
-                <form>
-                  <input
-                    type="file"
-                    onChange={(e) => this.handleFileChange(e)}
-                  />
-                </form>
+              {this.state.addArtworkForm && (
+                <AddArtwork
+                  getData={this.getData}
+                  closeForm={() => {
+                    this.setState({ addArtworkForm: false });
+                  }}
+                />
               )}
             </div>
-          </div>
-          <p>{this.state.getData}</p>
-          {allowedToEdit && (
-            <button type="button" onClick={this.toggleProfileEdit}>
-              Edit Profile
-            </button>
-          )}
-          {this.state.editProfile && (
-            <form onSubmit={this.handleSubmit}>
-              <label htmlFor="displayName">Display Name</label>
-              <input
-                type="text"
-                name="displayName"
-                id="displayName"
-                onChange={this.handleFormChange}
-                value={this.state.displayName}
-              />
-              <label htmlFor="bio">Bio</label>
-              <textarea
-                type="text"
-                name="bio"
-                id="bio"
-                value={this.state.bio}
-                onChange={this.handleFormChange}
-              />
-              <label htmlFor="location">Location</label>
-              <input
-                onChange={this.handleFormChange}
-                type="text"
-                name="location"
-                id="location"
-                value={this.state.location}
-              />
-              <label htmlFor="category">Artist Type</label>
-              <select
-                name="category"
-                id="category"
-                value={this.state.category}
-                onChange={this.handleFormChange}
-              >
-                {this.state.categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="subcategory">Subcategory</label>
-              <input
-                type="text"
-                name="subcategory"
-                id="subcategory"
-                value={this.state.subcategory}
-                onChange={this.handleFormChange}
-              ></input>
-              <button type="submit">Update Profile</button>
-            </form>
-          )}
-          <p>{this.state.location}</p>
-          <p>{this.state.bio}</p>
-          <p>{this.state.category}</p>
-          <p>{this.state.subcategory}</p>
-          <div>
-            <ArtworkList artworks={this.state.artworks} profileId={profileId} />
-            {allowedToEdit && user.role === "Artist" && (
+            {user.role === "Artist" && (
               <>
-                <button type="button" onClick={this.toggleArtwork}>
-                  Add Artwork
-                </button>
+                <Availabilities allowedToEdit={allowedToEdit} />
+                <DateAdder allowedToEdit={allowedToEdit} />
               </>
             )}
-            {this.state.addArtworkForm && (
-              <AddArtwork
-                getData={this.getData}
-                closeForm={() => {
-                  this.setState({ addArtworkForm: false });
-                }}
-              />
-            )}
           </div>
-          {user.role === "Artist" && (
-            <>
-              <Availabilities allowedToEdit={allowedToEdit} />
-              <DateAdder allowedToEdit={allowedToEdit} />
-            </>
-          )}
         </div>
       </>
     );
