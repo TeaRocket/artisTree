@@ -34,3 +34,6 @@ artistree/yarn-error.log*
 .env
 node_modules
 client/node_modules
+.vscode
+.git
+.DS_Store
