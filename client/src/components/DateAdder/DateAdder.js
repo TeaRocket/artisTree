@@ -53,6 +53,7 @@ export default class DateAdder extends Component {
           />
           <br />
           <button
+            className="button-forms"
             onClick={() => {
               if (this.state.startDate && this.state.endDate) {
                 return this.makeCalEntry();
@@ -62,14 +63,18 @@ export default class DateAdder extends Component {
           >
             Submit
           </button>
-          <button onClick={this.toggleVisibility}>Close</button>
+          <button className="button-forms" onClick={this.toggleVisibility}>
+            Close
+          </button>
         </div>
       );
     } else {
       return (
         <>
           {this.props.allowedToEdit && (
-            <button onClick={this.toggleVisibility}>Add Availability</button>
+            <button className="button-forms" onClick={this.toggleVisibility}>
+              Add Availability
+            </button>
           )}
         </>
       );

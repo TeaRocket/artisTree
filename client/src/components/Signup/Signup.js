@@ -80,16 +80,16 @@ export default class Signup extends Component {
     //getting a query from url
 
     return (
-      <main>
-        <div class="form-popup" id="myForm">
-          <form class="form-signup" onSubmit={this.handleSubmit}>
-            <div class="con">
-              <header class="head-form">
+      <main className="main-box">
+        <div className="form-popup" id="myForm">
+          <form className="form-signup" onSubmit={this.handleSubmit}>
+            <div className="con">
+              <header className="head-form">
                 <h2>Signup</h2>
                 <p>Sign up here to use our services.</p>
               </header>
               <br></br>
-              <div class="field-set">
+              <div className="field-set">
                 <label>Username: </label>
                 <input
                   type="text"
@@ -99,7 +99,7 @@ export default class Signup extends Component {
                   onChange={this.handleChange}
                   //id="username"
                   id="txt-input"
-                  class="form-input"
+                  className="form-input"
                 />
                 <br></br>
                 <label>Password: </label>
@@ -111,7 +111,7 @@ export default class Signup extends Component {
                   onChange={this.handleChange}
                   // id="password"
                   id="txt-input"
-                  class="form-input"
+                  className="form-input"
                 />
                 <br></br>
                 <label>Email: </label>
@@ -123,7 +123,7 @@ export default class Signup extends Component {
                   onChange={this.handleChange}
                   // id="email"
                   id="txt-input"
-                  class="form-input"
+                  className="form-input"
                 />
                 <br></br>
                 <label>Birthday: </label>
@@ -134,7 +134,7 @@ export default class Signup extends Component {
                   onChange={this.handleChange}
                   // id="birthDate"
                   id="txt-input"
-                  class="form-input"
+                  className="form-input"
                 />
                 {this.isArtist() && (
                   <>
@@ -148,7 +148,7 @@ export default class Signup extends Component {
                       onChange={this.handleChange}
                       // id="location"
                       id="txt-input"
-                      class="form-input"
+                      className="form-input"
                     />
                     <br></br>
                     <label>Type of artist: </label>
@@ -157,7 +157,7 @@ export default class Signup extends Component {
                       id="category"
                       value={this.state.category}
                       onChange={this.handleChange}
-                      class="form-input"
+                      className="select-input"
                     >
                       {this.state.categories.map((category) => (
                         <option key={category} value={category}>
@@ -172,13 +172,10 @@ export default class Signup extends Component {
                   <div variant="danger">{this.state.message}</div>
                 )}
                 <br></br>
-                <button type="submit" value="Signup" class="signup">
+                <button type="submit" value="Signup" className="signup">
                   Signup
                 </button>
                 <br></br>
-                <button type="submit" class="btn cancel" onclick="closeForm()">
-                  Close
-                </button>
               </div>
             </div>
           </form>
