@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 export default class Profile extends Component {
   static contextType = UserContext;
-
   state = {
     imageUrl: null,
     username: null,
@@ -28,7 +27,6 @@ export default class Profile extends Component {
     uploadOn: false,
   };
   static contextType = UserContext;
-
   componentDidMount = () => {
     this.getData();
     axios.get("/categories").then((categories) => {
@@ -37,20 +35,17 @@ export default class Profile extends Component {
       });
     });
   };
-
   handleFormChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
-
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
-
   //change pfp
   handleFileChange = (event) => {
     const uploadData = new FormData();
@@ -68,7 +63,6 @@ export default class Profile extends Component {
     });
     //uploadData.append('username', this.state.username)
   };
-
   handleSubmit = (event) => {
     event.preventDefault();
     // const uploadData = new FormData();
@@ -105,7 +99,6 @@ export default class Profile extends Component {
         });
       });
   };
-
   getData = () => {
     const id = this.props.match.params.id;
     axios
@@ -143,32 +136,27 @@ export default class Profile extends Component {
         // }
       });
   };
-
   toggleEditForm = () => {
     this.setState({
       editPicture: !this.state.editPicture,
     });
   };
-
   toggleArtwork = () => {
     this.setState({
       addArtworkForm: !this.state.addArtworkForm,
     });
   };
-
   toggleProfileEdit = () => {
     this.setState({
       editProfile: !this.state.editProfile,
     });
   };
-
   render() {
     if (this.state.error) return <div>{this.state.error.toString()}</div>;
     if (!this.state.username) return <></>;
     const { user } = this.context;
     const profileId = this.props.match.params.id;
     const allowedToEdit = user._id === profileId;
-
     return (
       <>
         <Nav />
@@ -201,7 +189,6 @@ export default class Profile extends Component {
               )}
             </div>
           </div>
-
           <p>{this.state.getData}</p>
           {allowedToEdit && (
             <button type="button" onClick={this.toggleProfileEdit}>
@@ -226,7 +213,6 @@ export default class Profile extends Component {
                 value={this.state.bio}
                 onChange={this.handleFormChange}
               />
-
               <label htmlFor="location">Location</label>
               <input
                 onChange={this.handleFormChange}
@@ -259,12 +245,10 @@ export default class Profile extends Component {
               <button type="submit">Update Profile</button>
             </form>
           )}
-
           <p>{this.state.location}</p>
           <p>{this.state.bio}</p>
           <p>{this.state.category}</p>
           <p>{this.state.subcategory}</p>
-
           <div>
             <ArtworkList artworks={this.state.artworks} profileId={profileId} />
             {allowedToEdit && user.role === "Artist" && (

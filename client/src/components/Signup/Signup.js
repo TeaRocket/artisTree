@@ -82,71 +82,108 @@ export default class Signup extends Component {
     return (
       <div>
         <Nav />
-        <h2>Signup</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            id="username"
-          />
-          <label>Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            id="password"
-          />
-          <label>Email: </label>
-          <input
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            id="email"
-          />
-          <label>Birthdate: </label>
-          <input
-            type="date"
-            name="birthDate"
-            value={this.state.birthDate}
-            onChange={this.handleChange}
-            id="birthDate"
-          />
-          {this.isArtist() && (
-            <>
-              <label>Location: </label>
-              <input
-                type="text"
-                name="location"
-                value={this.state.location}
-                onChange={this.handleChange}
-                id="location"
-              />
-              <label>Type of artist: </label>
-              <select
-                name="category"
-                id="category"
-                value={this.state.category}
-                onChange={this.handleChange}
-              >
-                {this.state.categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </>
-          )}
+        <div class="form-popup" id="myForm">
+          <form class="form-signup" onSubmit={this.handleSubmit}>
+            <div class="con">
+              <header class="head-form">
+                <h2>Signup</h2>
+                <p>Sign up here to use our services.</p>
+              </header>
+              <br></br>
+              <div class="field-set">
+                <label>Username: </label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="picasso"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                  //id="username"
+                  id="txt-input"
+                  class="form-input"
+                />
+                <br></br>
+                <label>Password: </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  // id="password"
+                  id="txt-input"
+                  class="form-input"
+                />
+                <br></br>
+                <label>Email: </label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="picasso@mail.com"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  // id="email"
+                  id="txt-input"
+                  class="form-input"
+                />
+                <br></br>
+                <label>Birthday: </label>
+                <input
+                  type="date"
+                  name="birthDate"
+                  value={this.state.birthDate}
+                  onChange={this.handleChange}
+                  // id="birthDate"
+                  id="txt-input"
+                  class="form-input"
+                />
+                {this.isArtist() && (
+                  <>
+                    <br></br>
+                    <label>Location: </label>
+                    <input
+                      type="text"
+                      name="location"
+                      placeholder="City"
+                      value={this.state.location}
+                      onChange={this.handleChange}
+                      // id="location"
+                      id="txt-input"
+                      class="form-input"
+                    />
+                    <br></br>
+                    <label>Type of artist: </label>
+                    <select
+                      name="category"
+                      id="category"
+                      value={this.state.category}
+                      onChange={this.handleChange}
+                      class="form-input"
+                    >
+                      {this.state.categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                  </>
+                )}
 
-          {this.state.message && (
-            <div variant="danger">{this.state.message}</div>
-          )}
-          <input type="submit" value="Signup" />
-        </form>
+                {this.state.message && (
+                  <div variant="danger">{this.state.message}</div>
+                )}
+                <br></br>
+                <button type="submit" value="Signup" class="signup">
+                  Signup
+                </button>
+                <br></br>
+                <button type="submit" class="btn cancel" onclick="closeForm()">
+                  Close
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
