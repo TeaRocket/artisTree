@@ -19,7 +19,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-color: #9dd57c;
+    background-color: #d3f0c7;
     height: 250px;
   }
 
@@ -53,6 +53,47 @@
     flex-direction: column;
   }
 
+  .overlaycontainer {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+  .overlayartwork {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  .overlayart {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: black;
+    margin: 7px 7px 7px 7px;
+  }
+
+  .overlaycontainer:hover .overlayart {
+    opacity: 0.7;
+  }
+
+  .overlaytext {
+    color: white;
+    font-size: 1.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: sans-serif;
+  }
+
   .photo {
     width: 200px;
     height: 200px;
@@ -62,11 +103,6 @@
     border-radius: 100px;
     border: 4px solid #fff;
   }
-
-  .photo-left img {
-    //position: absolute;
-  }
-
   .photo-left .overlaybutton {
     display: block !important;
     width: 200px !important;
@@ -81,8 +117,6 @@
     cursor: pointer !important;
     overflow: hidden !important;
     outline: none !important;
-    //opacity: 0;
-    // transition: opacity 0.13s ease-out;
 
     &:hover {
       padding: unset;
@@ -290,17 +324,48 @@
     animation: ani9 0.4s ease-in-out infinite alternate;
   }
 
+  .row .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: auto;
+    align-content: start;
+  }
+
+  .art {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: auto;
+    align-content: start;
+    padding: 0 5px;
+  }
+
+  .art-title {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 25pt;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  .art img {
+    margin: 7px;
+    padding: unset;
+  }
+
   .gallery {
     max-width: 1250px;
     border-radius: 5px;
     margin: 2% auto;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
     text-align: center;
   }
 
-  .gallery div {
-    margin-bottom: 30px;
-  }
+  // .gallery div {
+  //   margin-bottom: 30px;
+  // }
 
   .gallery img {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);

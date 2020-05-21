@@ -313,6 +313,7 @@ export default class Profile extends Component {
                     <ArtworkList
                       artworks={this.state.artworks}
                       profileId={profileId}
+                      className="art"
                     />
                     {allowedToEdit && isArtist && (
                       <>
