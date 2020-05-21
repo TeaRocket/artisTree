@@ -1,6 +1,139 @@
+.messages-page {
+  max-height: calc(100vh - 125px);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(300px, 3fr);
+  grid-template-rows: calc(100vh - 105px);
+  overflow: hidden;
+
+  &.container {
+    max-width: 1250px;
+    border-radius: 5px;
+    margin-bottom: 0;
+    width: 90%;
+    box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
+    margin-top: 105px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.messages-list {
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 1em;
+  margin-right: 0.5em;
+  border-right: 1px solid #9b9caaa9;
+}
+.message-preview {
+  display: grid;
+  grid-template-columns: 70px auto;
+  margin-bottom: 1em;
+  text-decoration: none;
+  &:hover {
+  }
+}
+.name-and-message {
+  padding-left: 1em;
+  display: flex;
+  flex-direction: column;
+  span {
+    font-size: 85%;
+  }
+  p {
+    margin-bottom: 0em;
+    margin-top: 0.6em;
+
+    color: #737488;
+    &.name-from {
+      color: #3a3b4a;
+    }
+  }
+}
+.messages-chat {
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 6fr 1fr;
+  padding: 1em;
+  padding-left: 2em;
+
+  ul {
+    overflow-y: scroll;
+  }
+}
 .message-profile-pic {
   background-size: cover;
   height: 70px;
   width: 70px;
   border-radius: 50%;
+  flex: 1;
+
+  &.small {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.message {
+  display: flex;
+  &.incoming {
+    justify-content: flex-start;
+    p {
+      background-color: #d3f0c7;
+      padding: 1em;
+      border-radius: 0.3em;
+      margin-left: 1em;
+    }
+  }
+  &.outgoing {
+    p {
+      background-color: #9dd57c;
+      padding: 1em;
+      border-radius: 0.3em;
+      margin-right: 1em;
+    }
+    justify-content: flex-end;
+  }
+}
+
+.message-form {
+  width: 100%;
+  margin: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+}
+.message-box-container {
+  position: relative;
+  width: 100%;
+  &:focus-within > .message-label {
+    visibility: hidden;
+  }
+}
+.message-input {
+  padding: 0.9em;
+  height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  /* background-image: url("search.png"); */
+  transition: width 0.4s ease-in-out;
+  border: 1px solid #3a3b4a;
+}
+.message-label {
+  position: absolute;
+  top: 0.9em;
+  left: 0.9em;
+  color: #3a3b4a;
+}
+
+.message-send {
+  width: 70px;
+  border: 1px solid black;
+  margin: 0;
 }

@@ -74,76 +74,73 @@ export default function SearchResults() {
   });
 
   return (
-    <>
-      <Nav />
-      <section>
-        <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="category">Category</label>
-          <select
-            name="category"
-            id="category"
-            onChange={handleFormChange}
-            value={formValues.category}
-          >
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          {formValues.category === "Other" && (
-            <label htmlFor="subcategory">
-              Custom Search
-              <input
-                type="text"
-                name="search"
-                id="subcategory"
-                onChange={handleFormChange}
-                value={formValues.search}
-              />
-            </label>
-          )}
-          <label htmlFor="location">Location</label>
-          <select
-            name="location"
-            id="location"
-            onChange={handleFormChange}
-            value={formValues.location}
-          >
-            <option value="" />
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
-          <DateRangePicker
-            startDate={startDate} // momentPropTypes.momentObj or null,
-            startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-            endDate={endDate} // momentPropTypes.momentObj or null,
-            endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-            onDatesChange={({ startDate, endDate }) => {
-              setDates({ startDate: startDate, endDate: endDate });
-            }} // PropTypes.func.isRequired,
-            focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-            onFocusChange={(focusedInput) => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-          />
-        </form>
-        <ul>
-          {filteredArtists.map((artist) => {
-            return (
-              <li key={artist._id}>
-                <Link to={`/user/${artist._id}`}>
-                  <img src={artist.imageUrl} alt="" height="100" />
-                  <p>{artist.username}</p>
-                  <p>{artist.category}</p>
-                  <p>{artist.subcategory}</p>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    </>
+    <main>
+      <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
+        <label htmlFor="category">Category</label>
+        <select
+          name="category"
+          id="category"
+          onChange={handleFormChange}
+          value={formValues.category}
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+        {formValues.category === "Other" && (
+          <label htmlFor="subcategory">
+            Custom Search
+            <input
+              type="text"
+              name="search"
+              id="subcategory"
+              onChange={handleFormChange}
+              value={formValues.search}
+            />
+          </label>
+        )}
+        <label htmlFor="location">Location</label>
+        <select
+          name="location"
+          id="location"
+          onChange={handleFormChange}
+          value={formValues.location}
+        >
+          <option value="" />
+          {locations.map((location) => (
+            <option key={location} value={location}>
+              {location}
+            </option>
+          ))}
+        </select>
+        <DateRangePicker
+          startDate={startDate} // momentPropTypes.momentObj or null,
+          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+          endDate={endDate} // momentPropTypes.momentObj or null,
+          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+          onDatesChange={({ startDate, endDate }) => {
+            setDates({ startDate: startDate, endDate: endDate });
+          }} // PropTypes.func.isRequired,
+          focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+        />
+      </form>
+      <ul>
+        {filteredArtists.map((artist) => {
+          return (
+            <li key={artist._id}>
+              <Link to={`/user/${artist._id}`}>
+                <img src={artist.imageUrl} alt="" height="100" />
+                <p>{artist.username}</p>
+                <p>{artist.category}</p>
+                <p>{artist.subcategory}</p>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </main>
   );
 }

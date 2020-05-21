@@ -13,12 +13,12 @@ export default function MessagesList() {
   }, [setMessages]);
 
   return (
-    <div>
+    <aside className="messages-list">
       <ul>
         {messages.map((message) => {
           return <MessagesListItem key={message._id} message={message} />;
         })}
       </ul>
-    </div>
+    </aside>
   );
 }

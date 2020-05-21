@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import axios from "axios";
+import MessageSingle from "./MessageSingle";
 
 export default function MessagesChat(props) {
   const { user } = useContext(UserContext);
@@ -30,33 +31,34 @@ export default function MessagesChat(props) {
     });
   };
   return (
-    <div>
+    <section className="messages-chat">
       {props.id && (
         <>
           <ul>
             {messages.map((message) => {
-              return (
-                <li>
-                  <p>From: {message.from.username}</p>
-                  <p>To: {message.to.username}</p>
-                  <p>{message.text}</p>
-                </li>
-              );
+              return <MessageSingle message={message} user={user} />;
             })}
           </ul>
-          <form onSubmit={sendMessage}>
-            <label htmlFor="Message">Message</label>
-            <textarea
-              value={message}
-              onChange={handleChange}
-              type="text"
-              name="message"
-              id="Message"
-            />
-            <button type="submit">Send</button>
+          <form onSubmit={sendMessage} className="message-form">
+            <div class="message-box-container">
+              <label htmlFor="Message" className="message-label">
+                Message
+              </label>
+              <input
+                className="message-input"
+                value={message}
+                onChange={handleChange}
+                type="text"
+                name="message"
+                id="Message"
+              />
+            </div>
+            <button className="message-send" type="submit">
+              Send
+            </button>
           </form>
         </>
       )}
-    </div>
+    </section>
   );
 }

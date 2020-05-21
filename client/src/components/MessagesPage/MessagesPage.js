@@ -13,12 +13,9 @@ export default function Messages(props) {
     }
   }, [user._id, id]);
   return (
-    <>
-      <Nav />
-      <div>
-        <MessagesList id={id} />
-        <MessagesChat id={id} />
-      </div>
-    </>
+    <main className="messages-page container">
+      <MessagesList id={id} />
+      <MessagesChat id={id} />
+    </main>
   );
 }

@@ -41,8 +41,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-        <Nav />
+      <main>
         <div class="form-popup" id="myForm">
           <form class="form-login" onSubmit={this.handleSubmit}>
             <div class="con">
@@ -91,7 +90,7 @@ export default class Login extends Component {
             </div>
           </form>
         </div>
-      </div>
+      </main>
     );
   }
 }
