@@ -30,3 +30,10 @@ artistree/.env.production.local
 artistree/npm-debug.log*
 artistree/yarn-debug.log*
 artistree/yarn-error.log*
+
+.env
+node_modules
+client/node_modules
+.vscode
+.git
+.DS_Store
