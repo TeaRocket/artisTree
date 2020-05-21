@@ -10,7 +10,9 @@ router.get("/locations", (req, res, next) => {
   User.find().then((data) => {
     const artists = data.filter((user) => user.role === "Artist");
     const locations = [
-      ...new Set(artists.map((artist) => artist.location)),
+      ...new Set(
+        artists.map((artist) => artist.location).filter((location) => location)
+      ),
     ].sort();
     res.status(200).json(locations);
   });
