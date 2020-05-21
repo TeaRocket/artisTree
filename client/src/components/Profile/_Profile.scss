@@ -177,8 +177,18 @@
   }
 
   .my-messages a {
+    display: inline-block;
     text-decoration: none;
     color: #233948;
+    text-align: center;
+    margin: 0 auto;
+    padding: 12px;
+  }
+
+  .my-messages {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
   }
 
   .button-forms {
@@ -268,6 +278,16 @@
     100% {
       transform: translateY(5px);
     }
+  }
+
+  .my-messages:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+  }
+
+  /* buttons hover Animation */
+  .my-messages:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
   }
 
   .gallery {

@@ -204,10 +204,7 @@ export default class Profile extends Component {
                   {" "}
                   <span className="button-profile">
                     <div>
-                      <button
-                        type="button"
-                        className="my-messages button-forms"
-                      >
+                      <div className="my-messages button-forms">
                         {!allowedToEdit ? (
                           <Link to={`/messages/${profileId}`}>
                             Send a message
@@ -215,7 +212,7 @@ export default class Profile extends Component {
                         ) : (
                           <Link to={`/messages`}>My messages</Link>
                         )}
-                      </button>
+                      </div>
                     </div>
                   </span>
                   <span className="button-profile">
