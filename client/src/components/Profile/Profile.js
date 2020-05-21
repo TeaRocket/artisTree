@@ -17,7 +17,7 @@ export default class Profile extends Component {
     location: null,
     role: null,
     categories: [],
-    category: "",
+    category: "Visual Artist",
     subcategory: "",
     artworks: [],
     images: [],
