@@ -36,7 +36,13 @@ export default function MessagesChat(props) {
           <ul>
             {messages.map((message) => {
               return (
-                <li>
+                <li
+                  className={
+                    message.from.username === user.username
+                      ? "outgoing"
+                      : "incoming"
+                  }
+                >
                   <p>From: {message.from.username}</p>
                   <p>To: {message.to.username}</p>
                   <p>{message.text}</p>

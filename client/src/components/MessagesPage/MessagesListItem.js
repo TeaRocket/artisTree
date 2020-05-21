@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function MessagesListItem({ message }) {
   const { user } = useContext(UserContext);
-
-  const linkId =
-    message.from.username === user.username ? message.to._id : message.from._id;
+  const fromYou = message.from.username === user.username;
+  const linkId = fromYou ? message.to._id : message.from._id;
   console.log(message);
   return (
     <li>
@@ -15,19 +14,13 @@ export default function MessagesListItem({ message }) {
           className="message-profile-pic"
           style={{
             backgroundImage: `url(${
-              message.from.username === user.username
-                ? message.to.imageUrl
-                : message.from.imageUrl
+              fromYou ? message.to.imageUrl : message.from.imageUrl
             })`,
           }}
         />
 
-        <p>
-          {message.from.username === user.username
-            ? message.to.username
-            : message.from.username}
-        </p>
-        <p>{message.text}</p>
+        <p>{fromYou ? message.to.username : message.from.username}</p>
+        <p> {fromYou ? `you: ${message.text}` : message.text}</p>
       </Link>
     </li>
   );
