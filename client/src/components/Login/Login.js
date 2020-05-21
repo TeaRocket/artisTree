@@ -41,7 +41,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <main>
+      <main class="main-box">
         <div class="form-popup" id="myForm">
           <form class="form-login" onSubmit={this.handleSubmit}>
             <div class="con">

@@ -163,51 +163,82 @@ export default class Profile extends Component {
       this.state.location &&
       this.state.category;
     return (
-      <main class="page">
-        <div class="container">
-          <header class="profile-banner">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+      <main className="page">
+        <div className="container">
+          <header className="profile-banner">
+            <i className="fa fa-bars" aria-hidden="true"></i>
           </header>
           <section>
-            <div class="row">
-              <div class="left col-lg-4">
-                <div class="photo-left">
+            <div className="row">
+              <div className="left col-lg-4">
+                <div className="photo-left">
                   <img
-                    class="photo"
+                    className="photo"
                     style={{ height: "200px" }}
                     src={this.state.imageUrl}
                     alt={this.state.displayName}
                   />
+
+                  {allowedToEdit && (
+                    <label className="overlaybutton">
+                      Edit Picture
+                      <input
+                        hidden
+                        type="file"
+                        onChange={(e) => this.handleFileChange(e)}
+                      />
+                    </label>
+                  )}
+                </div>
+                <p>{this.state.getData}</p>
+                <h4 className="name">{this.state.displayName}</h4>
+                <p className="info">{this.state.category}</p>
+                <p className="info">{this.state.subcategory}</p>
+                <p className="info">{this.state.location}</p>
+                <div>
+                  <p className="desc">{this.state.bio}</p>
+                </div>
+              </div>
+              <div className="right col-lg-8">
+                <ul className="side-nav">
+                  <li>Artwork</li>
+                  <li>Availability</li>
+                </ul>
+                <span className="my-messages">
                   {!allowedToEdit ? (
                     <Link to={`/messages/${profileId}`}>Send a message</Link>
                   ) : (
                     <Link to={`/messages`}>My messages</Link>
                   )}
-                  <div>
-                    {allowedToEdit && (
-                      <button type="button" onClick={this.toggleEditForm}>
-                        Edit Picture
-                      </button>
+                </span>
+
+                <div className="row gallery">
+                  <div className="col-md-4">
+                    <ArtworkList
+                      artworks={this.state.artworks}
+                      profileId={profileId}
+                    />
+                    {allowedToEdit && isArtist && (
+                      <>
+                        <button type="button" onClick={this.toggleArtwork}>
+                          Add Artwork
+                        </button>
+                      </>
                     )}
-                    {this.state.editPicture && (
-                      <form>
-                        <input
-                          type="file"
-                          onChange={(e) => this.handleFileChange(e)}
-                        />
-                      </form>
+                    {this.state.addArtworkForm && (
+                      <AddArtwork
+                        getData={this.getData}
+                        closeForm={() => {
+                          this.setState({ addArtworkForm: false });
+                        }}
+                      />
                     )}
                   </div>
                 </div>
-                <h4 class="name">{this.state.displayName}</h4>
-                <p class="info">{this.state.category}</p>
-                <p class="info">{this.state.subcategory}</p>
-                <p class="info">{this.state.location}</p>
               </div>
             </div>
           </section>
 
-          <p>{this.state.getData}</p>
           {allowedToEdit && (
             <button
               className={
@@ -276,26 +307,6 @@ export default class Profile extends Component {
             </form>
           )}
 
-          <p>{this.state.bio}</p>
-
-          <div>
-            <ArtworkList artworks={this.state.artworks} profileId={profileId} />
-            {allowedToEdit && isArtist && (
-              <>
-                <button type="button" onClick={this.toggleArtwork}>
-                  Add Artwork
-                </button>
-              </>
-            )}
-            {this.state.addArtworkForm && (
-              <AddArtwork
-                getData={this.getData}
-                closeForm={() => {
-                  this.setState({ addArtworkForm: false });
-                }}
-              />
-            )}
-          </div>
           {user.role === "Artist" && (
             <>
               <Availabilities allowedToEdit={allowedToEdit} />

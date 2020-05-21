@@ -80,7 +80,7 @@ export default class Signup extends Component {
     //getting a query from url
 
     return (
-      <main>
+      <main class="main-box">
         <div class="form-popup" id="myForm">
           <form class="form-signup" onSubmit={this.handleSubmit}>
             <div class="con">

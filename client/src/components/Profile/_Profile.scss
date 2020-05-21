@@ -4,78 +4,182 @@
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, sans-serif;
-}
 
-.container {
-  max-width: 1250px;
-  border-radius: 5px;
-  margin: 10% auto;
-  width: 90%;
-  //background-color: #fff;
-  box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-  padding: 2%;
-}
+  .container {
+    max-width: 1250px;
+    border-radius: 5px;
+    margin: 10% auto;
+    width: 90%;
+    //background-color: #fff;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+  }
 
-.profile-banner {
-  background: #eee;
-  //background-image: url("https://images.pexels.com/photos/1731427/pexels-photo-1731427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: #9dd57c;
-  height: 250px;
-}
-
-header i {
-  position: relative;
-  cursor: pointer;
-  right: -96%;
-  top: 25px;
-  font-size: 18px !important;
-  //color: #fff;
-}
-
-@media (max-width: 800px) {
-  header {
-    height: 150px;
+  .profile-banner {
+    background: #eee;
+    //background-image: url("https://images.pexels.com/photos/1731427/pexels-photo-1731427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #9dd57c;
+    height: 250px;
   }
 
   header i {
-    right: -90%;
+    position: relative;
+    cursor: pointer;
+    right: -96%;
+    top: 25px;
+    font-size: 18px !important;
+    //color: #fff;
   }
-}
 
-section {
-  padding: 20px 20px 0px 20px;
-}
+  @media (max-width: 800px) {
+    header {
+      height: 150px;
+    }
 
-.left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+    header i {
+      right: -90%;
+    }
+  }
 
-.photo {
-  width: 200px;
-  height: 200px;
-  margin-top: -120px;
-  border-radius: 100px;
-  border: 4px solid #fff;
-}
+  section {
+    padding: 20px 20px 0px 20px;
+  }
 
-.name {
-  margin-top: 20px;
-  font-family: "Open Sans";
-  font-weight: 600;
-  font-size: 18pt;
-  color: #777;
-}
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-.info {
-  margin-top: -5px;
-  margin-bottom: 5px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 11pt;
-  color: #aaa;
+  .photo {
+    width: 200px;
+    height: 200px;
+    margin-top: -120px;
+    border-radius: 100px;
+    border: 4px solid #fff;
+  }
+
+  .photo-left img {
+    position: absolute;
+  }
+
+  .photo-left .overlaybutton {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-top: -120px;
+    border-radius: 100px;
+    border: 4px solid #fff;
+    position: relative;
+    opacity: 0.7;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    //opacity: 0;
+    transition: opacity 0.13s ease-out;
+  }
+
+  .name {
+    margin-top: 20px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 18pt;
+    color: #777;
+  }
+
+  .info {
+    margin-top: -5px;
+    margin-bottom: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11pt;
+    color: #aaa;
+  }
+
+  .desc {
+    text-align: center;
+    margin-top: 25px;
+    margin: 25px 40px;
+    color: #999;
+    font-size: 15pt;
+    font-family: "Open Sans";
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .right {
+    padding: 0 25px 0 25px !important;
+  }
+
+  .side-nav {
+    display: inline-flex;
+  }
+
+  .side-nav li {
+    margin: 40px 30px 0 10px;
+    cursor: pointer;
+    font-size: 13pt;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #888;
+  }
+
+  .side-nav li:hover,
+  .side-nav li:nth-child(1) {
+    color: #999;
+    border-bottom: 2px solid #999;
+  }
+
+  @media (max-width: 990px) {
+    .side-nav {
+      display: none;
+    }
+  }
+
+  .my-messages {
+    position: absolute;
+    right: 8%;
+    top: 35px;
+    font-size: 11pt;
+    background-color: #9dd57c;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-weight: 400;
+  }
+  .my-messages a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .my-messages {
+    width: 50%;
+    margin-left: 25%;
+    display: block;
+    position: unset;
+    text-align: center;
+  }
+  .my-messages:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .gallery {
+    margin-top: 35px;
+  }
+
+  .gallery div {
+    margin-bottom: 30px;
+  }
+
+  .gallery img {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    max-width: 100%;
+  }
 }
