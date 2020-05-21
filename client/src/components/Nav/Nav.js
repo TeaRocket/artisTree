@@ -25,40 +25,35 @@ export default function Nav() {
         </div>
         <div id="nav-right-container">
           <div id="nav-inner-r">
-            <Link to="/" id="link">
-              <a>Home</a>
-            </Link>
+            <div className="link">
+              <Link to="/">Home</Link>
+            </div>
             {user ? (
               <>
-                <Link to={`/user/${user._id}`} id="link">
-                  <a>Profile</a>
-                </Link>
-                <Link to="/logout" id="link">
-                  <a>Logout</a>
-                </Link>
+                <div className="link">
+                  <Link to={`/user/${user._id}`}>Profile</Link>
+                </div>
+                <div className="link">
+                  <Link to="/logout">Logout</Link>
+                </div>
               </>
             ) : (
               <>
                 {!onArtistSignupPage && (
-                  <Link to="/signup?artist=true" id="link">
-                    <a>Create artist profile</a>
-                  </Link>
+                  <Link to="/signup?artist=true">Create artist profile</Link>
                 )}
-                {!onLoginPage && (
-                  <Link to="/login" id="link">
-                    <a>Login</a>
-                  </Link>
-                )}
+                {!onLoginPage && <Link to="/login">Login</Link>}
                 {!onSignupPage && (
-                  <Link to="/signup" id="link">
-                    <a
+                  <div className="link">
+                    <Link
+                      to="/signup"
                       class="btn btn-primary"
                       data-toggle="modal"
                       data-target="#exampleModal"
                     >
                       Signup
-                    </a>
-                  </Link>
+                    </Link>
+                  </div>
                 )}
               </>
             )}
