@@ -1,3 +1,23 @@
+.button-forms {
+  display: inline-block;
+  color: #233948;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin: 30px 30px 30px 30px;
+  letter-spacing: 0.05em;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+}
+
 .main-box {
   /* form Container */
   /* the header form form */
@@ -858,7 +878,47 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   color: #233948;
 }
 
-.page button {
+.page .button-forms {
+  display: inline-block;
+  color: #233948;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin: 30px 30px 30px 30px;
+  letter-spacing: 0.05em;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+}
+
+.page .button-edit-profile {
+  display: inline-block;
+  color: #233948;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin: 30px 30px 30px 30px;
+  letter-spacing: 0.05em;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+}
+
+.page .button-complete-profile {
   display: inline-block;
   color: #233948;
   width: 280px;

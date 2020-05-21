@@ -196,7 +196,10 @@ export default class Profile extends Component {
                   {" "}
                   <span className="button-profile">
                     <div>
-                      <button type="button" className="my-messages">
+                      <button
+                        type="button"
+                        className="my-messages button-forms"
+                      >
                         {!allowedToEdit ? (
                           <Link to={`/messages/${profileId}`}>
                             Send a message
@@ -315,7 +318,11 @@ export default class Profile extends Component {
                     />
                     {allowedToEdit && isArtist && (
                       <>
-                        <button type="button" onClick={this.toggleArtwork}>
+                        <button
+                          className="button-forms"
+                          type="button"
+                          onClick={this.toggleArtwork}
+                        >
                           Add Artwork
                         </button>
                       </>
