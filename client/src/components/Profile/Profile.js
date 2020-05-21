@@ -192,6 +192,14 @@ export default class Profile extends Component {
                 </div>
                 <p>{this.state.getData}</p>
                 <h4 className="name">{this.state.displayName}</h4>
+
+                <div className="info-div">
+                  <p className="info">{this.state.subcategory}</p>
+                  <p className="info">{this.state.category}</p>
+                  <p className="info">{this.state.location}</p>
+                </div>
+
+                <p className="desc">{this.state.bio}</p>
                 <div className="edit-buttons">
                   {" "}
                   <span className="button-profile">
@@ -296,13 +304,6 @@ export default class Profile extends Component {
                     </div>
                   </form>
                 )}
-                <div className="info-div">
-                  <p className="info">{this.state.subcategory}</p>
-                  <p className="info">{this.state.category}</p>
-                  <p className="info">{this.state.location}</p>
-                </div>
-
-                <p className="desc">{this.state.bio}</p>
               </div>
               <div className="right col-lg-8">
                 {/* <ul className="side-nav">
