@@ -162,7 +162,6 @@ export default class Profile extends Component {
       this.state.bio &&
       this.state.location &&
       this.state.category;
-
     return (
       <main class="page">
         <div class="container">
