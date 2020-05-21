@@ -25,8 +25,8 @@
   height: auto;
   border-radius: 5px;
   margin: 10% auto;
-  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
   padding: 2%;
   background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
 }
@@ -530,8 +530,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   height: auto;
   border-radius: 5px;
   margin: 10% auto;
-  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
   padding: 2%;
   background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
 }
@@ -626,6 +626,10 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   letter-spacing: 0.05em;
 }
 
+.main-box .select-input {
+  padding: 1.3em 1.4em 1.3em 0.8em;
+}
+
 .main-box .submits {
   width: 48%;
   display: inline-block;
@@ -656,11 +660,14 @@ nav #nav-right-container #nav-inner-r #link a::selection {
 }
 
 .page {
-  padding: 10;
-  margin: 50;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+  /* buttons hover */
+  /* buttons hover Animation */
+  /* form Container */
+  /* inputs form  */
+  /* focus  */
 }
 
 .page .container {
@@ -668,8 +675,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   border-radius: 5px;
   margin: 10% auto;
   width: 90%;
-  -webkit-box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-          box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
   padding: 2%;
 }
 
@@ -739,28 +746,55 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   border-radius: 100px;
   border: 4px solid #fff;
   position: relative;
-  opacity: 0.7;
+  opacity: 0;
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  -webkit-transition: opacity 0.13s ease-out;
-  transition: opacity 0.13s ease-out;
+}
+
+.page .photo-left .overlaybutton:hover {
+  opacity: 0.7;
+  color: white;
+  display: block;
+  text-align: center;
+  line-height: 250px;
+  font-size: 0.85em;
+  background-color: black;
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/artistree/image/upload/v1590077361/artistree/pngkey.com-camera-icon-png-104955_sjufa6.png");
 }
 
 .page .name {
   margin-top: 20px;
-  font-family: "Open Sans";
   font-weight: 600;
-  font-size: 18pt;
+  font-size: 20pt;
   color: #777;
 }
 
 .page .info {
-  margin-top: -5px;
-  margin-bottom: 5px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 11pt;
+  font-size: 15pt;
   color: #aaa;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.page .info-div {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.page .bio {
+  display: block;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .page .desc {
@@ -770,12 +804,25 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   color: #999;
   font-size: 15pt;
   font-family: "Open Sans";
-  padding-bottom: 25px;
+  padding: 10px 100px 10px 100px;
   border-bottom: 1px solid #ededed;
 }
 
 .page .right {
   padding: 0 25px 0 25px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .page .side-nav {
@@ -806,36 +853,70 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   }
 }
 
-.page .my-messages {
-  position: absolute;
-  right: 8%;
-  top: 35px;
-  font-size: 11pt;
-  background-color: #9dd57c;
-  color: #fff;
-  padding: 8px 15px;
-  cursor: pointer;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  font-weight: 400;
-}
-
 .page .my-messages a {
   text-decoration: none;
-  color: #fff;
+  color: #233948;
 }
 
-.page .my-messages {
-  width: 50%;
-  margin-left: 25%;
-  display: block;
-  position: unset;
+.page button {
+  display: inline-block;
+  color: #233948;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
   text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin: 30px 30px 30px 30px;
+  letter-spacing: 0.05em;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
 }
 
-.page .my-messages:hover {
-  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.2);
+.page .submit {
+  display: inline-block;
+  color: #233948;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin: 30px auto;
+  letter-spacing: 0.05em;
+}
+
+.page button:hover {
+  -webkit-transform: translatey(3px);
+          transform: translatey(3px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.page button:hover {
+  -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
+          animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+  0% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
 }
 
 .page .gallery {
@@ -853,6 +934,107 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   height: auto;
   cursor: pointer;
   max-width: 100%;
+}
+
+.page form {
+  width: 550px;
+  height: auto;
+  border-radius: 5px;
+  margin: 10% auto;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+  padding: 2%;
+  background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
+}
+
+.page form .con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 3% auto;
+}
+
+.page .field-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.page .input-item {
+  color: #333;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.page input[class="form-input"] {
+  margin-top: 2%;
+  padding: 15px 15px 15px 15px;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  color: #5e6472;
+  outline: none;
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.page input[id="txt-input"] {
+  width: 250px;
+}
+
+.page input:focus {
+  -webkit-transform: translateX(-2px);
+          transform: translateX(-2px);
+  border-radius: 5px;
+}
+
+.page .select-input {
+  padding: 1.3em 1.4em 1.3em 0.8em;
+}
+
+.page .text-input {
+  margin-top: 2%;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  color: #5e6472;
+  outline: none;
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  padding: 2.6em 1.4em 2.6em 0.8em;
+}
+
+.page label {
+  padding: 0.8em 1.4em 0.4em 0.8em;
+}
+
+.page .edit-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 :root {

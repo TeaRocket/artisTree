@@ -192,25 +192,120 @@ export default class Profile extends Component {
                 </div>
                 <p>{this.state.getData}</p>
                 <h4 className="name">{this.state.displayName}</h4>
-                <p className="info">{this.state.category}</p>
-                <p className="info">{this.state.subcategory}</p>
-                <p className="info">{this.state.location}</p>
-                <div>
-                  <p className="desc">{this.state.bio}</p>
+                <div className="edit-buttons">
+                  {" "}
+                  <span className="button-profile">
+                    <div>
+                      <button type="button" className="my-messages">
+                        {!allowedToEdit ? (
+                          <Link to={`/messages/${profileId}`}>
+                            Send a message
+                          </Link>
+                        ) : (
+                          <Link to={`/messages`}>My messages</Link>
+                        )}
+                      </button>
+                    </div>
+                  </span>
+                  <span className="button-profile">
+                    <div>
+                      {allowedToEdit && (
+                        <button
+                          className={
+                            profileComplete
+                              ? "button-edit-profile"
+                              : "button-complete-profile"
+                          }
+                          type="button"
+                          onClick={this.toggleProfileEdit}
+                        >
+                          {profileComplete
+                            ? "Edit Profile"
+                            : "Complete your profile"}
+                        </button>
+                      )}
+                    </div>
+                  </span>
                 </div>
+                {this.state.editProfile && (
+                  <form className="form-login" onSubmit={this.handleSubmit}>
+                    <div className="con">
+                      <div className="field-set">
+                        <label htmlFor="displayName">Display Name</label>
+                        <input
+                          className="form-input"
+                          type="text"
+                          name="displayName"
+                          id="displayName"
+                          onChange={this.handleFormChange}
+                          value={this.state.displayName}
+                        />
+                        <label htmlFor="bio">Bio</label>
+                        <textarea
+                          className="text-input"
+                          type="text"
+                          name="bio"
+                          id="bio"
+                          value={this.state.bio}
+                          onChange={this.handleFormChange}
+                        />
+                        <label htmlFor="location">Location</label>
+                        <input
+                          className="form-input"
+                          onChange={this.handleFormChange}
+                          type="text"
+                          name="location"
+                          id="location"
+                          value={this.state.location}
+                        />
+                        {isArtist && (
+                          <>
+                            <label htmlFor="category">Artist Type</label>
+                            <select
+                              className="select-input"
+                              name="category"
+                              id="category"
+                              value={this.state.category}
+                              onChange={this.handleFormChange}
+                            >
+                              {this.state.categories.map((category) => (
+                                <option key={category} value={category}>
+                                  {category}
+                                </option>
+                              ))}
+                            </select>
+                            <label htmlFor="subcategory">Subcategory</label>
+                            <input
+                              className="form-input"
+                              type="text"
+                              name="subcategory"
+                              id="subcategory"
+                              value={this.state.subcategory}
+                              onChange={this.handleFormChange}
+                            ></input>
+                          </>
+                        )}
+                        <button className="submit" type="submit">
+                          Update Profile
+                        </button>
+                        <br></br>
+                      </div>
+                    </div>
+                  </form>
+                )}
+                <div className="info-div">
+                  <p className="info">{this.state.subcategory}</p>
+                  <p className="info">{this.state.category}</p>
+                  <p className="info">{this.state.location}</p>
+                </div>
+
+                <p className="desc">{this.state.bio}</p>
               </div>
               <div className="right col-lg-8">
                 <ul className="side-nav">
                   <li>Artwork</li>
                   <li>Availability</li>
                 </ul>
-                <span className="my-messages">
-                  {!allowedToEdit ? (
-                    <Link to={`/messages/${profileId}`}>Send a message</Link>
-                  ) : (
-                    <Link to={`/messages`}>My messages</Link>
-                  )}
-                </span>
 
                 <div className="row gallery">
                   <div className="col-md-4">
@@ -238,74 +333,6 @@ export default class Profile extends Component {
               </div>
             </div>
           </section>
-
-          {allowedToEdit && (
-            <button
-              className={
-                profileComplete
-                  ? "button-edit-profile"
-                  : "button-complete-profile"
-              }
-              type="button"
-              onClick={this.toggleProfileEdit}
-            >
-              {profileComplete ? "Edit Profile" : "Complete your profile"}
-            </button>
-          )}
-          {this.state.editProfile && (
-            <form onSubmit={this.handleSubmit}>
-              <label htmlFor="displayName">Display Name</label>
-              <input
-                type="text"
-                name="displayName"
-                id="displayName"
-                onChange={this.handleFormChange}
-                value={this.state.displayName}
-              />
-              <label htmlFor="bio">Bio</label>
-              <textarea
-                type="text"
-                name="bio"
-                id="bio"
-                value={this.state.bio}
-                onChange={this.handleFormChange}
-              />
-              <label htmlFor="location">Location</label>
-              <input
-                onChange={this.handleFormChange}
-                type="text"
-                name="location"
-                id="location"
-                value={this.state.location}
-              />
-              {isArtist && (
-                <>
-                  <label htmlFor="category">Artist Type</label>
-                  <select
-                    name="category"
-                    id="category"
-                    value={this.state.category}
-                    onChange={this.handleFormChange}
-                  >
-                    {this.state.categories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                  <label htmlFor="subcategory">Subcategory</label>
-                  <input
-                    type="text"
-                    name="subcategory"
-                    id="subcategory"
-                    value={this.state.subcategory}
-                    onChange={this.handleFormChange}
-                  ></input>
-                </>
-              )}
-              <button type="submit">Update Profile</button>
-            </form>
-          )}
 
           {user.role === "Artist" && (
             <>

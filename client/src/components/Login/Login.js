@@ -41,16 +41,16 @@ export default class Login extends Component {
 
   render() {
     return (
-      <main class="main-box">
-        <div class="form-popup" id="myForm">
-          <form class="form-login" onSubmit={this.handleSubmit}>
-            <div class="con">
-              <header class="head-form">
+      <main className="main-box">
+        <div className="form-popup" id="myForm">
+          <form className="form-login" onSubmit={this.handleSubmit}>
+            <div className="con">
+              <header className="head-form">
                 <h2>Login</h2>
                 <p>Already signed up? Login here.</p>
               </header>
               <br></br>
-              <div class="field-set">
+              <div className="field-set">
                 <label>Username: </label>
                 <input
                   type="text"
@@ -60,7 +60,7 @@ export default class Login extends Component {
                   onChange={this.handleChange}
                   //id="username"
                   id="txt-input"
-                  class="form-input"
+                  className="form-input"
                 />
                 <br></br>
                 <label>Password: </label>
@@ -72,20 +72,17 @@ export default class Login extends Component {
                   onChange={this.handleChange}
                   // id="password"
                   id="txt-input"
-                  class="form-input"
+                  className="form-input"
                 />
 
                 {this.state.message && (
                   <div variant="danger">{this.state.message}</div>
                 )}
                 <br></br>
-                <button type="submit" value="Login" class="Login">
+                <button type="submit" value="Login" className="Login">
                   Login
                 </button>
                 <br></br>
-                <button type="submit" class="btn cancel" onclick="closeForm()">
-                  Close
-                </button>
               </div>
             </div>
           </form>

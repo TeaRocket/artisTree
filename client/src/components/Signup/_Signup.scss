@@ -10,7 +10,7 @@
     height: auto;
     border-radius: 5px;
     margin: 10% auto;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
     padding: 2%;
     background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
   }
@@ -98,6 +98,9 @@
     transition: all 0.2s linear;
     margin: 2% auto;
     letter-spacing: 0.05em;
+  }
+  .select-input {
+    padding: 1.3em 1.4em 1.3em 0.8em;
   }
   /* Submits */
   .submits {
