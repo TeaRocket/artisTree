@@ -305,10 +305,10 @@ export default class Profile extends Component {
                 <p className="desc">{this.state.bio}</p>
               </div>
               <div className="right col-lg-8">
-                <ul className="side-nav">
+                {/* <ul className="side-nav">
                   <li>Artwork</li>
                   <li>Availability</li>
-                </ul>
+                </ul> */}
 
                 <div className="row gallery">
                   <div className="col-md-4">
