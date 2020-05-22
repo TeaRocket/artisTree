@@ -23,7 +23,6 @@ class UserContextProvider extends Component {
         ...user,
       })
       .then((response) => {
-        // console.log("this was put to db", response);
         return this.setUser(response.data);
       })
       .catch((error) => console.log(error));

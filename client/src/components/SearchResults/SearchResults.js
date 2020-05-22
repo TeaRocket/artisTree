@@ -74,8 +74,6 @@ export default function SearchResults() {
     return categoryMatch && locationMatch && dateMatch;
   });
 
-  console.log(filteredArtists);
-
   return (
     <main>
       <div className="hero-container">

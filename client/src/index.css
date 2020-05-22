@@ -222,6 +222,7 @@ nav {
   transition: transform 0.5s, background-color 0.5s, -webkit-transform 0.5s;
   border-bottom: none;
   border-color: rgba(255, 255, 255, 0.17);
+  z-index: 100;
 }
 
 nav #nav-left-container {
@@ -614,11 +615,15 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   font-size: 85%;
   padding-left: 1rem;
   margin: auto;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .filteredArtists a p.name-artist {
   color: #18191b;
   font-size: 110%;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 .messages-page {
@@ -666,6 +671,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
       grid-template-columns: 70px auto;
   margin-bottom: 1em;
   text-decoration: none;
+  padding-left: 1rem;
 }
 
 .name-and-message {
@@ -934,6 +940,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 
 .main-box .select-input {
   padding: 1.3em 1.4em 1.3em 0.8em;
+  height: 50px;
 }
 
 .main-box .submits {
@@ -1218,19 +1225,13 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   }
 }
 
-.page .my-messages a {
+.page .my-messages {
   display: inline-block;
   text-decoration: none;
   color: #233948;
   text-align: center;
   margin: 0 auto;
   padding: 12px;
-}
-
-.page .my-messages {
-  text-align: center;
-  display: inline-block;
-  margin: 0 auto;
 }
 
 .page .button-dates {
@@ -1861,5 +1862,21 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 
 main {
   margin-top: 105px;
+}
+
+.my-messages.button-forms,
+input[type="button"],
+button {
+  border: 1px solid #3e403f !important;
+  font-size: 10pt !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=index.css.map */

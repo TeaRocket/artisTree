@@ -242,7 +242,6 @@ main {
   a {
     border: 1px solid rgba(3, 3, 3, 0.055);
     padding-left: 2rem;
-
     height: 100%;
     display: grid;
     grid-template-columns: 100px auto;
@@ -254,10 +253,14 @@ main {
       font-size: 85%;
       padding-left: 1rem;
       margin: auto;
+      word-wrap: break-word;
+      word-break: break-all;
 
       &.name-artist {
         color: #18191b;
         font-size: 110%;
+        margin-top: 1rem;
+        margin-bottom: 0.3rem;
       }
     }
   }

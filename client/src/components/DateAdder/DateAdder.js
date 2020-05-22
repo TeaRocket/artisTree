@@ -59,7 +59,6 @@ export default class DateAdder extends Component {
                 if (this.state.startDate && this.state.endDate) {
                   return this.makeCalEntry();
                 }
-                console.log("no can do, sir");
               }}
             >
               Submit

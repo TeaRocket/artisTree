@@ -10,8 +10,6 @@ export default function Nav() {
   const onLoginPage = pathname === "/login";
   const onSignupPage = pathname === "/signup" && search !== "?artist=true";
   const onArtistSignupPage = search === "?artist=true";
-  //const onArtistSignup = pathname === "/signup";
-  console.log(user);
   return (
     <nav>
       <div id="nav-left-container">

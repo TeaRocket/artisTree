@@ -68,7 +68,6 @@ export default class Profile extends Component {
     const { user } = this.context;
     const availability = user.availability;
     const { displayName, bio, location, category, subcategory } = this.state;
-    console.log(availability);
     axios
       .put(`/api/user/${user._id}/profile`, {
         displayName,
@@ -203,15 +202,16 @@ export default class Profile extends Component {
                 <div className="edit-buttons">
                   <span className="button-profile">
                     <div>
-                      <div className="my-messages button-forms">
-                        {!allowedToEdit ? (
-                          <Link to={`/messages/${profileId}`}>
-                            Send a message
-                          </Link>
-                        ) : (
-                          <Link to={`/messages`}>My messages</Link>
-                        )}
-                      </div>
+                      <Link
+                        className="my-messages button-forms"
+                        to={
+                          !allowedToEdit
+                            ? `/messages/${profileId}`
+                            : "/messages"
+                        }
+                      >
+                        {!allowedToEdit ? "Send a message" : "My messages"}
+                      </Link>
                     </div>
                   </span>
                   <span className="button-profile">
