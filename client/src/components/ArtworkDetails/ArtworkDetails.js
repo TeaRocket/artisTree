@@ -105,7 +105,9 @@ export default class ArtworkDetails extends Component {
     return (
       <main>
         <h1>{this.state.artwork.title}</h1>
-        <img src={this.state.images[0]} alt="" />
+        {this.state.images.map((img) => (
+          <img src={img} alt="" />
+        ))}
         <p>{this.state.artwork.description}</p>
         {user._id === id && (
           <>
