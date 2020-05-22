@@ -86,6 +86,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-align: start;
+  color: #333;
 }
 
 .main-box .input-item {
@@ -97,11 +99,12 @@
   border-radius: 5px;
   outline: none;
   border: none;
+  text-align: center;
 }
 
 .main-box input[class="form-input"] {
   margin-top: 2%;
-  padding: 15px;
+  padding: 15px 150px 15px 150px;
   font-size: 16px;
   font-family: Montserrat, sans-serif;
   color: #5e6472;
@@ -111,6 +114,7 @@
           box-sizing: content-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
+  text-align: center;
 }
 
 .main-box input[id="txt-input"] {
@@ -121,6 +125,25 @@
   -webkit-transform: translateX(-2px);
           transform: translateX(-2px);
   border-radius: 5px;
+}
+
+.main-box .text-input {
+  margin-top: 2%;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  color: #5e6472;
+  outline: none;
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  padding: 0.6em 1.4em 3.6em 0.8em;
+  text-align: center;
+}
+
+.main-box label {
+  padding: 0.8em 1.4em 0.4em 0.8em;
 }
 
 .main-box button {
@@ -847,13 +870,21 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   font-size: 15pt;
   color: #aaa;
   text-align: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin: 5px 7px 5px 7px;
 }
 
 .page .info-div {
   text-align: center;
   margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .page .bio {
@@ -876,7 +907,6 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   font-size: 15pt;
   font-family: "Open Sans";
   padding: 10px 100px 30px 100px;
-  border-bottom: 1px solid #ededed;
 }
 
 .page .right {
@@ -939,6 +969,19 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   margin: 0 auto;
 }
 
+.page .button-dates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .page .button-forms {
   display: inline-block;
   color: #233948;
@@ -957,6 +1000,10 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   letter-spacing: 0.05em;
   -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
           box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+}
+
+.page .edit-buttons {
+  border-bottom: 1px solid #ededed;
 }
 
 .page .button-edit-profile {
@@ -1002,9 +1049,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
 .page .submit {
   display: inline-block;
   color: #233948;
-  width: 280px;
+  width: 500px;
   height: 50px;
-  padding: 0 20px;
   background: #fff;
   border-radius: 5px;
   outline: none;
@@ -1098,7 +1144,7 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   font-weight: 600;
   font-size: 25pt;
   color: #777;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .page .art img {
@@ -1122,6 +1168,29 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   max-width: 100%;
 }
 
+.page .avail-text {
+  margin-top: 40px;
+  font-weight: 600;
+  font-size: 25pt;
+  color: #777;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.page .avail-div {
+  border-top: 1px solid #ededed;
+}
+
+.page #Availabilities {
+  margin: auto;
+  font-size: 15pt;
+  color: #777;
+  text-align: center;
+  text-decoration: none;
+  list-style: none;
+  padding: 1em;
+}
+
 .page form {
   width: 550px;
   height: auto;
@@ -1137,8 +1206,9 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 3% auto;
@@ -1152,6 +1222,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-align: start;
+  color: #333;
 }
 
 .page .input-item {
@@ -1163,6 +1235,7 @@ nav #nav-right-container #nav-inner-r #link a::selection {
   border-radius: 5px;
   outline: none;
   border: none;
+  text-align: center;
 }
 
 .page input[class="form-input"] {
@@ -1177,6 +1250,7 @@ nav #nav-right-container #nav-inner-r #link a::selection {
           box-sizing: content-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
+  text-align: center;
 }
 
 .page input[id="txt-input"] {
@@ -1204,7 +1278,8 @@ nav #nav-right-container #nav-inner-r #link a::selection {
           box-sizing: content-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
-  padding: 2.6em 1.4em 2.6em 0.8em;
+  padding: 0.6em 1.4em 3.6em 0.8em;
+  text-align: center;
 }
 
 .page label {
@@ -1221,6 +1296,16 @@ nav #nav-right-container #nav-inner-r #link a::selection {
           flex-direction: row;
   margin-left: auto;
   margin-right: auto;
+}
+
+.page .DateRangePicker {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 :root {

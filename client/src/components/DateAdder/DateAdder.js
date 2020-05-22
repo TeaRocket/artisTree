@@ -39,7 +39,7 @@ export default class DateAdder extends Component {
   render() {
     if (this.state.visibility) {
       return (
-        <div>
+        <div className="dates">
           <DateRangePicker
             startDate={this.state.startDate} // momentPropTypes.momentObj or null,
             startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -52,30 +52,34 @@ export default class DateAdder extends Component {
             onFocusChange={(focusedInput) => this.setState({ focusedInput })} // PropTypes.func.isRequired,
           />
           <br />
-          <button
-            className="button-forms"
-            onClick={() => {
-              if (this.state.startDate && this.state.endDate) {
-                return this.makeCalEntry();
-              }
-              console.log("no can do, sir");
-            }}
-          >
-            Submit
-          </button>
-          <button className="button-forms" onClick={this.toggleVisibility}>
-            Close
-          </button>
+          <div className="button-dates">
+            <button
+              className="button-forms"
+              onClick={() => {
+                if (this.state.startDate && this.state.endDate) {
+                  return this.makeCalEntry();
+                }
+                console.log("no can do, sir");
+              }}
+            >
+              Submit
+            </button>
+            <button className="button-forms" onClick={this.toggleVisibility}>
+              Close
+            </button>
+          </div>
         </div>
       );
     } else {
       return (
         <>
-          {this.props.allowedToEdit && (
-            <button className="button-forms" onClick={this.toggleVisibility}>
-              Add Availability
-            </button>
-          )}
+          <div className="button-dates">
+            {this.props.allowedToEdit && (
+              <button className="button-forms" onClick={this.toggleVisibility}>
+                Add Availability
+              </button>
+            )}
+          </div>
         </>
       );
     }

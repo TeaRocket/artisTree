@@ -149,13 +149,15 @@
     font-size: 15pt;
     color: #aaa;
     text-align: center;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 5px 7px 5px 7px;
   }
 
   .info-div {
     text-align: center;
     margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .bio {
@@ -173,7 +175,6 @@
     font-size: 15pt;
     font-family: "Open Sans";
     padding: 10px 100px 30px 100px;
-    border-bottom: 1px solid #ededed;
   }
 
   .right {
@@ -224,7 +225,11 @@
     display: inline-block;
     margin: 0 auto;
   }
-
+  .button-dates {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
   .button-forms {
     display: inline-block;
     color: #233948;
@@ -242,7 +247,9 @@
     letter-spacing: 0.05em;
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
   }
-
+  .edit-buttons {
+    border-bottom: 1px solid #ededed;
+  }
   .button-edit-profile {
     display: inline-block;
     color: #233948;
@@ -281,9 +288,8 @@
   .submit {
     display: inline-block;
     color: #233948;
-    width: 280px;
+    width: 500px;
     height: 50px;
-    padding: 0 20px;
     background: #fff;
     border-radius: 5px;
     outline: none;
@@ -348,7 +354,7 @@
     font-weight: 600;
     font-size: 25pt;
     color: #777;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .art img {
     margin: 7px;
@@ -375,6 +381,27 @@
     max-width: 100%;
   }
 
+  .avail-text {
+    margin-top: 40px;
+    font-weight: 600;
+    font-size: 25pt;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .avail-div {
+    border-top: 1px solid #ededed;
+  }
+  #Availabilities {
+    margin: auto;
+    font-size: 15pt;
+    color: #777;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+    padding: 1em;
+  }
+
   form {
     width: 550px;
     height: auto;
@@ -389,7 +416,7 @@
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: space-around;
-    justify-content: space-around;
+    justify-content: center;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     margin: 3% auto;
@@ -398,6 +425,8 @@
   .field-set {
     display: flex;
     flex-direction: column;
+    text-align: start;
+    color: #333;
   }
 
   .input-item {
@@ -409,6 +438,7 @@
     border-radius: 5px;
     outline: none;
     border: none;
+    text-align: center;
   }
 
   /* inputs form  */
@@ -422,6 +452,7 @@
     border: none;
     box-sizing: content-box;
     transition: 0.2s linear;
+    text-align: center;
   }
   input[id="txt-input"] {
     width: 250px;
@@ -445,7 +476,8 @@
     border: none;
     box-sizing: content-box;
     transition: 0.2s linear;
-    padding: 2.6em 1.4em 2.6em 0.8em;
+    padding: 0.6em 1.4em 3.6em 0.8em;
+    text-align: center;
   }
 
   label {
@@ -457,5 +489,11 @@
     flex-direction: row;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .DateRangePicker {
+    position: relative;
+    display: flex;
+    justify-content: center;
   }
 }

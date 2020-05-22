@@ -201,7 +201,6 @@ export default class Profile extends Component {
 
                 <p className="desc">{this.state.bio}</p>
                 <div className="edit-buttons">
-                  {" "}
                   <span className="button-profile">
                     <div>
                       <div className="my-messages button-forms">
@@ -239,7 +238,7 @@ export default class Profile extends Component {
                   <form className="form-login" onSubmit={this.handleSubmit}>
                     <div className="con">
                       <div className="field-set">
-                        <label htmlFor="displayName">Display Name</label>
+                        <label htmlFor="displayName">Display Name:</label>
                         <input
                           className="form-input"
                           type="text"
@@ -248,7 +247,7 @@ export default class Profile extends Component {
                           onChange={this.handleFormChange}
                           value={this.state.displayName}
                         />
-                        <label htmlFor="bio">Bio</label>
+                        <label htmlFor="bio">Bio:</label>
                         <textarea
                           className="text-input"
                           type="text"
@@ -257,7 +256,7 @@ export default class Profile extends Component {
                           value={this.state.bio}
                           onChange={this.handleFormChange}
                         />
-                        <label htmlFor="location">Location</label>
+                        <label htmlFor="location">Location:</label>
                         <input
                           className="form-input"
                           onChange={this.handleFormChange}
@@ -268,7 +267,7 @@ export default class Profile extends Component {
                         />
                         {isArtist && (
                           <>
-                            <label htmlFor="category">Artist Type</label>
+                            <label htmlFor="category">Artist Type:</label>
                             <select
                               className="select-input"
                               name="category"
@@ -282,7 +281,7 @@ export default class Profile extends Component {
                                 </option>
                               ))}
                             </select>
-                            <label htmlFor="subcategory">Subcategory</label>
+                            <label htmlFor="subcategory">Subcategory:</label>
                             <input
                               className="form-input"
                               type="text"
@@ -303,11 +302,6 @@ export default class Profile extends Component {
                 )}
               </div>
               <div className="right col-lg-8">
-                {/* <ul className="side-nav">
-                  <li>Artwork</li>
-                  <li>Availability</li>
-                </ul> */}
-
                 <div className="row gallery">
                   <div className="col-md-4">
                     <ArtworkList
