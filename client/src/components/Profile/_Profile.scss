@@ -297,8 +297,32 @@
     cursor: pointer;
     text-align: center;
     transition: all 0.2s linear;
-    margin: 30px auto;
+    margin: 50px 0px 0px 0px;
     letter-spacing: 0.05em;
+  }
+
+  .submit.submit-label {
+    //padding: 0px;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    padding: 15px 15px 15px 15px;
+    font-size: 14px;
+    text-align: center;
+  }
+  // .ptag {
+  //   margin-bottom: 10px;
+  //   text-align: left;
+  //   width: 100%;
+  // }
+  .form-header {
+    margin: 2% auto 7% auto;
+    text-align: center;
+  }
+  /* title form form */
+  .form-header h2 {
+    font-family: Montserrat, sans-serif;
+    font-size: 150%;
+    color: #3e403f;
   }
 
   /* buttons hover */
@@ -445,7 +469,7 @@
   input[class="form-input"] {
     margin-top: 2%;
     padding: 15px 150px 15px 150px;
-    font-size: 16px;
+    font-size: 15px;
     font-family: Montserrat, sans-serif;
     color: #5e6472;
     outline: none;
@@ -469,7 +493,7 @@
 
   .text-input {
     margin-top: 2%;
-    font-size: 16px;
+    font-size: 15px;
     font-family: Montserrat, sans-serif;
     color: #5e6472;
     outline: none;
@@ -482,6 +506,10 @@
 
   label {
     padding: 0.8em 1.4em 0.4em 0.8em;
+  }
+
+  #subcategory {
+    font-size: 15px;
   }
 
   .edit-buttons {

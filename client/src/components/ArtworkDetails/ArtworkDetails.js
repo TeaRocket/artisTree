@@ -116,7 +116,7 @@ export default class ArtworkDetails extends Component {
             {user._id === id && (
               <>
                 <button className="buttons" onClick={this.toggleEditForm}>
-                  Show edit form
+                  Edit this Artwork
                 </button>
                 <button className="buttons" onClick={this.deleteArtwork}>
                   Delete this Artwork

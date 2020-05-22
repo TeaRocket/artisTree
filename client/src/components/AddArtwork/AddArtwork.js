@@ -70,47 +70,42 @@ export default class AddArtwork extends Component {
           <form className="form-art" onSubmit={this.handleSubmit}>
             <div className="con">
               <div className="field-set">
-                <header className="head-form">
+                <header className="form-header">
                   <h2>Add Artwork</h2>
                 </header>
-                <label>
-                  Title:
-                  <input
-                    type="text"
-                    name="title"
-                    value={this.state.title}
-                    onChange={(e) => this.handleChange(e)}
-                    className="form-input"
-                  />
-                </label>
-                <label>
-                  Description:
-                  <input
-                    type="text"
-                    name="description"
-                    value={this.state.description}
-                    onChange={(e) => this.handleChange(e)}
-                    className="form-input"
-                  />
-                </label>
+                <label>Title: </label>
+                <input
+                  type="text"
+                  name="title"
+                  value={this.state.title}
+                  onChange={(e) => this.handleChange(e)}
+                  className="form-input"
+                />
+
+                <label>Description:</label>
+                <input
+                  type="text"
+                  name="description"
+                  value={this.state.description}
+                  onChange={(e) => this.handleChange(e)}
+                  className="form-input"
+                />
               </div>
-              <div>
-                <label>
-                  Select images:
-                  <label className="submit" for="inputfiles">
-                    Choose files
-                  </label>
-                  <input
-                    className="invisible"
-                    id="inputfiles"
-                    type="file"
-                    name="files"
-                    multiple
-                    onChange={this.uploadMultiple}
-                    style={{ display: "none" }}
-                  />
-                </label>
-              </div>
+
+              {/* <p className="ptag">Select images:</p> */}
+              <label className="submit submit-label" for="inputfiles">
+                Select files
+              </label>
+              <input
+                className="invisible"
+                id="inputfiles"
+                type="file"
+                name="files"
+                multiple
+                onChange={this.uploadMultiple}
+                style={{ display: "none" }}
+              />
+
               {!this.state.uploadOn && (
                 <input type="submit" value="Submit" className="submit" />
               )}

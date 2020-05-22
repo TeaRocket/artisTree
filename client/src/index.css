@@ -969,6 +969,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+  /* title form form */
   /* buttons hover */
   /* buttons hover Animation */
   /* buttons hover Animation */
@@ -1322,8 +1323,28 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   text-align: center;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  margin: 30px auto;
+  margin: 50px 0px 0px 0px;
   letter-spacing: 0.05em;
+}
+
+.page .submit.submit-label {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
+  padding: 15px 15px 15px 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.page .form-header {
+  margin: 2% auto 7% auto;
+  text-align: center;
+}
+
+.page .form-header h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: 150%;
+  color: #3e403f;
 }
 
 .page button:hover {
@@ -1504,7 +1525,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 .page input[class="form-input"] {
   margin-top: 2%;
   padding: 15px 150px 15px 150px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: Montserrat, sans-serif;
   color: #5e6472;
   outline: none;
@@ -1532,7 +1553,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 
 .page .text-input {
   margin-top: 2%;
-  font-size: 16px;
+  font-size: 15px;
   font-family: Montserrat, sans-serif;
   color: #5e6472;
   outline: none;
@@ -1547,6 +1568,10 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 
 .page label {
   padding: 0.8em 1.4em 0.4em 0.8em;
+}
+
+.page #subcategory {
+  font-size: 15px;
 }
 
 .page .edit-buttons {
@@ -1575,6 +1600,13 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+  /* buttons hover Animation */
+  /* title form form */
+  /* form Container */
+  /* inputs form  */
+  /* focus  */
+  /* buttons hover */
+  /* buttons hover Animation */
 }
 
 .artwork-page .container {
@@ -1637,6 +1669,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   color: #233948;
   width: 280px;
   height: 50px;
+  padding: 0 20px;
   background: #fff;
   border-radius: 5px;
   outline: none;
@@ -1645,7 +1678,7 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   text-align: center;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  margin: 30px auto;
+  margin: 30px 30px 30px 30px;
   letter-spacing: 0.05em;
   -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
           box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
@@ -1659,6 +1692,167 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.artwork-page button:hover {
+  -webkit-transform: translatey(3px);
+          transform: translatey(3px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.artwork-page button:hover {
+  -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
+          animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+  0% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+}
+
+.artwork-page h2 {
+  margin: 2% auto 7% auto;
+  text-align: center;
+}
+
+.artwork-page h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: 250%;
+  color: #3e403f;
+}
+
+.artwork-page form {
+  width: 550px;
+  height: auto;
+  border-radius: 5px;
+  margin: 2% auto;
+  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+  padding: 2%;
+  background-color: #d3f0c7;
+}
+
+.artwork-page form .con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 3% auto;
+}
+
+.artwork-page .field-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: start;
+  color: #333;
+}
+
+.artwork-page .input-item {
+  color: #333;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.artwork-page input[class="form-input"] {
+  margin-top: 2%;
+  padding: 15px 150px 15px 150px;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  color: #5e6472;
+  outline: none;
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  text-align: center;
+}
+
+.artwork-page input[id="txt-input"] {
+  width: 250px;
+}
+
+.artwork-page input:focus {
+  -webkit-transform: translateX(-2px);
+          transform: translateX(-2px);
+  border-radius: 5px;
+}
+
+.artwork-page .select-input {
+  padding: 1.3em 1.4em 1.3em 0.8em;
+}
+
+.artwork-page .text-input {
+  margin-top: 2%;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  color: #5e6472;
+  outline: none;
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  padding: 0.6em 1.4em 3.6em 0.8em;
+  text-align: center;
+}
+
+.artwork-page label {
+  padding: 0.8em 1.4em 0.4em 0.8em;
+}
+
+.artwork-page .submit {
+  display: inline-block;
+  color: #233948;
+  width: 500px;
+  height: 50px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  margin: 30px auto;
+  letter-spacing: 0.05em;
+}
+
+.artwork-page .submit:hover {
+  -webkit-transform: translatey(3px);
+          transform: translatey(3px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.artwork-page .submit:hover {
+  -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
+          animation: ani9 0.4s ease-in-out infinite alternate;
 }
 
 :root {
