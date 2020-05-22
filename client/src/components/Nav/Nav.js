@@ -11,6 +11,7 @@ export default function Nav() {
   const onSignupPage = pathname === "/signup" && search !== "?artist=true";
   const onArtistSignupPage = search === "?artist=true";
   //const onArtistSignup = pathname === "/signup";
+  console.log(user);
   return (
     <nav>
       <div id="nav-left-container">
@@ -40,14 +41,20 @@ export default function Nav() {
             ) : (
               <>
                 {!onArtistSignupPage && (
-                  <Link to="/signup?artist=true">Create artist profile</Link>
+                  <div className="link">
+                    <Link to="/signup?artist=true">Create artist profile</Link>
+                  </div>
                 )}
-                {!onLoginPage && <Link to="/login">Login</Link>}
+                {!onLoginPage && (
+                  <div className="link">
+                    <Link to="/login">Login</Link>
+                  </div>
+                )}
                 {!onSignupPage && (
                   <div className="link">
                     <Link
                       to="/signup"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       data-toggle="modal"
                       data-target="#exampleModal"
                     >

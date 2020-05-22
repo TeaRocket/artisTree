@@ -30,13 +30,12 @@
   margin-right: 0.5em;
   border-right: 1px solid #9b9caaa9;
 }
+
 .message-preview {
   display: grid;
   grid-template-columns: 70px auto;
   margin-bottom: 1em;
   text-decoration: none;
-  &:hover {
-  }
 }
 .name-and-message {
   padding-left: 1em;
@@ -76,6 +75,10 @@
   &.small {
     height: 50px;
     width: 50px;
+  }
+  &.large {
+    height: 100px;
+    width: 100px;
   }
 }
 

@@ -28,7 +28,7 @@ export default class AddArtwork extends Component {
     }
     this.setState({ uploadOn: true }, () => {
       axios
-        .post("/upload/multiple", uploadData, {
+        .post("/api/upload/multiple", uploadData, {
           headers: { crossdomain: true, "Content-Type": "undefined" },
         })
         .then((response) => {
@@ -43,7 +43,7 @@ export default class AddArtwork extends Component {
     event.preventDefault();
 
     axios
-      .post("/artwork", {
+      .post("/api/artwork", {
         title: this.state.title,
         description: this.state.description,
         images: this.state.images,

@@ -10,7 +10,7 @@ const signup = (
   category
 ) => {
   return axios
-    .post("/auth/signup", {
+    .post("/api/auth/signup", {
       username,
       password,
       email,
@@ -29,7 +29,7 @@ const signup = (
 
 const login = (username, password) => {
   return axios
-    .post("/auth/login", { username, password })
+    .post("/api/auth/login", { username, password })
     .then((response) => {
       return response.data;
     })
@@ -40,7 +40,7 @@ const login = (username, password) => {
 
 const logout = () => {
   return axios
-    .delete("/auth/logout")
+    .delete("/api/auth/logout")
     .then((response) => {
       return response.data;
     })

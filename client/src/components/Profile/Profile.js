@@ -17,7 +17,7 @@ export default class Profile extends Component {
     location: null,
     role: null,
     categories: [],
-    category: "Visual Artist",
+    category: "",
     subcategory: "",
     artworks: [],
     images: [],
@@ -29,7 +29,7 @@ export default class Profile extends Component {
   static contextType = UserContext;
   componentDidMount = () => {
     this.getData();
-    axios.get("/categories").then((categories) => {
+    axios.get("/api/categories").then((categories) => {
       this.setState({
         categories: categories.data,
       });
@@ -52,7 +52,7 @@ export default class Profile extends Component {
     uploadData.append("imageUrl", event.target.files[0]);
     this.setState({ uploadOn: true }, () => {
       axios
-        .post("/upload/single", uploadData)
+        .post("/api/upload/single", uploadData)
         .then((response) => {
           this.setState({
             imageUrl: response.data.secure_url,
@@ -70,7 +70,7 @@ export default class Profile extends Component {
     const { displayName, bio, location, category, subcategory } = this.state;
     console.log(availability);
     axios
-      .put(`/user/${user._id}/profile`, {
+      .put(`/api/user/${user._id}/profile`, {
         displayName,
         bio,
         location,
@@ -101,7 +101,7 @@ export default class Profile extends Component {
   getData = () => {
     const id = this.props.match.params.id;
     axios
-      .get(`/user/${id}`)
+      .get(`/api/user/${id}`)
       .then((response) => {
         const {
           displayName,

@@ -2,14 +2,14 @@ import axios from "axios";
 
 const handleUpload = (theFile) => {
   return axios
-    .post("/upload", theFile)
+    .post("/api/upload", theFile)
     .then((response) => response.data)
     .catch((err) => err.response.data);
 };
 
 const saveNewImg = (newImg) => {
   return axios
-    .post("/user/:id", newImg)
+    .post("/api/user/:id", newImg)
     .then((response) => response.data)
     .catch((err) => err.response.data);
 };

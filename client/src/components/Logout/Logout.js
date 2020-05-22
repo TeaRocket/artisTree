@@ -6,7 +6,7 @@ export default function Logout(props) {
   const { setUser } = useContext(UserContext);
 
   useEffect(() => {
-    axios.delete("/auth/logout").then((response) => {
+    axios.delete("/api/auth/logout").then((response) => {
       setUser(null);
       props.history.push("/");
     });

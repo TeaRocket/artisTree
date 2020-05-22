@@ -18,7 +18,10 @@ class UserContextProvider extends Component {
 
   updateUser = (user) => {
     axios
-      .put(this.state.user._id + "/profile", { ...this.state.user, ...user })
+      .put("/api/user/" + this.state.user._id + "/profile", {
+        ...this.state.user,
+        ...user,
+      })
       .then((response) => {
         // console.log("this was put to db", response);
         return this.setUser(response.data);

@@ -209,7 +209,7 @@ nav {
   color: #7f7f7f;
   cursor: auto;
   display: block;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 105px;
   position: fixed;
@@ -347,6 +347,28 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   text-shadow: none;
 }
 
+@-webkit-keyframes bounce {}
+
+@keyframes bounce {}body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.search-container {
+  min-height: 100vh;
+  padding: 0 40px;
+}
+
+.search-container h2 {
+  font-family: "Open Sans";
+  text-align: center;
+  margin-bottom: 1.5em;
+  margin-top: 2em;
+  color: #18191b;
+  margin-top: 105px;
+}
+
 .searchForm {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -354,9 +376,60 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 3em;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 5px;
+  margin: auto;
+}
+
+.searchForm .select-container select {
+  height: 55px;
+  font-weight: 200;
+  font-size: 13pt;
+  line-height: 24px;
+  color: #484848;
+  background-color: #fff;
+  padding-top: 2em;
+  border-radius: 0;
+  border: 1px solid #dbdbdb;
+}
+
+.DateRangePickerInput {
+  height: 53px;
+}
+
+.DateRangePickerInput input {
+  padding-top: 0.8em;
+}
+
+#subcategory {
+  font-weight: 200;
+  font-size: 19px;
+  line-height: 24px;
+  color: #484848;
+  background-color: #fff;
+  padding: 11px 11px 9px;
+  border-radius: 0;
+  border: 1px solid #dbdbdb;
+  height: 55px;
+  padding: 0;
+  padding-left: 0.5em;
+}
+
+.input-container,
+.select-container {
+  position: relative;
+}
+
+.input-container label,
+.select-container label {
+  position: absolute;
+  font-size: 9pt;
+  left: 1.1em;
+  top: 0.25em;
+  color: #857f7f;
 }
 
 .searchForm button {
@@ -364,6 +437,187 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.selects :not(:first-child) {
+  margin-left: 5px;
+}
+
+.hero-container {
+  position: relative;
+  height: calc(100vh - 105px);
+  width: 100vw;
+}
+
+.hero-container .hero-filter {
+  z-index: 11;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 105px);
+  font-family: "Open Serif";
+  color: #fff;
+  font-size: 35pt;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191919+0,000000+100&0.69+3,0.19+100 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(25, 25, 25, 0.69)), color-stop(3%, rgba(24, 24, 24, 0.69)), to(rgba(0, 0, 0, 0.19)));
+  background: linear-gradient(to bottom, rgba(25, 25, 25, 0.69) 0%, rgba(24, 24, 24, 0.69) 3%, rgba(0, 0, 0, 0.19) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0191919', endColorstr='#30000000',GradientType=0 );
+  /* IE6-9 */
+}
+
+.hero-container .hero-filter h1 {
+  margin-top: calc(45vh - 105px);
+}
+
+.hero {
+  height: calc(100vh - 105px);
+  background-size: cover;
+  background-position: center top;
+  position: absolute;
+  width: 100vw;
+}
+
+.arrow {
+  color: #18191b;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  position: absolute;
+  width: 280px;
+  height: 68px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 20;
+  bottom: 0;
+  cursor: pointer;
+  -webkit-clip-path: circle(73% at 50% 220%);
+          clip-path: circle(73% at 50% 220%);
+  overflow: hidden;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  opacity: 1;
+  position: absolute;
+  background-color: #fff;
+}
+
+.arrow i {
+  color: #18191b;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAgCAYAAABdP1tmAAAAAXNSR0IArs4c6QAABctJREFUWAndWO1Pm1UUv+c+bYfEvbnELfLWp2MZ27Lp3CZjMF4GkzDDR75rYkhM1ERi0LmhLNtcNDHGqMn+AD/4B2jM2Lq2CC2LIVMyYUDHysvGkDeBUQrt81zPaYA8bW+hBYrT+6X3/s6555zfc+695wAcq65O3zLtf1mAtosBzCjB9I6Wlp8n2X9gFBRXHBZMUxXgk5qAsbbmW11QWFJ+WtO1+uX4AfyocL3VZXcsY8/YpKjojZ0hPlvHBHtlKTQAdn8LZw1cE/rOJTD8K0Q6EqzLLy47F4E/I4vS0tIdIfBfNZKh0ASwPU6nM8AZF35ZrCDEOwVlZZUy2b+FVVRUbA/ocBXDz4qJQYc5wji3WDoYsGCMAgIiJN7NLyk/K5NtNpZfVbXt6ULoChMiW+YbQLQTzt1NTX8xBj/IlAgDob13qvjMmXjyzcDxmD0Ps4HLeMyscn8wujXNEuagkMJQv68ry2pNx2meZAMIECczVevwkM/nk8hTChGZeZ1hZthemSMAmFDSTBecN29OkDxMiCZI6m62qm4Vgu2nddQAzNXJ7Bzb48H+h/1RspQtq7GkTM8FL6OD3DhO/gYzP++22x8vyZcJETDY72vPVG078JzuW1Iw/GKmWEGmTR3ETA0a8JRMqT7OT81cQuOyD4zfF6YsYPmk1XlryBgANy5o7nHar2M6bkTj4bUQnGms/lRJeYFUvkFgQU3Nc6bpp414WmRXgMhMcxNcaG5uivmwGHvsEELAqZKy99FgRayU7IEmFHatzeG4I5OvB8M7kxbQeSMT+iGZHWAwYwYzkXkok8dkiJQwYFF5pvRbxkHaLSBhBULiY8zUCZnRtWJVVVVb5gV8Go8MlpdZMENDPDLkN+IOGQPBqivefuvNOw98Ay9hRbIaZYtzrgtRqO5VvQM+37BEnhRUU1NjGZmcQjLsiHQjwCxwdtHjcDyQyhfBuIRITqQKXjt+Z9o/l4GOcqIN4XlFUqwwKye3Z6i/70m0PNF1bW2t2Tsw1IA+lnuziL0AcyYzb3A7HL0RuGSxIiHS7+zsRFIn2mb8c9noMLbloCyDKLTa1G7M1IjEx4rQMSQzdt97AV/WV2WKePyxpVE+czvt3TJ5NLYqIdpApHJVa1uIcRWPX2a0EVwrugDKVBdmCjuPxAaRsXT3nkcyx6U7AOYVhTV6XLc7pXIJmBAh2odNgr678qzHNDFhw0xlSGyZMFNFOTb1z0Gfb1Qij4DwNTOJ0fGP0FZ+hGBpgWSAKZfcrtv3lqBEfhMmRMaG29v1c5Wvu0fGJ7FyC3wsYoYJ+/jCzJzce5ipsRjpIoAPgDI5O1ePZOT1DGCBc3EFM9MRz0Y8PClCZKQdSeFD4Z6e9VMF3yMxbF7MVAdmajxaTmQGR0Y/RDKF0bLwmjp/wa96mh13pfJVwKQJkT28U9rhgwfcgQWNKvluiQ8z1uaijJx9fzzq7ws3jaRDZIaejNXh9LRkD5YZFsI78zmSCf8pINNZDVsTITLq9Xq1XJvVrTF2EJcvShyZAfSiLNX6O/Z+E42Njbz9XucHqFci0Q13H1gFrrmbHb/J5Ili0tYn0c2kF25VNLiEd4qIycZTbuYXRZBVC6aXyxSolQLgX7hddo9Mngy2bkLkjDpjC3bGKzSTOj7N0jYLU6NjJfsS+8LWZAKPp7vmI2c0ONzTEzx65HCrPxCkSr/LKFucyz8ckuEMvvK4HC2SPWuCNoQQee5BUninWvFOHcXlC6tGA/jOcdPXHpfdtapuEgobRoh8YvFdwI6iJSTgGC4j/z1mDArJgALftDlvS7t5o2qy8w0lRM6JVMahA60QDBGpHbKAOPDv8JjdksnWi204IQrokdc7n7cv172gh3u07cYgQWHfI5kbRmwj5ykhRAH29fXNW7MOeXQepD8CtxGGD8B1T7PzF5qnaqSMEAU8MNAbyMrb74GQno/P84+eXx0/pYrIptql4rupDv9Pzv4BDAEhROYfxlsAAAAASUVORK5CYII=) no-repeat center center;
+  background-size: 17px auto;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 20px;
+  z-index: 100;
+  -webkit-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+}
+
+.arrow::after {
+  content: "";
+  top: 0;
+  left: 50%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+  margin: 0 auto;
+  display: block;
+}
+
+.arrow:hover i {
+  -webkit-animation: bounce 1s infinite;
+          animation: bounce 1s infinite;
+}
+
+.progress {
+  color: #18191b;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  content: "";
+  top: 0;
+  left: 50%;
+  width: 280px;
+  height: 280px;
+  clip: rect(0 434px 217px 0);
+  border-radius: 50%;
+  -webkit-transform: translateX(-50%) rotate(180deg);
+          transform: translateX(-50%) rotate(180deg);
+  position: absolute;
+  border: 2px #ff3465 solid;
+  margin: 0 auto;
+  display: block;
+}
+
+.filteredArtists {
+  margin: 0;
+  margin-top: 2em;
+  list-style-type: none;
+  padding: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[4];
+      grid-template-columns: repeat(4, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.filteredArtists a {
+  border: 1px solid rgba(3, 3, 3, 0.055);
+  padding-left: 2rem;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px auto;
+      grid-template-columns: 100px auto;
+  margin: auto;
+  text-decoration: none;
+}
+
+.filteredArtists a p {
+  color: #18191b;
+  font-size: 85%;
+  padding-left: 1rem;
+}
+
+.filteredArtists a p.name-artist {
+  color: #18191b;
+  font-size: 110%;
 }
 
 .messages-page {
@@ -465,6 +719,11 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 .message-profile-pic.small {
   height: 50px;
   width: 50px;
+}
+
+.message-profile-pic.large {
+  height: 100px;
+  width: 100px;
 }
 
 .message {
