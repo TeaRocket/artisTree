@@ -14,12 +14,12 @@ export default class Signup extends Component {
     location: "",
     message: "",
     categories: [],
-    category: "",
+    category: "Visual Artist",
   };
   static contextType = UserContext;
 
   componentDidMount = () => {
-    axios.get("/categories").then((categories) => {
+    axios.get("/api/categories").then((categories) => {
       this.setState({
         categories: categories.data,
       });

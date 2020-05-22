@@ -29,7 +29,7 @@ export default class ArtworkDetails extends Component {
     event.preventDefault();
     const id = this.props.match.params.artworkId;
     axios
-      .put(`/artwork/${id}`, {
+      .put(`/api/artwork/${id}`, {
         title: this.state.title,
         description: this.state.description,
         images: this.state.images,
@@ -50,7 +50,7 @@ export default class ArtworkDetails extends Component {
   getData = () => {
     const id = this.props.match.params.artworkId;
     axios
-      .get(`/artwork/${id}`)
+      .get(`/api/artwork/${id}`)
       .then((response) => {
         this.setState({
           artwork: response.data,
@@ -71,7 +71,7 @@ export default class ArtworkDetails extends Component {
     const { user } = this.context;
 
     axios
-      .delete(`/artwork/${id}`)
+      .delete(`/api/artwork/${id}`)
       .then(() => {
         this.props.history.push(`/user/${user._id}`);
       })

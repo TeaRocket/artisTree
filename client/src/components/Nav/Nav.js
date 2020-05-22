@@ -11,6 +11,7 @@ export default function Nav() {
   const onSignupPage = pathname === "/signup" && search !== "?artist=true";
   const onArtistSignupPage = search === "?artist=true";
   //const onArtistSignup = pathname === "/signup";
+  console.log(user);
   return (
     <nav>
       <div id="nav-left-container">
@@ -25,40 +26,41 @@ export default function Nav() {
         </div>
         <div id="nav-right-container">
           <div id="nav-inner-r">
-            <Link to="/" id="link">
-              <a>Home</a>
-            </Link>
+            <div className="link">
+              <Link to="/">Home</Link>
+            </div>
             {user ? (
               <>
-                <Link to={`/user/${user._id}`} id="link">
-                  <a>Profile</a>
-                </Link>
-                <Link to="/logout" id="link">
-                  <a>Logout</a>
-                </Link>
+                <div className="link">
+                  <Link to={`/user/${user._id}`}>Profile</Link>
+                </div>
+                <div className="link">
+                  <Link to="/logout">Logout</Link>
+                </div>
               </>
             ) : (
               <>
                 {!onArtistSignupPage && (
-                  <Link to="/signup?artist=true" id="link">
-                    <a>Create artist profile</a>
-                  </Link>
+                  <div className="link">
+                    <Link to="/signup?artist=true">Create artist profile</Link>
+                  </div>
                 )}
                 {!onLoginPage && (
-                  <Link to="/login" id="link">
-                    <a>Login</a>
-                  </Link>
+                  <div className="link">
+                    <Link to="/login">Login</Link>
+                  </div>
                 )}
                 {!onSignupPage && (
-                  <Link to="/signup" id="link">
-                    <a
-                      class="btn btn-primary"
+                  <div className="link">
+                    <Link
+                      to="/signup"
+                      className="btn btn-primary"
                       data-toggle="modal"
                       data-target="#exampleModal"
                     >
                       Signup
-                    </a>
-                  </Link>
+                    </Link>
+                  </div>
                 )}
               </>
             )}

@@ -33,7 +33,7 @@ export default class Login extends Component {
         const { setUser } = this.context;
         setUser(user);
         this.props.history.push(
-          user.role === "Artist" ? `/user/${user._id}` : "/"
+          user.role === "Artist" ? `/user/${user._id}` : "/#search"
         );
       }
     });

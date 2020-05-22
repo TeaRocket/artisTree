@@ -14,7 +14,7 @@ export default function MessagesChat(props) {
 
   const showMessages = () => {
     if (props.id) {
-      axios.get(`/messages/${props.id}`).then((result) => {
+      axios.get(`/api/messages/${props.id}`).then((result) => {
         setMessages(result.data);
       });
     }
@@ -25,7 +25,7 @@ export default function MessagesChat(props) {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    axios.post(`/messages/${props.id}`, { message }).then((result) => {
+    axios.post(`/api/messages/${props.id}`, { message }).then((result) => {
       showMessages();
       setMessage("");
     });

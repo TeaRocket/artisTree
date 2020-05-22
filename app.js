@@ -80,12 +80,12 @@ const artwork = require("./routes/artwork");
 const messages = require("./routes/messages");
 
 app.use("/", index);
-app.use("/auth", auth);
-app.use("/results", results);
-app.use("/user", user);
-app.use("/artwork", artwork);
-app.use("/messages", messages);
-app.use("/upload", require("./routes/upload"));
+app.use("/api/auth", auth);
+app.use("/api/results", results);
+app.use("/api/user", user);
+app.use("/api/artwork", artwork);
+app.use("/api/messages", messages);
+app.use("/api/upload", require("./routes/upload"));
 
 //added for deploy
 app.use((req, res) => {

@@ -18,7 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/auth/loggedin")
+      .get("/api/auth/loggedin")
       .then((response) => {
         console.log(response.data);
         const { setUser } = this.context;

@@ -18,8 +18,8 @@ export default class Availabilities extends Component {
       : null;
 
     return (
-      <div>
-        <h1>Your availabilities:</h1>
+      <div className="avail-div">
+        <h1 className="avail-text">Your Availability:</h1>
         <ul id="Availabilities">{availabilities}</ul>
       </div>
     );

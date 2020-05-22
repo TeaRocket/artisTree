@@ -17,7 +17,7 @@ export default class Profile extends Component {
     location: null,
     role: null,
     categories: [],
-    category: "Visual Artist",
+    category: "",
     subcategory: "",
     artworks: [],
     images: [],
@@ -29,7 +29,7 @@ export default class Profile extends Component {
   static contextType = UserContext;
   componentDidMount = () => {
     this.getData();
-    axios.get("/categories").then((categories) => {
+    axios.get("/api/categories").then((categories) => {
       this.setState({
         categories: categories.data,
       });
@@ -52,7 +52,7 @@ export default class Profile extends Component {
     uploadData.append("imageUrl", event.target.files[0]);
     this.setState({ uploadOn: true }, () => {
       axios
-        .post("/upload/single", uploadData)
+        .post("/api/upload/single", uploadData)
         .then((response) => {
           this.setState({
             imageUrl: response.data.secure_url,
@@ -70,7 +70,7 @@ export default class Profile extends Component {
     const { displayName, bio, location, category, subcategory } = this.state;
     console.log(availability);
     axios
-      .put(`/user/${user._id}/profile`, {
+      .put(`/api/user/${user._id}/profile`, {
         displayName,
         bio,
         location,
@@ -101,7 +101,7 @@ export default class Profile extends Component {
   getData = () => {
     const id = this.props.match.params.id;
     axios
-      .get(`/user/${id}`)
+      .get(`/api/user/${id}`)
       .then((response) => {
         const {
           displayName,
@@ -192,14 +192,18 @@ export default class Profile extends Component {
                 </div>
                 <p>{this.state.getData}</p>
                 <h4 className="name">{this.state.displayName}</h4>
+
+                <div className="info-div">
+                  <p className="info">{this.state.subcategory}</p>
+                  <p className="info">{this.state.category}</p>
+                  <p className="info">{this.state.location}</p>
+                </div>
+
+                <p className="desc">{this.state.bio}</p>
                 <div className="edit-buttons">
-                  {" "}
                   <span className="button-profile">
                     <div>
-                      <button
-                        type="button"
-                        className="my-messages button-forms"
-                      >
+                      <div className="my-messages button-forms">
                         {!allowedToEdit ? (
                           <Link to={`/messages/${profileId}`}>
                             Send a message
@@ -207,7 +211,7 @@ export default class Profile extends Component {
                         ) : (
                           <Link to={`/messages`}>My messages</Link>
                         )}
-                      </button>
+                      </div>
                     </div>
                   </span>
                   <span className="button-profile">
@@ -234,7 +238,7 @@ export default class Profile extends Component {
                   <form className="form-login" onSubmit={this.handleSubmit}>
                     <div className="con">
                       <div className="field-set">
-                        <label htmlFor="displayName">Display Name</label>
+                        <label htmlFor="displayName">Display Name:</label>
                         <input
                           className="form-input"
                           type="text"
@@ -243,7 +247,7 @@ export default class Profile extends Component {
                           onChange={this.handleFormChange}
                           value={this.state.displayName}
                         />
-                        <label htmlFor="bio">Bio</label>
+                        <label htmlFor="bio">Bio:</label>
                         <textarea
                           className="text-input"
                           type="text"
@@ -252,7 +256,7 @@ export default class Profile extends Component {
                           value={this.state.bio}
                           onChange={this.handleFormChange}
                         />
-                        <label htmlFor="location">Location</label>
+                        <label htmlFor="location">Location:</label>
                         <input
                           className="form-input"
                           onChange={this.handleFormChange}
@@ -263,7 +267,7 @@ export default class Profile extends Component {
                         />
                         {isArtist && (
                           <>
-                            <label htmlFor="category">Artist Type</label>
+                            <label htmlFor="category">Artist Type:</label>
                             <select
                               className="select-input"
                               name="category"
@@ -277,7 +281,7 @@ export default class Profile extends Component {
                                 </option>
                               ))}
                             </select>
-                            <label htmlFor="subcategory">Subcategory</label>
+                            <label htmlFor="subcategory">Subcategory:</label>
                             <input
                               className="form-input"
                               type="text"
@@ -296,25 +300,14 @@ export default class Profile extends Component {
                     </div>
                   </form>
                 )}
-                <div className="info-div">
-                  <p className="info">{this.state.subcategory}</p>
-                  <p className="info">{this.state.category}</p>
-                  <p className="info">{this.state.location}</p>
-                </div>
-
-                <p className="desc">{this.state.bio}</p>
               </div>
               <div className="right col-lg-8">
-                <ul className="side-nav">
-                  <li>Artwork</li>
-                  <li>Availability</li>
-                </ul>
-
                 <div className="row gallery">
                   <div className="col-md-4">
                     <ArtworkList
                       artworks={this.state.artworks}
                       profileId={profileId}
+                      className="art"
                     />
                     {allowedToEdit && isArtist && (
                       <>
