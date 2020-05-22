@@ -101,25 +101,38 @@ export default class ArtworkDetails extends Component {
     if (!this.state.artwork) return <></>;
     const id = this.props.match.params.id;
     const { user } = this.context;
-
     return (
-      <main>
-        <h1>{this.state.artwork.title}</h1>
-        <img src={this.state.images[0]} alt="" />
-        <p>{this.state.artwork.description}</p>
-        {user._id === id && (
-          <>
-            <button onClick={this.deleteArtwork}>Delete this Artwork</button>
-            <button onClick={this.toggleEditForm}>Show edit form</button>
-          </>
-        )}
-        {this.state.editForm && (
-          <EditArtwork
-            {...this.state}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        )}
+      <main className="artwork-page">
+        <div className="container">
+          <h1 className="name">{this.state.artwork.title}</h1>
+          <div className="art-img">
+            {this.state.images.map((img) => (
+              <img className="artworks" src={img} alt="" />
+            ))}
+          </div>
+
+          <p className="info">{this.state.artwork.description}</p>
+          <div className="edit-buttons">
+            {user._id === id && (
+              <>
+                <button className="buttons" onClick={this.toggleEditForm}>
+                  Show edit form
+                </button>
+                <button className="buttons" onClick={this.deleteArtwork}>
+                  Delete this Artwork
+                </button>
+              </>
+            )}
+          </div>
+
+          {this.state.editForm && (
+            <EditArtwork
+              {...this.state}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+          )}
+        </div>
       </main>
     );
   }
