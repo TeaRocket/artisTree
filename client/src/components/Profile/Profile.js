@@ -277,6 +277,10 @@ export default class Profile extends Component {
                               id="category"
                               value={this.state.category}
                               onChange={this.handleFormChange}
+                              style={{
+                                padding: "1.3em 1.4em 1.3em 0.8em",
+                                height: "50px",
+                              }}
                             >
                               {this.state.categories.map((category) => (
                                 <option key={category} value={category}>

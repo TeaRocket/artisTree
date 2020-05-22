@@ -19,7 +19,7 @@ export default class Availabilities extends Component {
 
     return (
       <div className="avail-div">
-        <h1 className="avail-text">Your Availability:</h1>
+        <h1 className="avail-text">Availability:</h1>
         <ul id="Availabilities">{availabilities}</ul>
       </div>
     );
