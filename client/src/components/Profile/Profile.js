@@ -171,11 +171,14 @@ export default class Profile extends Component {
             <div className="row">
               <div className="left col-lg-4">
                 <div className="photo-left">
-                  <img
-                    className="photo"
-                    style={{ height: "200px" }}
-                    src={this.state.imageUrl}
-                    alt={this.state.displayName}
+                  <div
+                    style={{
+                      backgroundImage: `url(${this.state.imageUrl})`,
+                      height: "200px",
+                      width: "200px",
+                    }}
+                    className="photo message-profile-pic"
+                    aria-label={this.state.description}
                   />
 
                   {allowedToEdit && (
