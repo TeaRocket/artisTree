@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import MessagesList from "./MessagesList";
 import MessagesChat from "./MessagesChat";
-import Nav from "../Nav/Nav";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function Messages(props) {

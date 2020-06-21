@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { login } from "../../services/auth";
-import Nav from "../Nav/Nav";
 import { UserContext } from "../../contexts/UserContext";
 
 export default class Login extends Component {

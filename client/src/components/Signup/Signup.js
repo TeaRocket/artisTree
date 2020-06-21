@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { signup } from "../../services/auth";
-import Nav from "../Nav/Nav";
 import { UserContext } from "../../contexts/UserContext";
 import axios from "axios";
 const queryString = require("query-string");
