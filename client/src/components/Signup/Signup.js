@@ -158,7 +158,9 @@ export default class Signup extends Component {
                 )}
 
                 {this.state.message && (
-                  <div variant="danger">{this.state.message}</div>
+                  <div variant="danger" class="wrong-cred">
+                    {this.state.message}
+                  </div>
                 )}
                 <br></br>
                 <button type="submit" value="Signup" className="signup">

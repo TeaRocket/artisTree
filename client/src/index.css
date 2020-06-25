@@ -25,9 +25,6 @@
   /*  A welcome message or an explanation of the form */
   /* inputs form  */
   /* focus  */
-  /* //////////////////////////////////////////// */
-  /* //////////////////////////////////////////// */
-  /* input[type="text"] {min-width: 250px;} */
   /* buttons  */
   /* Submits */
   /* buttons hover */
@@ -144,6 +141,13 @@
 
 .main-box label {
   padding: 0.8em 1.4em 0.4em 0.8em;
+  margin-left: 1em;
+}
+
+.main-box .wrong-cred {
+  padding: 0.8em 1.4em 0.4em 0.8em;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
 .main-box button {
@@ -870,7 +874,14 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 }
 
 .main-box label {
+  padding: 0.8em 1.4em 0.4em 0.8em;
   margin-left: 1em;
+}
+
+.main-box .wrong-cred {
+  padding: 0.8em 1.4em 0.4em 0.8em;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
 .main-box .field-set {

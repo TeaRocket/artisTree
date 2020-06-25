@@ -38,7 +38,13 @@
     color: #3e403f;
   }
   label {
+    padding: 0.8em 1.4em 0.4em 0.8em;
     margin-left: 1em;
+  }
+  .wrong-cred {
+    padding: 0.8em 1.4em 0.4em 0.8em;
+    margin-left: 1em;
+    margin-top: 1em;
   }
   .field-set {
     width: 90vw;
