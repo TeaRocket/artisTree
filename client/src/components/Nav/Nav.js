@@ -11,7 +11,7 @@ export default function Nav() {
   const onSignupPage = pathname === "/signup" && search !== "?artist=true";
   const onArtistSignupPage = search === "?artist=true";
   return (
-    <nav>
+    <nav aria-labelledby="sections-heading">
       <div id="nav-left-container">
         <div id="nav-inner-l">
           <Link to="/">
@@ -22,6 +22,14 @@ export default function Nav() {
             />
           </Link>
         </div>
+        <button
+          className="hamburger hamburger--collapse is-active"
+          type="button"
+        >
+          <span className="hamburger-box">
+            <span className="hamburger-inner"></span>
+          </span>
+        </button>
         <div id="nav-right-container">
           <div id="nav-inner-r">
             <div className="link">

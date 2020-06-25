@@ -96,8 +96,6 @@ export default class Signup extends Component {
                   placeholder="picasso"
                   value={this.state.username}
                   onChange={this.handleChange}
-                  //id="username"
-                  id="txt-input"
                   className="form-input"
                 />
                 <br></br>
@@ -108,8 +106,6 @@ export default class Signup extends Component {
                   placeholder="password"
                   value={this.state.password}
                   onChange={this.handleChange}
-                  // id="password"
-                  id="txt-input"
                   className="form-input"
                 />
                 <br></br>
@@ -120,8 +116,6 @@ export default class Signup extends Component {
                   placeholder="picasso@mail.com"
                   value={this.state.email}
                   onChange={this.handleChange}
-                  // id="email"
-                  id="txt-input"
                   className="form-input"
                 />
                 <br></br>
@@ -131,8 +125,6 @@ export default class Signup extends Component {
                   name="birthDate"
                   value={this.state.birthDate}
                   onChange={this.handleChange}
-                  // id="birthDate"
-                  id="txt-input"
                   className="form-input"
                 />
                 {this.isArtist() && (
@@ -145,8 +137,6 @@ export default class Signup extends Component {
                       placeholder="City"
                       value={this.state.location}
                       onChange={this.handleChange}
-                      // id="location"
-                      id="txt-input"
                       className="form-input"
                     />
                     <br></br>
