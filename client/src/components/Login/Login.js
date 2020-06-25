@@ -57,7 +57,6 @@ export default class Login extends Component {
                   placeholder="picasso"
                   value={this.state.username}
                   onChange={this.handleChange}
-                  //id="username"
                   id="txt-input"
                   className="form-input"
                 />

@@ -75,29 +75,40 @@ nav #nav-left-container #nav-inner-l img {
   background-image: none;
 }
 
-nav #nav-right-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
-  color: #7f7f7f;
-  cursor: auto;
-  width: 100%;
-  padding: 0 15px;
-  position: relative;
-  display: table-cell;
-  vertical-align: middle;
+nav input[type="checkbox"] {
+  display: none;
 }
 
-nav #nav-right-container #nav-inner-r {
+@media screen and (max-width: 680px) {
+  nav input[type="checkbox"] {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+}
+
+nav ul {
   color: #7f7f7f;
   cursor: auto;
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-top: 1.6rem;
   font-family: Montserrat, sans-serif;
   text-align: right;
   font-size: 0;
 }
 
-nav #nav-right-container #nav-inner-r .link {
+nav ul .link {
   font-family: Montserrat, sans-serif;
   position: relative;
   min-height: 22px;
@@ -114,7 +125,7 @@ nav #nav-right-container #nav-inner-r .link {
   text-decoration: none;
 }
 
-nav #nav-right-container #nav-inner-r .link a {
+nav ul .link a {
   list-style: none;
   font-family: Montserrat, sans-serif;
   letter-spacing: 1px;
@@ -136,30 +147,109 @@ nav #nav-right-container #nav-inner-r .link a {
   transition: all 0.3s ease-in;
 }
 
-nav #nav-right-container #nav-inner-r .link a:hover {
+nav ul .link a:hover {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
           box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
 }
 
-nav #nav-right-container #nav-inner-r .link a:active {
+nav ul .link a:active {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
           box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
 }
 
-nav #nav-right-container #nav-inner-r .link a::-moz-selection {
+nav ul .link a::-moz-selection {
   color: white;
   background: #233948;
   text-shadow: none;
 }
 
-nav #nav-right-container #nav-inner-r .link a::selection {
+nav ul .link a::selection {
   color: white;
   background: #233948;
   text-shadow: none;
+}
+
+@media screen and (max-width: 580px) {
+  nav {
+    /*
+ * Just a quick hamburger
+ */
+    /* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+    /*
+ * But let's hide the middle one.
+ */
+    /*
+ * Ohyeah and the last one should go the other direction
+ */
+  }
+  nav ul {
+    display: none;
+  }
+  nav #menuToggle {
+    margin: auto;
+    padding: 0;
+    padding-top: 2.7rem;
+  }
+  nav #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  nav #menuToggle span {
+    display: block;
+    width: 45px;
+    height: 8px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    -webkit-transform-origin: 4px 0px;
+            transform-origin: 4px 0px;
+    -webkit-transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  nav #menuToggle span:first-child {
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+  nav #menuToggle span:nth-last-child(2) {
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+  }
+  nav #menuToggle input:checked ~ span {
+    opacity: 1;
+    -webkit-transform: rotate(45deg) translate(-2px, -1px);
+            transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+  }
+  nav #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+            transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  nav #menuToggle input:checked ~ span:nth-last-child(2) {
+    -webkit-transform: rotate(-45deg) translate(0, -1px);
+            transform: rotate(-45deg) translate(0, -1px);
+  }
 }
 
 @-webkit-keyframes bounce {}
