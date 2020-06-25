@@ -89,28 +89,31 @@ export default class Signup extends Component {
               </header>
               <br></br>
               <div className="field-set">
-                <label>Username: </label>
+                <label for="username">Username: </label>
                 <input
                   type="text"
                   name="username"
+                  id="username"
                   placeholder="picasso"
                   value={this.state.username}
                   onChange={this.handleChange}
                   className="form-input"
                 />
                 <br></br>
-                <label>Password: </label>
+                <label for="password">Password: </label>
                 <input
-                  type="password"
                   name="password"
+                  id="password"
+                  type="password"
                   placeholder="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                   className="form-input"
                 />
                 <br></br>
-                <label>Email: </label>
+                <label for="email">Email: </label>
                 <input
+                  id="email"
                   type="text"
                   name="email"
                   placeholder="picasso@mail.com"
@@ -119,10 +122,11 @@ export default class Signup extends Component {
                   className="form-input"
                 />
                 <br></br>
-                <label>Birthday: </label>
+                <label for="birthDate">Birthday: </label>
                 <input
                   type="date"
                   name="birthDate"
+                  id="birthDate"
                   value={this.state.birthDate}
                   onChange={this.handleChange}
                   className="form-input"
@@ -130,8 +134,9 @@ export default class Signup extends Component {
                 {this.isArtist() && (
                   <>
                     <br></br>
-                    <label>Location: </label>
+                    <label for="location">Location: </label>
                     <input
+                      id="location"
                       type="text"
                       name="location"
                       placeholder="City"
@@ -140,8 +145,9 @@ export default class Signup extends Component {
                       className="form-input"
                     />
                     <br></br>
-                    <label>Type of artist: </label>
+                    <label for="category">Type of artist: </label>
                     <select
+                      id="category"
                       name="category"
                       id="category"
                       value={this.state.category}
