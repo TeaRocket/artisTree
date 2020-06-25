@@ -79,6 +79,7 @@ export default function SearchResults() {
         <div className="hero" style={{ backgroundImage: `url(${hero})` }} />
         <div className="hero-filter">
           <h1>ArtisTree</h1>
+          <p className="hero-tagline">Connect with freelance artists</p>
         </div>
         <a
           href="#search"
