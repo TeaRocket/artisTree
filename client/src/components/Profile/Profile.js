@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Nav from "../Nav/Nav";
 import DateAdder from "../DateAdder/DateAdder";
 import Availabilities from "../Availabilities/Availabilities";
 import AddArtwork from "../AddArtwork/AddArtwork";

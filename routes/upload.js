@@ -45,21 +45,4 @@ router.post("/multiple", upload.array("files", 12), async (req, res) => {
   }
 });
 
-router.post("/multiple/old", uploader.array("images", 12), (req, res, next) => {
-  const files = req.files;
-  if (!files) {
-    const error = new Error("Please choose files");
-    error.httpStatusCode = 400;
-    return next(error);
-  }
-  res.json(files);
-  //   Artwork.update(
-  //     { _id: artwork._id },
-  //     { $push: { images: files } },
-
-  // ).then(data=>{
-  //   res.json({ images: req.files.images });
-  // });
-});
-
 module.exports = router;

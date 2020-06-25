@@ -18,192 +18,6 @@
           box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
 }
 
-.main-box {
-  /* form Container */
-  /* the header form form */
-  /* title form form */
-  /*  A welcome message or an explanation of the form */
-  /* inputs form  */
-  /* focus  */
-  /* //////////////////////////////////////////// */
-  /* //////////////////////////////////////////// */
-  /* input[type="text"] {min-width: 250px;} */
-  /* buttons  */
-  /* Submits */
-  /* buttons hover */
-  /* buttons hover Animation */
-}
-
-.main-box * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
-}
-
-.main-box form {
-  width: 550px;
-  height: auto;
-  border-radius: 5px;
-  margin: 10% auto;
-  -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
-          box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
-  padding: 2%;
-  background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
-}
-
-.main-box form .con {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 3% auto;
-}
-
-.main-box header {
-  margin: 2% auto 7% auto;
-  text-align: center;
-}
-
-.main-box header h2 {
-  font-family: Montserrat, sans-serif;
-  font-size: 250%;
-  color: #3e403f;
-}
-
-.main-box header p {
-  letter-spacing: 0.05em;
-  color: #3e403f;
-}
-
-.main-box .field-set {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: start;
-  color: #333;
-}
-
-.main-box .input-item {
-  color: #333;
-  width: 280px;
-  height: 50px;
-  padding: 0 20px;
-  background: #fff;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  text-align: center;
-}
-
-.main-box input[class="form-input"] {
-  margin-top: 2%;
-  padding: 15px 150px 15px 150px;
-  font-size: 16px;
-  font-family: Montserrat, sans-serif;
-  color: #5e6472;
-  outline: none;
-  border: none;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  -webkit-transition: 0.2s linear;
-  transition: 0.2s linear;
-  text-align: center;
-}
-
-.main-box input[id="txt-input"] {
-  width: 250px;
-}
-
-.main-box input:focus {
-  -webkit-transform: translateX(-2px);
-          transform: translateX(-2px);
-  border-radius: 5px;
-}
-
-.main-box .text-input {
-  margin-top: 2%;
-  font-size: 16px;
-  font-family: Montserrat, sans-serif;
-  color: #5e6472;
-  outline: none;
-  border: none;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  -webkit-transition: 0.2s linear;
-  transition: 0.2s linear;
-  padding: 0.6em 1.4em 3.6em 0.8em;
-  text-align: center;
-}
-
-.main-box label {
-  padding: 0.8em 1.4em 0.4em 0.8em;
-}
-
-.main-box button {
-  display: inline-block;
-  color: #233948;
-  width: 280px;
-  height: 50px;
-  padding: 0 20px;
-  background: #fff;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  -webkit-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-  margin: 2% auto;
-  letter-spacing: 0.05em;
-}
-
-.main-box .submits {
-  width: 48%;
-  display: inline-block;
-  margin-left: 2%;
-}
-
-.main-box button:hover {
-  -webkit-transform: translatey(3px);
-          transform: translatey(3px);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.main-box button:hover {
-  -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
-          animation: ani9 0.4s ease-in-out infinite alternate;
-}
-
-@-webkit-keyframes ani9 {
-  0% {
-    -webkit-transform: translateY(3px);
-            transform: translateY(3px);
-  }
-  100% {
-    -webkit-transform: translateY(5px);
-            transform: translateY(5px);
-  }
-}
-
-@keyframes ani9 {
-  0% {
-    -webkit-transform: translateY(3px);
-            transform: translateY(3px);
-  }
-  100% {
-    -webkit-transform: translateY(5px);
-            transform: translateY(5px);
-  }
-}
-
 nav {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
   color: #7f7f7f;
@@ -261,29 +75,40 @@ nav #nav-left-container #nav-inner-l img {
   background-image: none;
 }
 
-nav #nav-right-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
-  color: #7f7f7f;
-  cursor: auto;
-  width: 100%;
-  padding: 0 15px;
-  position: relative;
-  display: table-cell;
-  vertical-align: middle;
+nav input[type="checkbox"] {
+  display: none;
 }
 
-nav #nav-right-container #nav-inner-r {
+@media screen and (max-width: 680px) {
+  nav input[type="checkbox"] {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+}
+
+nav ul {
   color: #7f7f7f;
   cursor: auto;
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-top: 1.6rem;
   font-family: Montserrat, sans-serif;
   text-align: right;
   font-size: 0;
 }
 
-nav #nav-right-container #nav-inner-r .link {
+nav ul .link {
   font-family: Montserrat, sans-serif;
   position: relative;
   min-height: 22px;
@@ -300,7 +125,7 @@ nav #nav-right-container #nav-inner-r .link {
   text-decoration: none;
 }
 
-nav #nav-right-container #nav-inner-r .link a {
+nav ul .link a {
   list-style: none;
   font-family: Montserrat, sans-serif;
   letter-spacing: 1px;
@@ -322,30 +147,109 @@ nav #nav-right-container #nav-inner-r .link a {
   transition: all 0.3s ease-in;
 }
 
-nav #nav-right-container #nav-inner-r .link a:hover {
+nav ul .link a:hover {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
           box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
 }
 
-nav #nav-right-container #nav-inner-r .link a:active {
+nav ul .link a:active {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
           box-shadow: 0 -1px 0 0 white inset, 0 -2px 0 0 #233948 inset;
 }
 
-nav #nav-right-container #nav-inner-r .link a::-moz-selection {
+nav ul .link a::-moz-selection {
   color: white;
   background: #233948;
   text-shadow: none;
 }
 
-nav #nav-right-container #nav-inner-r .link a::selection {
+nav ul .link a::selection {
   color: white;
   background: #233948;
   text-shadow: none;
+}
+
+@media screen and (max-width: 580px) {
+  nav {
+    /*
+ * Just a quick hamburger
+ */
+    /* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+    /*
+ * But let's hide the middle one.
+ */
+    /*
+ * Ohyeah and the last one should go the other direction
+ */
+  }
+  nav ul {
+    display: none;
+  }
+  nav #menuToggle {
+    margin: auto;
+    padding: 0;
+    padding-top: 2.7rem;
+  }
+  nav #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  nav #menuToggle span {
+    display: block;
+    width: 45px;
+    height: 8px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    -webkit-transform-origin: 4px 0px;
+            transform-origin: 4px 0px;
+    -webkit-transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  nav #menuToggle span:first-child {
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+  nav #menuToggle span:nth-last-child(2) {
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+  }
+  nav #menuToggle input:checked ~ span {
+    opacity: 1;
+    -webkit-transform: rotate(45deg) translate(-2px, -1px);
+            transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+  }
+  nav #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+            transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  nav #menuToggle input:checked ~ span:nth-last-child(2) {
+    -webkit-transform: rotate(-45deg) translate(0, -1px);
+            transform: rotate(-45deg) translate(0, -1px);
+  }
 }
 
 @-webkit-keyframes bounce {}
@@ -816,19 +720,14 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 }
 
 .main-box {
-  /* form Container */
   /* the header form form */
   /* title form form */
   /*  A welcome message or an explanation of the form */
   /* inputs form  */
   /* focus  */
-  /* //////////////////////////////////////////// */
-  /* //////////////////////////////////////////// */
   /* input[type="text"] {min-width: 250px;} */
   /* buttons  */
-  /* Submits */
   /* buttons hover */
-  /* buttons hover Animation */
 }
 
 .main-box * {
@@ -838,17 +737,15 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 }
 
 .main-box form {
-  width: 550px;
+  width: 90vw;
+  max-width: 550px;
   height: auto;
   border-radius: 5px;
-  margin: 10% auto;
+  margin: auto;
   -webkit-box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
           box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
-  padding: 2%;
+  padding: 1rem 2rem;
   background-image: linear-gradient(-225deg, #d3f0c7 50%, #9dd57c 50%);
-}
-
-.main-box form .con {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -856,11 +753,10 @@ nav #nav-right-container #nav-inner-r .link a::selection {
       justify-content: space-around;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 3% auto;
 }
 
 .main-box header {
-  margin: 2% auto 7% auto;
+  margin: 2rem auto 1rem auto;
   text-align: center;
 }
 
@@ -871,11 +767,24 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 }
 
 .main-box header p {
-  letter-spacing: 0.05em;
+  letter-spacing: 0.05rem;
   color: #3e403f;
 }
 
+.main-box label {
+  padding: 0.8rem 1.4rem 0.4rem 0.8rem;
+  margin-left: 1em;
+}
+
+.main-box .wrong-cred {
+  padding: 0em 1.4rem 0 0.8rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
 .main-box .field-set {
+  width: 90vw;
+  max-width: 550px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -885,33 +794,19 @@ nav #nav-right-container #nav-inner-r .link a::selection {
           flex-direction: column;
 }
 
-.main-box .input-item {
-  color: #333;
-  width: 280px;
-  height: 50px;
-  padding: 0 20px;
-  background: #fff;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-}
-
-.main-box input[class="form-input"] {
-  margin-top: 2%;
+.main-box input.form-input {
+  width: 90%;
+  margin: auto;
   padding: 15px;
   font-size: 16px;
   font-family: Montserrat, sans-serif;
   color: #5e6472;
   outline: none;
   border: none;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
-}
-
-.main-box input[id="txt-input"] {
-  width: 250px;
 }
 
 .main-box input:focus {
@@ -921,11 +816,13 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 }
 
 .main-box button {
+  width: 90%;
   display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 1rem auto 1rem auto;
   color: #233948;
-  width: 280px;
   height: 50px;
-  padding: 0 20px;
   background: #fff;
   border-radius: 5px;
   outline: none;
@@ -934,19 +831,22 @@ nav #nav-right-container #nav-inner-r .link a::selection {
   text-align: center;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  margin: 2% auto;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.05rem;
 }
 
 .main-box .select-input {
-  padding: 1.3em 1.4em 1.3em 0.8em;
-  height: 50px;
-}
-
-.main-box .submits {
-  width: 48%;
-  display: inline-block;
-  margin-left: 2%;
+  width: 90%;
+  margin: auto;
+  padding: 15px;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  color: #5e6472;
+  outline: none;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
 }
 
 .main-box button:hover {
@@ -954,11 +854,19 @@ nav #nav-right-container #nav-inner-r .link a::selection {
           transform: translatey(3px);
   -webkit-box-shadow: none;
           box-shadow: none;
-}
-
-.main-box button:hover {
   -webkit-animation: ani9 0.4s ease-in-out infinite alternate;
           animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes ani9 {
+  0% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
 }
 
 @keyframes ani9 {
@@ -1862,21 +1770,5 @@ nav #nav-right-container #nav-inner-r .link a::selection {
 
 main {
   margin-top: 105px;
-}
-
-.my-messages.button-forms,
-input[type="button"],
-button {
-  border: 1px solid #3e403f !important;
-  font-size: 10pt !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 /*# sourceMappingURL=index.css.map */

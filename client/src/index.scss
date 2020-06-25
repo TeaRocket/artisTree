@@ -1,11 +1,10 @@
 @import "./components/Artwork/_Artwork.scss";
 @import "./components/Availabilities/_Availabilities.scss";
 @import "./components/DateAdder/_DateAdder.scss";
-@import "./components/Login/_Login.scss";
 @import "./components/Nav/_Nav.scss";
 @import "./components/SearchResults/_SearchResults.scss";
 @import "./components/MessagesPage/_Messages.scss";
-@import "./components/Signup/_Signup.scss";
+@import "./components/Signup/Form.scss";
 @import "./components/Profile/_Profile.scss";
 @import "./components/ArtworkDetails/_ArtworkDetails.scss";
 
@@ -15,13 +14,4 @@
 
 main {
   margin-top: 105px;
-}
-.my-messages.button-forms,
-input[type="button"],
-button {
-  border: 1px solid #3e403f !important;
-  font-size: 10pt !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
