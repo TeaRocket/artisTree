@@ -28,7 +28,7 @@ export default function Nav() {
         </div>
 
         <div id="menuToggle">
-          <input type="checkbox" ref={checkBoxRef} />
+          <input aria-label="menu" type="checkbox" ref={checkBoxRef} />
           <span></span>
           <span></span>
           <span></span>
