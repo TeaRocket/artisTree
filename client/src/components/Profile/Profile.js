@@ -34,6 +34,13 @@ export default class Profile extends Component {
       });
     });
   };
+  componentDidUpdate = (prevProps) => {
+    console.log(this.props.match.params.id, prevProps);
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.getData();
+    }
+  };
+
   handleFormChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
