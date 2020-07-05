@@ -135,9 +135,6 @@ export default class Profile extends Component {
       })
       .catch((error) => {
         console.log(error);
-        // if (error.response.status === 404) {
-        //   this.setState({ error: "Not found" });
-        // }
       });
   };
   toggleEditForm = () => {

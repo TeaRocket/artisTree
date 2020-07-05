@@ -92,7 +92,6 @@ export default class AddArtwork extends Component {
                 />
               </div>
 
-              {/* <p className="ptag">Select images:</p> */}
               <label className="submit submit-label" for="inputfiles">
                 Select files
               </label>

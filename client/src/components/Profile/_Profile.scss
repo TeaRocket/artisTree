@@ -8,14 +8,12 @@
     border-radius: 5px;
     margin: 10% auto;
     width: 90%;
-    //background-color: #fff;
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
     padding: 2%;
   }
 
   .profile-banner {
     background: #eee;
-    //background-image: url("https://res.cloudinary.com/artistree/image/upload/v1590077361/artistree/pngkey.com-camera-icon-png-104955_sjufa6.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -29,7 +27,6 @@
     right: -96%;
     top: 25px;
     font-size: 18px !important;
-    //color: #fff;
   }
 
   @media (max-width: 800px) {
@@ -163,7 +160,6 @@
   .bio {
     display: block;
     align-items: flex-start;
-    // justify-content: center;
     flex-direction: column;
     font-size: 15pt;
   }
@@ -296,18 +292,13 @@
   }
 
   .submit.submit-label {
-    //padding: 0px;
     box-sizing: border-box;
     font-family: Montserrat, sans-serif;
     padding: 15px 15px 15px 15px;
     font-size: 14px;
     text-align: center;
   }
-  // .ptag {
-  //   margin-bottom: 10px;
-  //   text-align: left;
-  //   width: 100%;
-  // }
+
   .form-header {
     margin: 2% auto 7% auto;
     text-align: center;
@@ -386,10 +377,6 @@
     // margin-bottom: 5px;
     text-align: center;
   }
-
-  // .gallery div {
-  //   margin-bottom: 30px;
-  // }
 
   .gallery img {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
