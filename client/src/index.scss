@@ -15,3 +15,12 @@
 main {
   margin-top: 105px;
 }
+.my-messages.button-forms,
+input[type="button"],
+button {
+  border: 1px solid #3e403f !important;
+  font-size: 10pt !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
