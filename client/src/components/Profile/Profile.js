@@ -35,7 +35,6 @@ export default class Profile extends Component {
     });
   };
   componentDidUpdate = (prevProps) => {
-    console.log(this.props.match.params.id, prevProps);
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getData();
     }
@@ -71,6 +70,7 @@ export default class Profile extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
+    event.persist();
     const { user } = this.context;
     const availability = user.availability;
     const { displayName, bio, location, category, subcategory } = this.state;
@@ -92,15 +92,24 @@ export default class Profile extends Component {
           subcategory,
           availability,
         } = result.data;
-        this.setState({
-          displayName,
-          bio,
-          location,
-          category,
-          subcategory,
-          availability,
-          editProfile: false,
-        });
+        this.setState(
+          {
+            displayName,
+            bio,
+            location,
+            category,
+            subcategory,
+            availability,
+            editProfile: false,
+          },
+          () => {
+            window.scrollBy({
+              top: -window.scrollY,
+              left: 0,
+              behavior: "smooth",
+            });
+          }
+        );
       });
   };
   getData = () => {
@@ -147,10 +156,22 @@ export default class Profile extends Component {
       addArtworkForm: !this.state.addArtworkForm,
     });
   };
-  toggleProfileEdit = () => {
-    this.setState({
-      editProfile: !this.state.editProfile,
-    });
+  toggleProfileEdit = (e) => {
+    e.persist();
+    this.setState(
+      {
+        editProfile: !this.state.editProfile,
+      },
+      () => {
+        if (this.state.editProfile) {
+          window.scrollBy({
+            top: e.target.offsetTop - window.scrollY, // could be negative value
+            left: 0,
+            behavior: "smooth",
+          });
+        }
+      }
+    );
   };
   render() {
     if (this.state.error) return <div>{this.state.error.toString()}</div>;

@@ -21,7 +21,7 @@
   },
   "scripts": {
     "watch-css": "node-sass src/index.scss src/index.css -w",
-    "start": "npm run watch-css & NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js start",
+    "start": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js start",
     "build-css": "node-sass --include-path scss src/index.scss src/index.css --output-style compressed",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test",

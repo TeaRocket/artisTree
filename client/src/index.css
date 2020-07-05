@@ -543,7 +543,6 @@ nav {
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 16px;
-  /* background-image: url("search.png"); */
   transition: width 0.4s ease-in-out;
   border: 1px solid #3a3b4a; }
 
@@ -566,7 +565,6 @@ nav {
   /*  A welcome message or an explanation of the form */
   /* inputs form  */
   /* focus  */
-  /* input[type="text"] {min-width: 250px;} */
   /* buttons  */
   /* buttons hover */ }
   .main-box * {
@@ -800,8 +798,7 @@ nav {
     margin: 25px 40px;
     color: #999;
     font-size: 15pt;
-    font-family: "Open Sans";
-    padding: 10px 100px 30px 100px; }
+    font-family: "Open Sans"; }
   .page .right {
     padding: 0 25px 0 25px !important;
     display: flex;
