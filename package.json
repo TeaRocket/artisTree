@@ -4,6 +4,7 @@
   "private": true,
   "homapage": "https://artis-tree.herokuapp.com",
   "scripts": {
+    "build": "cd client && npm install && npm run build",
     "start": "node ./bin/www",
     "dev": "DEBUG=artistree:* nodemon --inspect ./bin/www",
     "dev-windows": "nodemon ./bin/www"
