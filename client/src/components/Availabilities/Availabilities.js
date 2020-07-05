@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import moment from "moment";
 
 export default class Availabilities extends Component {
   static contextType = UserContext;

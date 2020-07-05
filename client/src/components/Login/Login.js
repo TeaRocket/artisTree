@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { login } from "../../services/auth";
-import Nav from "../Nav/Nav";
 import { UserContext } from "../../contexts/UserContext";
 
 export default class Login extends Component {
@@ -58,7 +57,6 @@ export default class Login extends Component {
                   placeholder="picasso"
                   value={this.state.username}
                   onChange={this.handleChange}
-                  //id="username"
                   id="txt-input"
                   className="form-input"
                 />
@@ -76,7 +74,9 @@ export default class Login extends Component {
                 />
 
                 {this.state.message && (
-                  <div variant="danger">{this.state.message}</div>
+                  <div variant="danger" class="wrong-cred">
+                    {this.state.message}
+                  </div>
                 )}
                 <br></br>
                 <button type="submit" value="Login" className="Login">

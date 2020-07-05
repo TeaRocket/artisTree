@@ -11,7 +11,7 @@ export default function Nav() {
   const onSignupPage = pathname === "/signup" && search !== "?artist=true";
   const onArtistSignupPage = search === "?artist=true";
   return (
-    <nav>
+    <nav role="navigation" aria-labelledby="sections-heading">
       <div id="nav-left-container">
         <div id="nav-inner-l">
           <Link to="/">
@@ -22,34 +22,39 @@ export default function Nav() {
             />
           </Link>
         </div>
-        <div id="nav-right-container">
-          <div id="nav-inner-r">
-            <div className="link">
+
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul>
+            <li className="link">
               <Link to="/">Home</Link>
-            </div>
+            </li>
             {user ? (
               <>
-                <div className="link">
+                <li className="link">
                   <Link to={`/user/${user._id}`}>Profile</Link>
-                </div>
-                <div className="link">
+                </li>
+                <li className="link">
                   <Link to="/logout">Logout</Link>
-                </div>
+                </li>
               </>
             ) : (
               <>
                 {!onArtistSignupPage && (
-                  <div className="link">
+                  <li className="link">
                     <Link to="/signup?artist=true">Create artist profile</Link>
-                  </div>
+                  </li>
                 )}
                 {!onLoginPage && (
-                  <div className="link">
+                  <li className="link">
                     <Link to="/login">Login</Link>
-                  </div>
+                  </li>
                 )}
                 {!onSignupPage && (
-                  <div className="link">
+                  <li className="link">
                     <Link
                       to="/signup"
                       className="btn btn-primary"
@@ -58,11 +63,11 @@ export default function Nav() {
                     >
                       Signup
                     </Link>
-                  </div>
+                  </li>
                 )}
               </>
             )}
-          </div>
+          </ul>
         </div>
       </div>
     </nav>

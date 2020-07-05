@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import EditArtwork from "../EditArtwork/EditArtwork";
-import AddArtwork from "../AddArtwork/AddArtwork";
-import ArtworkList from "../ArtworkList/ArtworkList";
 import axios from "axios";
 import { UserContext } from "../../contexts/UserContext";
 
