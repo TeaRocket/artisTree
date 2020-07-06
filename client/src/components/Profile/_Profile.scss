@@ -7,7 +7,7 @@
     max-width: 1250px;
     border-radius: 5px;
     margin: 10% auto;
-    width: 90%;
+    width: 90vw;
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
     padding: 2%;
   }
@@ -164,6 +164,7 @@
     font-size: 15pt;
   }
   .desc {
+    line-height: 1.7rem;
     text-align: center;
     margin-top: 25px;
     margin: 25px 40px;
@@ -206,25 +207,15 @@
     }
   }
 
-  .my-messages {
-    display: inline-block;
-    text-decoration: none;
-    color: #233948;
-    text-align: center;
-    margin: 0 auto;
-    padding: 12px;
-  }
   .button-dates {
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
   .button-forms {
+    box-sizing: content-box;
     display: inline-block;
     color: #233948;
-    width: 280px;
-    height: 50px;
-    padding: 0 20px;
     background: #fff;
     border-radius: 5px;
     outline: none;
@@ -235,12 +226,22 @@
     margin: 30px 30px 30px 30px;
     letter-spacing: 0.05em;
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
+    width: 280px;
+    height: 50px;
+    text-decoration: none;
+    color: #233948;
+    text-align: center;
   }
   .edit-buttons {
     border-bottom: 1px solid #ededed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
   }
   .button-edit-profile {
-    display: inline-block;
+    box-sizing: content-box;
     color: #233948;
     width: 280px;
     height: 50px;
@@ -257,6 +258,8 @@
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
   }
   .button-complete-profile {
+    box-sizing: content-box;
+
     display: inline-block;
     color: #233948;
     width: 280px;
@@ -277,7 +280,7 @@
   .submit {
     display: inline-block;
     color: #233948;
-    width: 500px;
+    width: 280px;
     height: 50px;
     background: #fff;
     border-radius: 5px;
@@ -286,8 +289,10 @@
     cursor: pointer;
     text-align: center;
     transition: all 0.2s linear;
-    margin: 50px 0px 0px 0px;
+    margin: auto;
+    margin-top: 50px;
     letter-spacing: 0.05em;
+    box-sizing: content-box;
   }
 
   .submit.submit-label {
@@ -407,26 +412,14 @@
   }
 
   form {
-    width: 550px;
+    width: calc(100% - 4rem);
+    max-width: 550px;
     height: auto;
     border-radius: 5px;
-    margin: 2% auto;
+    margin: 1rem auto;
     box-shadow: 0 9px 50px hsla(0, 0%, 75%, 0.31);
-    padding: 2%;
     background-color: #d3f0c7;
-  }
-  /* form Container */
-  form .con {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-around;
-    justify-content: center;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 3% auto;
-  }
-
-  .field-set {
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     text-align: start;
@@ -442,13 +435,12 @@
     border-radius: 5px;
     outline: none;
     border: none;
-    text-align: center;
   }
 
   /* inputs form  */
   input[class="form-input"] {
     margin-top: 2%;
-    padding: 15px 150px 15px 150px;
+    padding: 15px;
     font-size: 15px;
     font-family: Montserrat, sans-serif;
     color: #5e6472;
@@ -456,7 +448,6 @@
     border: none;
     box-sizing: content-box;
     transition: 0.2s linear;
-    text-align: center;
   }
   input[id="txt-input"] {
     width: 250px;
@@ -492,16 +483,16 @@
     font-size: 15px;
   }
 
-  .edit-buttons {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .DateRangePicker {
     position: relative;
     display: flex;
     justify-content: center;
   }
+
+  // @media screen and (max-width: 850px) {
+  //   .edit-buttons {
+  //     flex-direction: column;
+  //     width: 1000%;
+  //   }
+  // }
 }
