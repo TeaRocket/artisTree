@@ -219,9 +219,15 @@ export default class Profile extends Component {
               <h4 className="name">{this.state.displayName}</h4>
 
               <div className="info-div">
-                <p className="info">{this.state.subcategory}</p>
-                <p className="info">{this.state.category}</p>
-                <p className="info">{this.state.location}</p>
+                {this.state.subcategory && (
+                  <p className="info">{this.state.subcategory}</p>
+                )}
+                {this.state.category && (
+                  <p className="info">{this.state.category}</p>
+                )}
+                {this.state.location && (
+                  <p className="info">{this.state.location}</p>
+                )}
               </div>
 
               <p className="desc">{this.state.bio}</p>

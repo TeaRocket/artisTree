@@ -145,16 +145,11 @@
   .info {
     font-size: 15pt;
     color: #aaa;
-    text-align: center;
     margin: 5px 7px 5px 7px;
   }
 
   .info-div {
-    text-align: center;
     margin-top: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
   }
 
   .bio {
@@ -342,7 +337,9 @@
   .my-messages:hover {
     animation: ani9 0.4s ease-in-out infinite alternate;
   }
-
+  .row {
+    text-align: center;
+  }
   .row .gallery {
     display: flex;
     flex-wrap: wrap;
