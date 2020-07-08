@@ -543,7 +543,6 @@ nav {
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 16px;
-  /* background-image: url("search.png"); */
   transition: width 0.4s ease-in-out;
   border: 1px solid #3a3b4a; }
 
@@ -566,7 +565,6 @@ nav {
   /*  A welcome message or an explanation of the form */
   /* inputs form  */
   /* focus  */
-  /* input[type="text"] {min-width: 250px;} */
   /* buttons  */
   /* buttons hover */ }
   .main-box * {
@@ -667,14 +665,13 @@ nav {
   /* buttons hover */
   /* buttons hover Animation */
   /* buttons hover Animation */
-  /* form Container */
   /* inputs form  */
   /* focus  */ }
   .page .container {
     max-width: 1250px;
     border-radius: 5px;
     margin: 10% auto;
-    width: 90%;
+    width: 90vw;
     box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
     padding: 2%; }
   .page .profile-banner {
@@ -781,27 +778,22 @@ nav {
   .page .info {
     font-size: 15pt;
     color: #aaa;
-    text-align: center;
     margin: 5px 7px 5px 7px; }
   .page .info-div {
-    text-align: center;
-    margin-top: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around; }
+    margin-top: 5px; }
   .page .bio {
     display: block;
     align-items: flex-start;
     flex-direction: column;
     font-size: 15pt; }
   .page .desc {
+    line-height: 1.7rem;
     text-align: center;
     margin-top: 25px;
     margin: 25px 40px;
     color: #999;
     font-size: 15pt;
-    font-family: "Open Sans";
-    padding: 10px 100px 30px 100px; }
+    font-family: "Open Sans"; }
   .page .right {
     padding: 0 25px 0 25px !important;
     display: flex;
@@ -825,23 +817,14 @@ nav {
   @media (max-width: 990px) {
     .page .side-nav {
       display: none; } }
-  .page .my-messages {
-    display: inline-block;
-    text-decoration: none;
-    color: #233948;
-    text-align: center;
-    margin: 0 auto;
-    padding: 12px; }
   .page .button-dates {
     display: flex;
     flex-direction: row;
     justify-content: center; }
   .page .button-forms {
+    box-sizing: content-box;
     display: inline-block;
     color: #233948;
-    width: 280px;
-    height: 50px;
-    padding: 0 20px;
     background: #fff;
     border-radius: 5px;
     outline: none;
@@ -851,11 +834,21 @@ nav {
     transition: all 0.2s linear;
     margin: 30px 30px 30px 30px;
     letter-spacing: 0.05em;
-    box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31); }
+    box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
+    width: 280px;
+    height: 50px;
+    text-decoration: none;
+    color: #233948;
+    text-align: center; }
   .page .edit-buttons {
-    border-bottom: 1px solid #ededed; }
+    border-bottom: 1px solid #ededed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center; }
   .page .button-edit-profile {
-    display: inline-block;
+    box-sizing: content-box;
     color: #233948;
     width: 280px;
     height: 50px;
@@ -871,6 +864,7 @@ nav {
     letter-spacing: 0.05em;
     box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31); }
   .page .button-complete-profile {
+    box-sizing: content-box;
     display: inline-block;
     color: #233948;
     width: 280px;
@@ -889,7 +883,7 @@ nav {
   .page .submit {
     display: inline-block;
     color: #233948;
-    width: 500px;
+    width: 280px;
     height: 50px;
     background: #fff;
     border-radius: 5px;
@@ -898,8 +892,10 @@ nav {
     cursor: pointer;
     text-align: center;
     transition: all 0.2s linear;
-    margin: 50px 0px 0px 0px;
-    letter-spacing: 0.05em; }
+    margin: auto;
+    margin-top: 50px;
+    letter-spacing: 0.05em;
+    box-sizing: content-box; }
   .page .submit.submit-label {
     box-sizing: border-box;
     font-family: Montserrat, sans-serif;
@@ -929,6 +925,8 @@ nav {
     box-shadow: none; }
   .page .my-messages:hover {
     animation: ani9 0.4s ease-in-out infinite alternate; }
+  .page .row {
+    text-align: center; }
   .page .row .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -982,22 +980,14 @@ nav {
     list-style: none;
     padding: 1em; }
   .page form {
-    width: 550px;
+    width: calc(100% - 4rem);
+    max-width: 550px;
     height: auto;
     border-radius: 5px;
-    margin: 2% auto;
+    margin: 1rem auto;
     box-shadow: 0 9px 50px rgba(191, 191, 191, 0.31);
-    padding: 2%;
-    background-color: #d3f0c7; }
-  .page form .con {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-around;
-    justify-content: center;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 3% auto; }
-  .page .field-set {
+    background-color: #d3f0c7;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     text-align: start;
@@ -1010,19 +1000,17 @@ nav {
     background: #fff;
     border-radius: 5px;
     outline: none;
-    border: none;
-    text-align: center; }
+    border: none; }
   .page input[class="form-input"] {
     margin-top: 2%;
-    padding: 15px 150px 15px 150px;
+    padding: 15px;
     font-size: 15px;
     font-family: Montserrat, sans-serif;
     color: #5e6472;
     outline: none;
     border: none;
     box-sizing: content-box;
-    transition: 0.2s linear;
-    text-align: center; }
+    transition: 0.2s linear; }
   .page input[id="txt-input"] {
     width: 250px; }
   .page input:focus {
@@ -1045,11 +1033,6 @@ nav {
     padding: 0.8em 1.4em 0.4em 0.8em; }
   .page #subcategory {
     font-size: 15px; }
-  .page .edit-buttons {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    margin-right: auto; }
   .page .DateRangePicker {
     position: relative;
     display: flex;
