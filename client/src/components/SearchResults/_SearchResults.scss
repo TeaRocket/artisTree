@@ -25,10 +25,10 @@ main {
 
 .searchForm {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   justify-items: center;
   align-items: center;
-  grid-gap: 5px;
   margin: auto;
 
   .select-container {
@@ -39,10 +39,14 @@ main {
       line-height: 24px;
       color: #484848;
       background-color: #fff;
-      padding-top: 2em;
+      padding-top: 1.8em;
       border-radius: 0;
       border: 1px solid #dbdbdb;
     }
+  }
+  #category {
+    padding-top: 0.8em;
+    padding-left: 0.5em;
   }
 }
 .DateRangePickerInput {
@@ -51,6 +55,7 @@ main {
     padding-top: 0.8em;
   }
 }
+
 #subcategory {
   font-weight: 200;
   font-size: 19px;
@@ -75,11 +80,6 @@ main {
     top: 0.25em;
     color: #857f7f;
   }
-}
-
-.searchForm button {
-  margin-left: 2em;
-  align-self: center;
 }
 
 .selects {
@@ -231,14 +231,15 @@ main {
 }
 
 .filteredArtists {
+  width: 80vw;
   margin: 0;
   margin-top: 2em;
   list-style-type: none;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr));
-
   grid-gap: 10px;
+
   a {
     border: 1px solid rgba(3, 3, 3, 0.055);
     padding-left: 2rem;
@@ -262,6 +263,21 @@ main {
         margin-top: 1rem;
         margin-bottom: 0.3rem;
       }
+    }
+  }
+}
+@media screen and (max-width: 666px) {
+  .searchForm {
+    flex-direction: column;
+    gap: 0.5em;
+
+    .select-container {
+      select {
+        width: 80vw;
+      }
+    }
+    .DateRangePickerInput {
+      width: 80vw;
     }
   }
 }
