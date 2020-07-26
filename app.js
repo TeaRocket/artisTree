@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const http = require("http");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -9,6 +10,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const favicon = require("serve-favicon");
 const mongoose = require("mongoose");
+const socketIO = require("socket.io");
 const logger = require("morgan");
 const path = require("path");
 const app = express();
@@ -43,6 +45,19 @@ const app_name = require("./package.json").name;
 const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
 );
+
+const server = http.createServer(app);
+const io = socketIO(server);
+
+io.of("/api/").on("connection", (socket) => {
+  console.log("New client connected" + socket.id);
+  console.log(socket);
+
+  // disconnect is fired when a client leaves the server
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+});
 
 // Middleware Setup
 app.use(logger("dev"));
