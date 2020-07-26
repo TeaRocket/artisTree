@@ -15,7 +15,7 @@ import ArtworkDetails from "./components/ArtworkDetails/ArtworkDetails";
 import ArtworkList from "./components/ArtworkList/ArtworkList";
 import Nav from "./components/Nav/Nav";
 
-const socket = socketIOClient("http://localhost:5555");
+let socket;
 
 const App = () => {
   const { user, setUser } = useContext(UserContext);
@@ -27,6 +27,24 @@ const App = () => {
         setUser(response.data);
       })
       .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    console.log("Before socket io client");
+    socket = socketIOClient();
+
+    // socket.emit("join", { name, room }, (error) => {
+    //   if (error) {
+    //     alert(error);
+    //     window.location.href = "/";
+    //   }
+    // });
+
+    return () => {
+      socket.emit("disconnect");
+      socket.off();
+      socket = undefined;
+    };
   }, []);
 
   const RedirectToLogin = ({ history }) => {

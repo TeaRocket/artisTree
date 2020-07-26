@@ -22,6 +22,17 @@ app.use((err, req, res, next) => {
 });
 
 let server = http.createServer(app);
+const io = require("socket.io")(server);
+
+io.on("connection", (socket) => {
+  console.log("New client connected" + socket.id);
+  console.log(socket);
+
+  // disconnect is fired when a client leaves the server
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+});
 
 server.on("error", (error) => {
   if (error.syscall !== "listen") {
