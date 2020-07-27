@@ -5,11 +5,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import UserContextProvider from "./contexts/UserContext";
+import SocketContextProvider from "./contexts/SocketContext";
 
 ReactDOM.render(
   <BrowserRouter>
     <UserContextProvider>
-      <App />
+      <SocketContextProvider>
+        <App />
+      </SocketContextProvider>
     </UserContextProvider>
   </BrowserRouter>,
   document.getElementById("root")
