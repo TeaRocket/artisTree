@@ -52,6 +52,7 @@ const userSchema = new Schema(
       default:
         "https://res.cloudinary.com/artistree/image/upload/v1589809297/artistree/pngkey.com-avatar-png-1150152_xzp6py.png",
     },
+    socket: String,
     subcategory: String,
     availability: [{ startDate: Date, endDate: Date }],
     artworks: [
