@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import DateAdder from "../DateAdder/DateAdder";
 import Availabilities from "../Availabilities/Availabilities";
@@ -6,9 +6,13 @@ import AddArtwork from "../AddArtwork/AddArtwork";
 import ArtworkList from "../ArtworkList/ArtworkList";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
-export default class Profile extends Component {
-  static contextType = UserContext;
-  state = {
+import { SocketContext } from "../../contexts/SocketContext";
+
+const Profile = (props) => {
+  const { user, setUser } = useContext(UserContext);
+  const { socket, setSocket } = useContext(SocketContext);
+
+  const [state, setState] = useState({
     imageUrl: null,
     username: null,
     displayName: "",
@@ -24,42 +28,41 @@ export default class Profile extends Component {
     addArtworkForm: false,
     editPicture: false,
     uploadOn: false,
-  };
-  static contextType = UserContext;
-  componentDidMount = () => {
-    this.getData();
+  });
+
+  useEffect(() => {
+    getData();
     axios.get("/api/categories").then((categories) => {
-      this.setState({
+      setState({
+        ...state,
         categories: categories.data,
       });
     });
-  };
-  componentDidUpdate = (prevProps) => {
-    if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.getData();
-    }
-  };
+  }, []);
 
-  handleFormChange = (event) => {
-    this.setState({
+  const handleFormChange = (event) => {
+    setState({
+      ...state,
       [event.target.name]: event.target.value,
     });
   };
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    setState({
+      ...state,
       [name]: value,
     });
   };
   //change pfp
-  handleFileChange = (event) => {
+  const handleFileChange = (event) => {
     const uploadData = new FormData();
     uploadData.append("imageUrl", event.target.files[0]);
-    this.setState({ uploadOn: true }, () => {
+    setState({ ...state, uploadOn: true }, () => {
       axios
         .post("/api/upload/single", uploadData)
         .then((response) => {
-          this.setState({
+          setState({
+            ...state,
             imageUrl: response.data.secure_url,
             uploadOn: false,
             editPicture: false,
@@ -68,12 +71,11 @@ export default class Profile extends Component {
         .catch((error) => console.log(error));
     });
   };
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     event.persist();
-    const { user } = this.context;
     const availability = user.availability;
-    const { displayName, bio, location, category, subcategory } = this.state;
+    const { displayName, bio, location, category, subcategory } = state;
     axios
       .put(`/api/user/${user._id}/profile`, {
         displayName,
@@ -92,8 +94,9 @@ export default class Profile extends Component {
           subcategory,
           availability,
         } = result.data;
-        this.setState(
+        setState(
           {
+            ...state,
             displayName,
             bio,
             location,
@@ -112,8 +115,8 @@ export default class Profile extends Component {
         );
       });
   };
-  getData = () => {
-    const id = this.props.match.params.id;
+  const getData = () => {
+    const id = props.match.params.id;
     axios
       .get(`/api/user/${id}`)
       .then((response) => {
@@ -129,7 +132,8 @@ export default class Profile extends Component {
           artworks,
           role,
         } = response.data;
-        this.setState({
+        setState({
+          ...state,
           displayName,
           bio,
           location,
@@ -146,24 +150,27 @@ export default class Profile extends Component {
         console.log(error);
       });
   };
-  toggleEditForm = () => {
-    this.setState({
-      editPicture: !this.state.editPicture,
+  const toggleEditForm = () => {
+    setState({
+      ...state,
+      editPicture: !state.editPicture,
     });
   };
-  toggleArtwork = () => {
-    this.setState({
-      addArtworkForm: !this.state.addArtworkForm,
+  const toggleArtwork = () => {
+    setState({
+      ...state,
+      addArtworkForm: !state.addArtworkForm,
     });
   };
-  toggleProfileEdit = (e) => {
+  const toggleProfileEdit = (e) => {
     e.persist();
-    this.setState(
+    setState(
       {
-        editProfile: !this.state.editProfile,
+        ...state,
+        editProfile: !state.editProfile,
       },
       () => {
-        if (this.state.editProfile) {
+        if (state.editProfile) {
           window.scrollBy({
             top: e.target.offsetTop - window.scrollY, // could be negative value
             left: 0,
@@ -173,192 +180,183 @@ export default class Profile extends Component {
       }
     );
   };
-  render() {
-    if (this.state.error) return <div>{this.state.error.toString()}</div>;
-    if (!this.state.username) return <></>;
-    const { user } = this.context;
-    const profileId = this.props.match.params.id;
-    const allowedToEdit = user._id === profileId;
-    const isArtist = user.role === "Artist";
-    const profileComplete =
-      this.state.displayName &&
-      this.state.bio &&
-      this.state.location &&
-      this.state.category;
-    return (
-      <main className="page">
-        <div className="container">
-          <header className="profile-banner">
-            <i className="fa fa-bars" aria-hidden="true"></i>
-          </header>
-          <section>
-            <div className="row">
-              <div className="photo-left">
-                <div
-                  style={{
-                    backgroundImage: `url(${this.state.imageUrl})`,
-                    height: "200px",
-                    width: "200px",
-                  }}
-                  className="photo message-profile-pic"
-                  aria-label={this.state.description}
-                />
+  if (state.error) return <div>{state.error.toString()}</div>;
+  if (!state.username) return <></>;
+  const profileId = props.match.params.id;
+  const allowedToEdit = user._id === profileId;
+  const isArtist = user.role === "Artist";
+  const profileComplete =
+    state.displayName && state.bio && state.location && state.category;
 
-                {allowedToEdit && (
-                  <label className="overlaybutton">
-                    Edit Picture
-                    <input
-                      hidden
-                      type="file"
-                      onChange={(e) => this.handleFileChange(e)}
-                    />
-                  </label>
-                )}
-              </div>
-              <p>{this.state.getData}</p>
-              <h4 className="name">{this.state.displayName}</h4>
+  return (
+    <main className="page">
+      <div className="container">
+        <header className="profile-banner">
+          <i className="fa fa-bars" aria-hidden="true"></i>
+        </header>
+        <section>
+          <div className="row">
+            <div className="photo-left">
+              <div
+                style={{
+                  backgroundImage: `url(${state.imageUrl})`,
+                  height: "200px",
+                  width: "200px",
+                }}
+                className="photo message-profile-pic"
+                aria-label={state.description}
+              />
 
-              <div className="info-div">
-                {this.state.subcategory && (
-                  <p className="info">{this.state.subcategory}</p>
-                )}
-                {this.state.category && (
-                  <p className="info">{this.state.category}</p>
-                )}
-                {this.state.location && (
-                  <p className="info">{this.state.location}</p>
-                )}
-              </div>
+              {allowedToEdit && (
+                <label className="overlaybutton">
+                  Edit Picture
+                  <input
+                    hidden
+                    type="file"
+                    onChange={(e) => handleFileChange(e)}
+                  />
+                </label>
+              )}
+            </div>
+            <p>{state.getData}</p>
+            <h4 className="name">{state.displayName}</h4>
 
-              <p className="desc">{this.state.bio}</p>
-              <div className="edit-buttons">
-                <Link
-                  className="my-messages button-forms"
-                  to={!allowedToEdit ? `/messages/${profileId}` : "/messages"}
+            <div className="info-div">
+              {state.subcategory && <p className="info">{state.subcategory}</p>}
+              {state.category && <p className="info">{state.category}</p>}
+              {state.location && <p className="info">{state.location}</p>}
+            </div>
+
+            <p className="desc">{state.bio}</p>
+            <div className="edit-buttons">
+              <Link
+                className="my-messages button-forms"
+                to={!allowedToEdit ? `/messages/${profileId}` : "/messages"}
+              >
+                {!allowedToEdit ? "Send a message" : "My messages"}
+              </Link>
+              {allowedToEdit && (
+                <button
+                  className={
+                    profileComplete
+                      ? "button-edit-profile"
+                      : "button-complete-profile"
+                  }
+                  type="button"
+                  onClick={toggleProfileEdit}
                 >
-                  {!allowedToEdit ? "Send a message" : "My messages"}
-                </Link>
-                {allowedToEdit && (
-                  <button
-                    className={
-                      profileComplete
-                        ? "button-edit-profile"
-                        : "button-complete-profile"
-                    }
-                    type="button"
-                    onClick={this.toggleProfileEdit}
-                  >
-                    {profileComplete ? "Edit Profile" : "Complete your profile"}
-                  </button>
+                  {profileComplete ? "Edit Profile" : "Complete your profile"}
+                </button>
+              )}
+            </div>
+            {state.editProfile && (
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="displayName">Display Name:</label>
+                <input
+                  className="form-input"
+                  type="text"
+                  name="displayName"
+                  id="displayName"
+                  onChange={handleFormChange}
+                  value={state.displayName}
+                />
+                <label htmlFor="bio">Bio:</label>
+                <textarea
+                  className="text-input"
+                  type="text"
+                  name="bio"
+                  id="bio"
+                  value={state.bio}
+                  onChange={handleFormChange}
+                />
+                <label htmlFor="location">Location:</label>
+                <input
+                  className="form-input"
+                  onChange={handleFormChange}
+                  type="text"
+                  name="location"
+                  id="location"
+                  value={state.location}
+                />
+                {isArtist && (
+                  <>
+                    <label htmlFor="category">Artist Type:</label>
+                    <select
+                      className="select-input"
+                      name="category"
+                      id="category"
+                      value={state.category}
+                      onChange={handleFormChange}
+                      style={{
+                        padding: "1.3em 1.4em 1.3em 0.8em",
+                        height: "50px",
+                      }}
+                    >
+                      {state.categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                    <label htmlFor="subcategory">Subcategory:</label>
+                    <input
+                      className="form-input"
+                      type="text"
+                      name="subcategory"
+                      id="subcategory"
+                      value={state.subcategory}
+                      onChange={handleFormChange}
+                    ></input>
+                  </>
                 )}
-              </div>
-              {this.state.editProfile && (
-                <form onSubmit={this.handleSubmit}>
-                  <label htmlFor="displayName">Display Name:</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    name="displayName"
-                    id="displayName"
-                    onChange={this.handleFormChange}
-                    value={this.state.displayName}
+                <button className="submit" type="submit">
+                  Update Profile
+                </button>
+                <br></br>
+              </form>
+            )}
+            <div className="right col-lg-8">
+              <div className="row gallery">
+                <div className="col-md-4">
+                  <ArtworkList
+                    artworks={state.artworks}
+                    profileId={profileId}
+                    className="art"
                   />
-                  <label htmlFor="bio">Bio:</label>
-                  <textarea
-                    className="text-input"
-                    type="text"
-                    name="bio"
-                    id="bio"
-                    value={this.state.bio}
-                    onChange={this.handleFormChange}
-                  />
-                  <label htmlFor="location">Location:</label>
-                  <input
-                    className="form-input"
-                    onChange={this.handleFormChange}
-                    type="text"
-                    name="location"
-                    id="location"
-                    value={this.state.location}
-                  />
-                  {isArtist && (
+                  {allowedToEdit && isArtist && (
                     <>
-                      <label htmlFor="category">Artist Type:</label>
-                      <select
-                        className="select-input"
-                        name="category"
-                        id="category"
-                        value={this.state.category}
-                        onChange={this.handleFormChange}
-                        style={{
-                          padding: "1.3em 1.4em 1.3em 0.8em",
-                          height: "50px",
-                        }}
+                      <button
+                        className="button-forms"
+                        type="button"
+                        onClick={toggleArtwork}
                       >
-                        {this.state.categories.map((category) => (
-                          <option key={category} value={category}>
-                            {category}
-                          </option>
-                        ))}
-                      </select>
-                      <label htmlFor="subcategory">Subcategory:</label>
-                      <input
-                        className="form-input"
-                        type="text"
-                        name="subcategory"
-                        id="subcategory"
-                        value={this.state.subcategory}
-                        onChange={this.handleFormChange}
-                      ></input>
+                        Add Artwork
+                      </button>
                     </>
                   )}
-                  <button className="submit" type="submit">
-                    Update Profile
-                  </button>
-                  <br></br>
-                </form>
-              )}
-              <div className="right col-lg-8">
-                <div className="row gallery">
-                  <div className="col-md-4">
-                    <ArtworkList
-                      artworks={this.state.artworks}
-                      profileId={profileId}
-                      className="art"
+                  {state.addArtworkForm && (
+                    <AddArtwork
+                      getData={getData}
+                      closeForm={() => {
+                        setState({ addArtworkForm: false });
+                      }}
                     />
-                    {allowedToEdit && isArtist && (
-                      <>
-                        <button
-                          className="button-forms"
-                          type="button"
-                          onClick={this.toggleArtwork}
-                        >
-                          Add Artwork
-                        </button>
-                      </>
-                    )}
-                    {this.state.addArtworkForm && (
-                      <AddArtwork
-                        getData={this.getData}
-                        closeForm={() => {
-                          this.setState({ addArtworkForm: false });
-                        }}
-                      />
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {user.role === "Artist" && (
-            <>
-              <Availabilities allowedToEdit={allowedToEdit} />
-              <DateAdder allowedToEdit={allowedToEdit} />
-            </>
-          )}
-        </div>
-      </main>
-    );
-  }
-}
+        {user.role === "Artist" && (
+          <>
+            <Availabilities allowedToEdit={allowedToEdit} />
+            <DateAdder allowedToEdit={allowedToEdit} />
+          </>
+        )}
+      </div>
+    </main>
+  );
+};
+
+export default Profile;
