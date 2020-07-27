@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Message = require("../models/Message");
+const socket = require("../socket");
 
 router.post("/:id", (req, res) => {
   const { message } = req.body;
@@ -10,6 +11,14 @@ router.post("/:id", (req, res) => {
     to: req.params.id,
     text: message,
   }).then((message) => {
+    User.findById(message.to).then((user) => {
+      if (socket.io && user.socket) {
+        const userSocket = socket.io.sockets.connected[user.socket];
+        if (userSocket) {
+          userSocket.broadcast.to(user.socket).emit("message", { message });
+        }
+      }
+    });
     res.status(200).json({ message });
   });
 });
