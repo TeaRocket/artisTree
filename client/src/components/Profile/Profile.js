@@ -220,6 +220,16 @@ const Profile = (props) => {
             </div>
             <p>{state.getData}</p>
             <h4 className="name">{state.displayName}</h4>
+            {socket && (
+              <div
+                style={{
+                  height: "10px",
+                  width: "10px",
+                  backgroundColor: "green",
+                  borderRadius: "50%",
+                }}
+              ></div>
+            )}
 
             <div className="info-div">
               {state.subcategory && <p className="info">{state.subcategory}</p>}
