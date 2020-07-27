@@ -10,7 +10,7 @@ export default function Messages(props) {
     if (user._id === id) {
       props.history.push("/messages");
     }
-  }, [user._id, id]);
+  }, [user._id, id, props.history]);
   return (
     <main className="messages-page container">
       <MessagesList id={id} />

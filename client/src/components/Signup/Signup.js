@@ -149,7 +149,6 @@ export default class Signup extends Component {
                     <select
                       id="category"
                       name="category"
-                      id="category"
                       value={this.state.category}
                       onChange={this.handleChange}
                       className="select-input"

@@ -27,18 +27,16 @@ const App = () => {
         setUser(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setUser]);
 
   useEffect(() => {
     if (user && user._id) {
       setSocket(socketIOClient());
     }
     return () => {
-      if (socket) {
+      if (user && user._id && socket) {
         console.log("disconnect socket io client");
-        socket.emit("disconnect", { userId: user._id });
-        socket.off();
-        setSocket(undefined);
+        socket.emit("leave");
       }
     };
   }, [user && user._id]);

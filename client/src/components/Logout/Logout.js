@@ -5,20 +5,20 @@ import axios from "axios";
 
 export default function Logout(props) {
   const { user, setUser } = useContext(UserContext);
-  const { socket, setSocket } = useContext(SocketContext);
+  const { socket } = useContext(SocketContext);
+
+  if (socket) {
+    socket.emit("leave");
+  }
 
   useEffect(() => {
-    if (socket) {
-      console.log("disconnect socket io client");
-      socket.emit("disconnect", { userId: user._id });
-      socket.off();
-      setSocket(undefined);
+    if (user) {
+      axios.delete("/api/auth/logout").then(() => {
+        setUser(null);
+        props.history.push("/");
+      });
     }
-    axios.delete("/api/auth/logout").then((response) => {
-      setUser(null);
-      props.history.push("/");
-    });
-  }, [props.history, setUser, setSocket, socket]);
+  }, [user && user._id, props.history, setUser]);
 
   return null;
 }
