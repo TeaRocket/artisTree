@@ -74,7 +74,7 @@ export default class Login extends Component {
                 />
 
                 {this.state.message && (
-                  <div variant="danger" class="wrong-cred">
+                  <div variant="danger" className="wrong-cred">
                     {this.state.message}
                   </div>
                 )}

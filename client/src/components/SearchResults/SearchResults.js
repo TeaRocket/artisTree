@@ -92,8 +92,8 @@ export default function SearchResults() {
             });
           }}
         >
-          <div class="arrow">
-            <div class="progress"></div>
+          <div className="arrow">
+            <div className="progress"></div>
             <i></i>
           </div>
         </a>

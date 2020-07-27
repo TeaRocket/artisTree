@@ -40,7 +40,7 @@ export default function MessagesChat(props) {
             })}
           </ul>
           <form onSubmit={sendMessage} className="message-form">
-            <div class="message-box-container">
+            <div className="message-box-container">
               <label htmlFor="Message" className="message-label">
                 Message
               </label>
