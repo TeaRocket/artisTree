@@ -4,6 +4,7 @@ import axios from "axios";
 import MessageSingle from "./MessageSingle";
 
 export default function MessagesChat(props) {
+  const [chatContainer] = useState(React.createRef());
   const { user } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -19,6 +20,13 @@ export default function MessagesChat(props) {
       });
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      chatContainer.current.scrollTo(0, chatContainer.current.scrollHeight);
+    });
+  }, [messages]);
+
   useEffect(() => {
     showMessages();
   }, [props.id]);
@@ -34,7 +42,7 @@ export default function MessagesChat(props) {
     <section className="messages-chat">
       {props.id && (
         <>
-          <ul>
+          <ul ref={chatContainer}>
             {messages.map((message) => {
               return <MessageSingle message={message} user={user} />;
             })}
