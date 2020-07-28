@@ -57,19 +57,18 @@ const Profile = (props) => {
   const handleFileChange = (event) => {
     const uploadData = new FormData();
     uploadData.append("imageUrl", event.target.files[0]);
-    setState({ ...state, uploadOn: true }, () => {
-      axios
-        .post("/api/upload/single", uploadData)
-        .then((response) => {
-          setState({
-            ...state,
-            imageUrl: response.data.secure_url,
-            uploadOn: false,
-            editPicture: false,
-          });
-        })
-        .catch((error) => console.log(error));
-    });
+    setState({ ...state, uploadOn: true });
+    axios
+      .post("/api/upload/single", uploadData)
+      .then((response) => {
+        setState({
+          ...state,
+          imageUrl: response.data.secure_url,
+          uploadOn: false,
+          editPicture: false,
+        });
+      })
+      .catch((error) => console.log(error));
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -164,21 +163,17 @@ const Profile = (props) => {
   };
   const toggleProfileEdit = (e) => {
     e.persist();
-    setState(
-      {
-        ...state,
-        editProfile: !state.editProfile,
-      },
-      () => {
-        if (state.editProfile) {
-          window.scrollBy({
-            top: e.target.offsetTop - window.scrollY, // could be negative value
-            left: 0,
-            behavior: "smooth",
-          });
-        }
-      }
-    );
+    setState({
+      ...state,
+      editProfile: !state.editProfile,
+    });
+    if (!state.editProfile) {
+      window.scrollBy({
+        top: e.target.offsetTop - window.scrollY, // could be negative value
+        left: 0,
+        behavior: "smooth",
+      });
+    }
   };
   if (state.error) return <div>{state.error.toString()}</div>;
   if (!state.username) return <></>;
