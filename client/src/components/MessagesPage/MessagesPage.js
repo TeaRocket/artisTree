@@ -14,7 +14,6 @@ export default function Messages(props) {
   useEffect(() => {
     if (socket) {
       socket.on("message", (data) => {
-        console.log(data);
         setNewMessages([...newMessages, data.message]);
       });
     }
