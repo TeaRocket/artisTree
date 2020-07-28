@@ -10,6 +10,7 @@ const fs = require("fs");
 
 router.post("/single", uploader.single("imageUrl"), (req, res, next) => {
   const userId = req.user._id;
+  console.log("is it loading???");
 
   if (!req.file) {
     next(new Error("No file uploaded!"));
